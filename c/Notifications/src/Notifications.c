@@ -60,28 +60,28 @@ CORTO_OBSERVER(onDeleteTree) {
 
 int NotificationsMain(int argc, char *argv[]) {
 
-    /* Create an observer that triggers on delete events in the scope of root */
+    /* Create an observer that triggers on declare events in the tree under root */
     corto_observer on_declareTree = corto_observerCreate (
             CORTO_ON_DECLARE | CORTO_ON_TREE,  /* Observer mask */
             root_o, /* Observable */
             onDeclareTree /* Callback */
     );
 
-    /* Create an observer that triggers on delete events in the scope of root */
+    /* Create an observer that triggers on define events in the tree under root */
     corto_observer on_defineTree = corto_observerCreate (
             CORTO_ON_DEFINE | CORTO_ON_TREE,  /* Observer mask */
             root_o, /* Observable */
             onDefineTree /* Callback */
     );
 
-    /* Create an observer that triggers on update events in the scope of root */
+    /* Create an observer that triggers on update events in the tree under root */
     corto_observer on_updateTree = corto_observerCreate (
             CORTO_ON_UPDATE | CORTO_ON_TREE,  /* Observer mask */
             root_o, /* Observable */
             onUpdateTree /* Callback */
     );
 
-    /* Create an observer that triggers on delete events in the scope of root */
+    /* Create an observer that triggers on delete events in the tree under root */
     corto_observer on_deleteTree = corto_observerCreate (
             CORTO_ON_DELETE | CORTO_ON_TREE,  /* Observer mask */
             root_o, /* Observable */
