@@ -1,0 +1,4 @@
+
+TARGET = 'DynamicType'
+
+require "#{ENV['CORTO_BUILD']}/application"
