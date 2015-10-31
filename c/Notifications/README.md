@@ -16,4 +16,6 @@ onUpdateTree: object b updated (value = 10)
 onUpdateTree: object a updated (value = 20)
 onUpdateScope: object a updated (value = 20)
 onUpdateTree: object b updated (value = 20)
+onDeleteScope: object b deleted
+onDeleteScope: object a deleted
 ```

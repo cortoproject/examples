@@ -103,14 +103,15 @@ int NotificationsMain(int argc, char *argv[]) {
     corto_int32Update(a, 20);
     corto_int32Update(b, 20);
 
+    corto_delete(a);
+    corto_delete(b);
+
     /* Cleanup observers */
     corto_delete(on_declareTree);
     corto_delete(on_defineTree);
     corto_delete(on_updateTree);
     corto_delete(on_deleteTree);
     corto_delete(on_updateScope);
-
-    /* Objects in the hierarchy (a & b) will be automatically cleaned up */
 
     return 0;
 }
