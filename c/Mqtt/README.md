@@ -1,5 +1,5 @@
 This example shows how to use the Corto MQTT connector. To run the example you
-need to install the `corto::mqtt` package, by running:
+need to install the `corto::mqtt` package, by running (internet connection required):
 ```
 $ corto install corto::mqtt
 ```
