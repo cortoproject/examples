@@ -26,4 +26,4 @@ The output will look like this:
 ...
 ```
 
-Note that the publisher may show a `publish failed` error when starting up. This is because the MQTT connector is connecting asynchronously. Future versions of the connector will resolve this issue.
+Note that the publisher may show a `publish failed` error when starting up. This is because the MQTT connector is connecting asynchronously. Future versions of the corto::mqtt package will resolve this issue.
