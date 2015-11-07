@@ -27,3 +27,9 @@ The output will look like this:
 ```
 
 Note that the publisher may show a `publish failed` error when starting up. This is because the MQTT connector is connecting asynchronously. Future versions of the corto::mqtt package will resolve this issue.
+
+Both the `Pub` and `Sub` project contain a file called packages.txt in the .corto folder. This ensures that the projects can use the corto::mqtt package. You can use the `corto add <project> <package>` command to add packages to your projects. For example, for these projects these commands were used to add the package to the project:
+```
+corto add Pub corto::mqtt
+corto add Sub corto::mqtt
+```
