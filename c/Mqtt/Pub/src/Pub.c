@@ -15,7 +15,7 @@ int PubMain(int argc, char *argv[]) {
     /* Update object every second */
     while (1) {
         corto_int32Update(a, *a + 1);
-        printf("updated value of a to %d\n", *a);
+        printf("[pub] updated value of a to %d\n", *a);
         corto_sleep(1, 0);
     }
 

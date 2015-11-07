@@ -5,7 +5,7 @@ CORTO_OBSERVER(onUpdate) {
     /* Convert observable value to string */
     corto_string value = corto_str(observable, 0);
 
-    printf("%s updated with value %s\n", 
+    printf("[sub] %s updated with value %s\n", 
         corto_nameof(observable),
         value);
 
