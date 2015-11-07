@@ -17,7 +17,6 @@ $ corto run Sub &
 The output will look like this:
 ```
 ...
-[pub] updated value of a to 7
 [pub] updated value of a to 8
 [sub] a updated with value 8
 [pub] updated value of a to 9
@@ -26,3 +25,5 @@ The output will look like this:
 [sub] a updated with value 10
 ...
 ```
+
+Note that the publisher may show a `publish failed` error when starting up. This is because the MQTT connector is connecting asynchronously. Future versions of the connector will resolve this issue.
