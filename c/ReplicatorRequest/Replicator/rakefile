@@ -1,0 +1,4 @@
+
+PACKAGE = 'Replicator'
+
+require "#{ENV['CORTO_BUILD']}/package"

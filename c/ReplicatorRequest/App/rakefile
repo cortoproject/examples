@@ -1,0 +1,4 @@
+
+TARGET = 'App'
+
+require "#{ENV['CORTO_BUILD']}/application"
