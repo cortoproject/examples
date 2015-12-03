@@ -1,6 +1,6 @@
 
 COMPONENTS = %w(
-    Replicator
+    CarBrands
     App
 )
 

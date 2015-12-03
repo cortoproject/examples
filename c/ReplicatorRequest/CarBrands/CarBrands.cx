@@ -1,0 +1,7 @@
+#package ::CarBrands
+
+class Connector: replicator, hidden::
+    alias mount: replicator::mount
+    items: list{result}, private
+    int16 construct()
+    resultIter onRequest(string parent, string expr)

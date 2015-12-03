@@ -1,4 +1,4 @@
 
-PACKAGE = 'Replicator'
+PACKAGE = 'FileBrowser'
 
 require "#{ENV['CORTO_BUILD']}/package"

@@ -1,7 +1,7 @@
-#package ::Replicator
+#package ::FileBrowser
 
-class CarBrands: replicator, hidden::
+class Connector: lang/replicator, hidden::
     alias mount: replicator::mount
-    items: list{result}, private
+    path: string
     int16 construct()
     resultIter onRequest(object parent, string expr)

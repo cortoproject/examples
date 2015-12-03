@@ -7,7 +7,7 @@ int AppMain(int argc, char *argv[]) {
     corto_object Cars_o = corto_voidCreateChild(root_o, "Cars");
 
     /* Register a CarBrands replicator with the 'Cars' scope */
-    Replicator_CarBrands r = Replicator_CarBrandsCreate(Cars_o);
+    CarBrands_Connector r = CarBrands_ConnectorCreate(Cars_o);
 
     /* Select all contents of the 'Cars' scope */
     corto_select(root_o, "Cars/*", &iter);
