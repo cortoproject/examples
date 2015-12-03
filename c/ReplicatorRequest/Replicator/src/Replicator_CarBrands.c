@@ -14,35 +14,40 @@ corto_int16 _Replicator_CarBrands_construct(Replicator_CarBrands this) {
     /* Create list with some dummy items. These represent objects from a
      * remote source. In a typical scenario, this data could be gathered from
      * other datasources like a database or REST interface. */
-    *(corto_resultListAppendAlloc(this->items)) = (corto_result) {
-        corto_strdup("Audi"),   /* Name */
-        corto_strdup("."),      /* Parent relative to query */
-        corto_strdup("Brand")   /* Type */
-    };
+    corto_resultSet(
+        corto_resultListAppendAlloc(this->items),
+        "Audi",   /* Name */
+        ".",      /* Parent relative to query */
+        "Brand"   /* Type */
+    );
 
-    *(corto_resultListAppendAlloc(this->items)) = (corto_result) {
-        corto_strdup("BMW"),    /* Name */
-        corto_strdup("."),      /* Parent relative to query */
-        corto_strdup("Brand")   /* Type */
-    };
+    corto_resultSet(
+        corto_resultListAppendAlloc(this->items),
+        "BMW",    /* Name */
+        ".",      /* Parent relative to query */
+        "Brand"   /* Type */
+    );
 
-    *(corto_resultListAppendAlloc(this->items)) = (corto_result) {
-        corto_strdup("Ford"),   /* Name */
-        corto_strdup("."),      /* Parent relative to query */
-        corto_strdup("Brand")   /* Type */
-    };
+    corto_resultSet(
+        corto_resultListAppendAlloc(this->items),
+        "Ford",   /* Name */
+        ".",      /* Parent relative to query */
+        "Brand"   /* Type */
+    );
 
-    *(corto_resultListAppendAlloc(this->items)) = (corto_result) {
-        corto_strdup("Toyota"), /* Name */
-        corto_strdup("."),      /* Parent relative to query */
-        corto_strdup("Brand")   /* Type */
-    };
+    corto_resultSet(
+        corto_resultListAppendAlloc(this->items),
+        "Toyota", /* Name */
+        ".",      /* Parent relative to query */
+        "Brand"   /* Type */
+    );
 
-    *(corto_resultListAppendAlloc(this->items)) = (corto_result) {
-        corto_strdup("Volkswagen"), /* Name */
-        corto_strdup("."),          /* Parent relative to query */
-        corto_strdup("Brand")       /* Type */
-    };
+    corto_resultSet(
+        corto_resultListAppendAlloc(this->items),
+        "Volkswagen", /* Name */
+        ".",          /* Parent relative to query */
+        "Brand"       /* Type */
+    );
 
     /* Call base constructor. This will activate the replicator, and register
      * with the scope provided in the 'mount' member. */
