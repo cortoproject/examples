@@ -6,7 +6,7 @@ class has a list of items (car brands) which it will feed to select when a reque
 
 The App project uses the Replicator package and demonstrates how a custom replicator integrates with `corto_select`.
 
-To run the project, type `rake` from the project directory, followed by `corto run App`.
+To run the project, type `corto build` from the project directory, followed by `corto run App`.
 
 The output will look like this:
 ```
