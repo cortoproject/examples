@@ -89,7 +89,7 @@ corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, co
         corto_closedir(dirs);
     }
 
-    /* Allocate persistent allocator. Set a custom release function so that the
+    /* Allocate persistent iterator. Set a custom release function so that the
      * returned list is cleaned up after select is done iterating. */
     result = corto_llIterAlloc(data);
     result.release = FileBrowser_Connector_iterRelease;
