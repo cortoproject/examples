@@ -2,6 +2,6 @@
 
 class Connector: replicator, hidden::
     alias mount: replicator::mount
-    items: list{result}, private
+    items: resultList, private
     int16 construct()
-    resultIter onRequest(string parent, string expr)
+    resultIter onRequest(string parent, string expr, bool setContent)

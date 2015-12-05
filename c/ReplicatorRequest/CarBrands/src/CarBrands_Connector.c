@@ -18,35 +18,40 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
         corto_resultListAppendAlloc(this->items),
         "Audi",   /* Name */
         ".",      /* Parent relative to query */
-        "/CarBrands/Brand"   /* Type */
+        "/CarBrands/Brand",   /* Type */
+        0
     );
 
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "BMW",    /* Name */
         ".",      /* Parent relative to query */
-        "/CarBrands/Brand"   /* Type */
+        "/CarBrands/Brand",   /* Type */
+        0
     );
 
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Ford",   /* Name */
         ".",      /* Parent relative to query */
-        "/CarBrands/Brand"   /* Type */
+        "/CarBrands/Brand",   /* Type */
+        0
     );
 
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Toyota", /* Name */
         ".",      /* Parent relative to query */
-        "/CarBrands/Brand"   /* Type */
+        "/CarBrands/Brand",   /* Type */
+        0
     );
 
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Volkswagen", /* Name */
         ".",          /* Parent relative to query */
-        "/CarBrands/Brand"       /* Type */
+        "/CarBrands/Brand",       /* Type */
+        0
     );
 
     /* Call base constructor. This will activate the replicator, and register
@@ -55,7 +60,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
 /* $end */
 }
 
-corto_resultIter _CarBrands_Connector_onRequest(CarBrands_Connector this, corto_string parent, corto_string expr) {
+corto_resultIter _CarBrands_Connector_onRequest(CarBrands_Connector this, corto_string parent, corto_string expr, corto_bool setContent) {
 /* $begin(CarBrands/Connector/onRequest) */
 
     /* This function is invoked when a select occurs on the scope that the
