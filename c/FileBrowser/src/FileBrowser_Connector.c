@@ -8,22 +8,32 @@
 
 #include "FileBrowser.h"
 
+/* $header() */
+#include <sys/stat.h>
+#include <errno.h>
+/* $end */
+
 corto_int16 _FileBrowser_Connector_construct(FileBrowser_Connector this) {
 /* $begin(FileBrowser/Connector/construct) */
+    /* Let corto know which serialized format this replicator is using */
+    corto_replicator_setContentType(this, "text/json");
     return corto_replicator_construct(this);
 /* $end */
 }
 
 /* $header(FileBrowser/Connector/onRequest) */
-/* Custom release function that cleans up resultList */
 void FileBrowser_Connector_iterRelease(corto_iter *iter) {
     corto_llIter_s *data = iter->udata;
+
+    /* Delete data from request */
     corto_resultListClear(data->list);
     corto_llFree(data->list);
+
+    /* Call iter release function that was overridden by this function */
     corto_llIterRelease(iter);
 }
 /* $end */
-corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, corto_string parent, corto_string expr) {
+corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, corto_string parent, corto_string expr, corto_bool setContent) {
 /* $begin(FileBrowser/Connector/onRequest) */
     corto_id path;
     corto_ll data = corto_llNew(); /* Will contain result of request */
@@ -38,11 +48,40 @@ corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, co
         corto_iter iter = corto_llIter(dirs);
         while (corto_iterHasNext(&iter)) {
             corto_string f = corto_iterNext(&iter);
+            corto_string value = NULL; /* only used when setContent is TRUE */
+            struct stat attr;
+
+            /* Build full path to file from current directory */
+            corto_id fpath; sprintf(fpath, "%s/%s", path, f);
+
+            /* Stat file to determine whether it's a directory */
+            if (stat(fpath, &attr) < 0) {
+                corto_error("failed to stat '%s' (%s)\n",
+                    fpath,
+                    strerror(errno));
+            }
+
+            /* When required, provide object value in JSON */
+            if (setContent) {
+                char modified[20];
+
+                strftime(
+                  modified, 20, "%Y-%m-%d %H:%M:%S", localtime(&attr.st_mtime));
+
+                /* Create JSON */
+                corto_asprintf(
+                  &value,
+                  "{\"size\":%d, \"modified\":\"%s\", \"uid\":%d, \"gid\":%d}",
+                  attr.st_size, modified, attr.st_uid, attr.st_gid);
+            }
+
+            /* Create and initialize new result element */
             corto_resultSet(
                 corto_resultListAppendAlloc(data),
-                f,
-                parent,
-                "/FileBrowser/File"
+                f, /* Name */
+                parent, /* Parent */
+                S_ISDIR (attr.st_mode) ? "os/Directory" : "os/File", /* Type */
+                (corto_word) value /* Value */
             );
         }
 
