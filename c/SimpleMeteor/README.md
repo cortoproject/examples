@@ -13,6 +13,14 @@ The output will look like this:
 ```
 $ cd SimpleMeteor
 $ meteor &
+[[[[[ ~/GitHub/cortoproject/examples/c/SimpleMeteor ]]]]]
+
+=> Started proxy.                             
+=> Started MongoDB.                           
+=> Started your app.                          
+
+=> App running at: http://localhost:3000/
+
 $ corto run
 livingRoom = 72.544937, bedRoom = 68.844559, garden = 49.398758
 livingRoom = 72.697105, bedRoom = 68.382195, garden = 49.391563
