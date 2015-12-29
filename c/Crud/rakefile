@@ -1,0 +1,4 @@
+
+TARGET = 'Crud'
+
+require "#{ENV['CORTO_BUILD']}/application"
