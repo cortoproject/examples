@@ -1,6 +1,6 @@
 #package ::FileBrowser
 
-class Connector: lang/replicator, hidden::
+class Connector: core/replicator, hidden::
     alias mount: replicator::mount
     path: string
     int16 construct()

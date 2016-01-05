@@ -5,7 +5,7 @@ float rnd() { return (float)rand() / (float)RAND_MAX - 0.5; }
 int SimpleMeteorMain(int argc, char *argv[]) {
 
     /* Start a DDP server on port 8000 */
-    web_DDPServerCreateChild(root_o, "ddpx", 8000);
+    server_DDPCreateChild(root_o, "ddpx", 8000);
 
     /* Create a scope (equivalent to a Meteor Collection) */
     corto_object Temperature_o = corto_voidCreateChild(root_o, "Temperature");

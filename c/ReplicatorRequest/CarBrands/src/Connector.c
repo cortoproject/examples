@@ -1,12 +1,12 @@
 /* $CORTO_GENERATED
  *
- * CarBrands_Connector.c
+ * Connector.c
  *
  * Only code written between the begin and end tags will be preserved
  * when the file is regenerated.
  */
 
-#include "CarBrands.h"
+#include "CarBrands/CarBrands.h"
 
 corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
 /* $begin(CarBrands/Connector/construct) */

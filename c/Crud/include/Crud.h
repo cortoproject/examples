@@ -1,12 +1,14 @@
-/* include/Crud.h
+/* Crud.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef Crud_H
-#define Crud_H
+#ifndef CRUD_H
+#define CRUD_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

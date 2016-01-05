@@ -6,7 +6,7 @@
  * when the file is regenerated.
  */
 
-#include "CarBrands.h"
+#include "CarBrands/CarBrands.h"
 
 int CarBrandsMain(int argc, char* argv[]) {
 /* $begin(main) */

@@ -1,12 +1,14 @@
-/* include/HelloWorld.h
+/* HelloWorld.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef HelloWorld_H
-#define HelloWorld_H
+#ifndef HELLOWORLD_H
+#define HELLOWORLD_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

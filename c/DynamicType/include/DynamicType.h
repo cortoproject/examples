@@ -1,12 +1,14 @@
-/* include/DynamicType.h
+/* DynamicType.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef DynamicType_H
-#define DynamicType_H
+#ifndef DYNAMICTYPE_H
+#define DYNAMICTYPE_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

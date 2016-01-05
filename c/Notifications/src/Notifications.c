@@ -5,7 +5,7 @@
  * event masks are:
  *
  * ON_DECLARE: forward declaration- value should not be interpreted.
- * ON_DEFINE: object is created and value may be interpreted. 
+ * ON_DEFINE: object is created and value may be interpreted.
  * ON_UPDATE: the value of the object changed
  * ON_DELETE: the object is deleted
  *
@@ -40,7 +40,7 @@ CORTO_OBSERVER(onUpdateTree) {
 
 CORTO_OBSERVER(onDeclareTree) {
     printf("onDeclareTree: object %s declared\n",
-        corto_nameof(observable));
+        corto_fullpath(NULL, observable));
 }
 
 CORTO_OBSERVER(onDefineTree) {
@@ -60,16 +60,16 @@ CORTO_OBSERVER(onDeleteTree) {
 
 int NotificationsMain(int argc, char *argv[]) {
 
-    /* Create an observer that triggers on declare events in the tree under root */
+    /* Create an observer that triggers on declare events in the scope under root */
     corto_observer on_declareTree = corto_observerCreate (
-            CORTO_ON_DECLARE | CORTO_ON_TREE,  /* Observer mask */
+            CORTO_ON_DECLARE | CORTO_ON_SCOPE,  /* Observer mask */
             root_o, /* Observable */
             onDeclareTree /* Callback */
     );
 
-    /* Create an observer that triggers on define events in the tree under root */
+    /* Create an observer that triggers on define events in the scope under root */
     corto_observer on_defineTree = corto_observerCreate (
-            CORTO_ON_DEFINE | CORTO_ON_TREE,  /* Observer mask */
+            CORTO_ON_DEFINE | CORTO_ON_SCOPE,  /* Observer mask */
             root_o, /* Observable */
             onDefineTree /* Callback */
     );
@@ -104,7 +104,7 @@ int NotificationsMain(int argc, char *argv[]) {
     corto_int32Update(b, 20);
 
     corto_delete(a);
-    corto_delete(b);
+    // B is deleted by a
 
     /* Cleanup observers */
     corto_delete(on_declareTree);

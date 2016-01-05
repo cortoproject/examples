@@ -1,12 +1,14 @@
-/* include/App.h
+/* App.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef App_H
-#define App_H
+#ifndef APP_H
+#define APP_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #include "CarBrands/CarBrands.h"
 #ifdef __cplusplus
 extern "C" {

@@ -6,7 +6,7 @@
  * when the file is regenerated.
  */
 
-#include "FileBrowser.h"
+#include "FileBrowser/FileBrowser.h"
 
 int FileBrowserMain(int argc, char* argv[]) {
 /* $begin(main) */

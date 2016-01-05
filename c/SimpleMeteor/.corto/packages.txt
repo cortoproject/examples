@@ -1,1 +1,1 @@
-/corto/web
+corto/web/server

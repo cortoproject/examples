@@ -1,12 +1,14 @@
-/* include/Notifications.h
+/* Notifications.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef Notifications_H
-#define Notifications_H
+#ifndef NOTIFICATIONS_H
+#define NOTIFICATIONS_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

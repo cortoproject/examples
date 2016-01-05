@@ -1,13 +1,15 @@
-/* include/SimpleMeteor.h
+/* SimpleMeteor.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef SimpleMeteor_H
-#define SimpleMeteor_H
+#ifndef SIMPLEMETEOR_H
+#define SIMPLEMETEOR_H
 
-#include "corto.h"
-#include "corto/web/web.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
+#include "corto/web/server/server.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

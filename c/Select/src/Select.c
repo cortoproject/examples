@@ -1,19 +1,18 @@
 #include "Select.h"
 
-/* Demonstrates how select can be used to iteratively browse contents of the 
+/* Demonstrates how select can be used to iteratively browse contents of the
  * Corto store */
 
-/* Function that iterates over an iterator returned by the select call. The 
+/* Function that iterates over an iterator returned by the select call. The
  * select iterator returns objects of the type 'corto_selectItem' which do
  * not expose the object directly for performance / scalability reasons. */
 void iterate(corto_iter *iter) {
     /* Iterate until select returns no more objects */
-    while (corto_iterHasNext(iter)) {
-        corto_selectItem *item = corto_iterNext(iter);
+    corto_resultIterForeach(*iter, e) {
         printf("%s/%s of type %s\n",
-            item->parent,
-            item->name,
-            item->type);
+            e.parent,
+            e.name,
+            e.type);
     }
 }
 
@@ -28,7 +27,7 @@ int SelectMain(int argc, char *argv[]) {
 
     /* Select a single nested object */
     corto_select(root_o, "a/b/d", &iter); iterate(&iter);
-    
+
     /* Select the parent of d (b) */
     corto_select(d, "..", &iter); iterate(&iter);
 

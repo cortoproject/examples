@@ -1,12 +1,12 @@
 /* $CORTO_GENERATED
  *
- * FileBrowser_Connector.c
+ * Connector.c
  *
  * Only code written between the begin and end tags will be preserved
  * when the file is regenerated.
  */
 
-#include "FileBrowser.h"
+#include "FileBrowser/FileBrowser.h"
 
 /* $header() */
 #include <sys/stat.h>
