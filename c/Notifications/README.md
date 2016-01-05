@@ -6,12 +6,12 @@ To run the project, either type `corto run` from the project directory, or
 The output will look like this:
 ```
 $ corto run Notifications
-onDeclareTree: object a declared
+onDeclareTree: object /corto declared
+onDefineTree: object corto defined (value = {"http://corto.io/doc/corto"})
+onDeclareTree: object /a declared
 onDefineTree: object a defined (value = 10)
 onUpdateTree: object a updated (value = 10)
 onUpdateScope: object a updated (value = 10)
-onDeclareTree: object b declared
-onDefineTree: object b defined (value = 10)
 onUpdateTree: object b updated (value = 10)
 onUpdateTree: object a updated (value = 20)
 onUpdateScope: object a updated (value = 20)
