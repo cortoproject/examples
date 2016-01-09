@@ -23,9 +23,6 @@ install:
   - rake
 
 script:
-  - cd examples/c
-  - corto run Crud
-  - corto run DynamicType
-  - corto run HelloWorld
-  - corto run Notifications
-  - corto run Select
+  - cd examples
+  - ./run.sh
+  - cd ..
