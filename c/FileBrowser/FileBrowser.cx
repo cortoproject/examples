@@ -4,4 +4,4 @@ class Connector: core/replicator, hidden::
     alias mount: replicator::mount
     path: string
     int16 construct()
-    resultIter onRequest(string parent, string expr, bool setContent)
+    resultIter onRequest(string parent, string expr, string param,bool setContent)

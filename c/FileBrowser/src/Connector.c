@@ -33,7 +33,7 @@ void FileBrowser_Connector_iterRelease(corto_iter *iter) {
     corto_llIterRelease(iter);
 }
 /* $end */
-corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, corto_string parent, corto_string expr, corto_bool setContent) {
+corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, corto_string parent, corto_string expr, corto_string param, corto_bool setContent) {
 /* $begin(FileBrowser/Connector/onRequest) */
     corto_id path;
     corto_ll data = corto_llNew(); /* Will contain result of request */
