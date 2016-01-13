@@ -1,0 +1,15 @@
+
+COMPONENTS = %w(
+    Crud
+    DynamicType
+    FileBrowser
+    HelloWorld
+    Mqtt
+    Notifications
+    ReplicatorRequest
+    Select
+    SimpleMeteor
+    SysMonitor
+)
+
+require "#{ENV['CORTO_BUILD']}/forward"
