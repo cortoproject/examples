@@ -60,7 +60,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
 /* $end */
 }
 
-corto_resultIter _CarBrands_Connector_onRequest(CarBrands_Connector this, corto_string parent, corto_string expr, corto_bool setContent) {
+corto_resultIter _CarBrands_Connector_onRequest(CarBrands_Connector this, corto_string parent, corto_string expr, corto_string param, corto_bool setContent) {
 /* $begin(CarBrands/Connector/onRequest) */
 
     /* This function is invoked when a select occurs on the scope that the
