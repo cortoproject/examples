@@ -1,12 +1,14 @@
-/* include/Sub.h
+/* Sub.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef Sub_H
-#define Sub_H
+#ifndef SUB_H
+#define SUB_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #include "corto/mqtt/mqtt.h"
 #ifdef __cplusplus
 extern "C" {

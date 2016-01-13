@@ -1,12 +1,14 @@
-/* include/Pub.h
+/* Pub.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef Pub_H
-#define Pub_H
+#ifndef PUB_H
+#define PUB_H
 
-#include "corto.h"
+#include "corto/corto.h"
+#include "_interface.h"
+
 #include "corto/mqtt/mqtt.h"
 #ifdef __cplusplus
 extern "C" {
