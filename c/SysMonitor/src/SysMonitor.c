@@ -3,10 +3,10 @@
 int SysMonitorMain(int argc, char *argv[]) {
 
     /* Create DDP server on port 8000 */
-    server_DDPCreateChild(NULL, "ddp", 8000);
+    server_DDPCreateChild(root_o, "ddp", 8000);
 
     /* Create Stats collection */
-    corto_object Stats_o = corto_voidCreateChild(NULL, "Stats");
+    corto_object Stats_o = corto_voidCreateChild(root_o, "Stats");
 
     /* Create one system monitor for the current system */
     sys_Monitor mon_o = sys_MonitorCreateChild(Stats_o, "mon");
