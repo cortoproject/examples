@@ -85,21 +85,21 @@
         Server-side code
       </div>
       <pre class="code"><span class="code-comment">/* Create DDP server on port 8000 */</span>
-<span class="code-function">server_DDPCreateChild</span>(root_o, <span class="code-string">"ddp"</span>, <span class="code-number">8000</span>);
+<span class="code-function">server_DDPCreateChild_auto</span>(root_o, ddp, <span class="code-number">8000</span>);
 
 <span class="code-comment">/* Create Stats collection */</span>
-<span class="code-type">corto_object</span> Stats_o = <span class="code-function">corto_voidCreateChild</span>(root_o, <span class="code-string">"Stats"</span>);
+<span class="code-function">corto_voidCreateChild_auto</span>(root_o, Stats);
 
 <span class="code-comment">/* Create one system monitor for the current system */</span>
-<span class="code-type">sys_Monitor</span> mon_o = <span class="code-function">sys_MonitorCreateChild</span>(Stats_o, <span class="code-string">"mon"</span>);
+<span class="code-function">sys_MonitorCreateChild_auto</span>(Stats, mon);
 
 <span class="code-comment">/* Resolve static cpu information once */</span>
-<span class="code-function">sys_Monitor_refresh</span>(mon_o, <span class="code-constant">Sys_CpuInfo</span>);
+<span class="code-function">sys_Monitor_refresh</span>(mon, <span class="code-constant">Sys_CpuInfo</span>);
 
 <span class="code-comment">/* Infinite update loop */</span>
 <span class="code-keyword">while</span> (<span class="code-number">1</span>) {
     <span class="code-comment">/* The refresh method obtains new data and updates the object */</span>
-    <span class="code-function">sys_Monitor_refresh</span>(mon_o, <span class="code-constant">Sys_Cpu</span> | <span class="code-constant">Sys_Mem</span>);
+    <span class="code-function">sys_Monitor_refresh</span>(mon, <span class="code-constant">Sys_Cpu</span> | <span class="code-constant">Sys_Mem</span>);
 
     <span class="code-comment">/* Refresh every second */</span>
     <span class="code-function">corto_sleep</span>(<span class="code-number">1</span>, <span class="code-number">0</span>);
