@@ -20,25 +20,25 @@ int SelectMain(int argc, char *argv[]) {
     corto_iter iter;
 
     /* Create a few dummy objects to fill up the store */
-    corto_int32 *a = corto_voidCreateChild(NULL, "a");
-    corto_int32 *b = corto_voidCreateChild(a, "b");
-    corto_voidCreateChild(a, "c");
-    corto_int32 *d = corto_voidCreateChild(b, "d");
+    corto_voidCreateChild_auto(NULL, a);
+    corto_voidCreateChild_auto(a, b);
+    corto_voidCreateChild_auto(a, c);
+    corto_voidCreateChild_auto(b, d);
 
     /* Select a single nested object */
-    corto_select(root_o, "a/b/d", &iter); iterate(&iter);
+    iter = corto_select("/", "a/b/d").iter(); iterate(&iter);
 
     /* Select the parent of d (b) */
-    corto_select(d, "..", &iter); iterate(&iter);
+    iter = corto_select("/d", "..").iter(); iterate(&iter);
 
     /* Select all objects in the root scope */
-    corto_select(root_o, "*", &iter); iterate(&iter);
+    iter = corto_select("/", "*").iter(); iterate(&iter);
 
     /* Select all descendants of a */
-    corto_select(root_o, "a//*", &iter); iterate(&iter);
+    iter = corto_select("/", "a//*").iter(); iterate(&iter);
 
     /* Select all objects in the store that start with a 'w' */
-    corto_select(root_o, "//w*", &iter); iterate(&iter);
+    iter = corto_select("/", "//w*").iter(); iterate(&iter);
 
     return 0;
 }

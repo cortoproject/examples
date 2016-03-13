@@ -7,7 +7,6 @@
 #define SIMPLEMETEOR_H
 
 #include "corto/corto.h"
-#include "_interface.h"
 
 #include "corto/web/server/server.h"
 #ifdef __cplusplus

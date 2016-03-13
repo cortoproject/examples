@@ -4,10 +4,7 @@
 ### construct()
 #### Returns
 ### mount
-### onRequest(string parent,string expr,string param,bool setContent)
-#### parent
-#### expr
-#### param
-#### setContent
+### onRequest(/corto/core/request request)
+#### request
 #### Returns
 ### path

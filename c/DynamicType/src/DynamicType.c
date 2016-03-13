@@ -3,9 +3,9 @@
 int DynamicTypeMain(int argc, char *argv[]) {
 
     /* Create a new struct type */
-    corto_struct Point = corto_structDeclareChild(NULL, "Point");
-    corto_memberCreateChild(Point, "x", corto_int32_o, 0);
-    corto_memberCreateChild(Point, "y", corto_int32_o, 0);
+    corto_structDeclareChild_auto(NULL, Point);
+    corto_memberCreateChild_auto(Point, x, corto_int32_o, 0);
+    corto_memberCreateChild_auto(Point, y, corto_int32_o, 0);
     corto_structDefine(Point, NULL, 0);
 
     /* Create an object with the struct type */

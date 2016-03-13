@@ -7,7 +7,6 @@
 #define APP_H
 
 #include "corto/corto.h"
-#include "_interface.h"
 
 #include "CarBrands/CarBrands.h"
 #ifdef __cplusplus

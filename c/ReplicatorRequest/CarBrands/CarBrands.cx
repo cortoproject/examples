@@ -4,4 +4,4 @@ class Connector: replicator, hidden::
     alias mount: replicator::mount
     items: resultList, private
     int16 construct()
-    resultIter onRequest(string parent, string expr, string param, bool setContent)
+    resultIter onRequest(core/request request)

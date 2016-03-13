@@ -8,7 +8,9 @@
 
 #include "CarBrands/CarBrands.h"
 
-corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
+corto_int16 _CarBrands_Connector_construct(
+    CarBrands_Connector this)
+{
 /* $begin(CarBrands/Connector/construct) */
 
     /* Create list with some dummy items. These represent objects from a
@@ -17,6 +19,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Audi",   /* Name */
+        NULL,
         ".",      /* Parent relative to query */
         "/CarBrands/Brand",   /* Type */
         0
@@ -25,6 +28,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "BMW",    /* Name */
+        NULL,
         ".",      /* Parent relative to query */
         "/CarBrands/Brand",   /* Type */
         0
@@ -33,6 +37,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Ford",   /* Name */
+        NULL,
         ".",      /* Parent relative to query */
         "/CarBrands/Brand",   /* Type */
         0
@@ -41,6 +46,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Toyota", /* Name */
+        NULL,
         ".",      /* Parent relative to query */
         "/CarBrands/Brand",   /* Type */
         0
@@ -49,6 +55,7 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
     corto_resultSet(
         corto_resultListAppendAlloc(this->items),
         "Volkswagen", /* Name */
+        NULL,
         ".",          /* Parent relative to query */
         "/CarBrands/Brand",       /* Type */
         0
@@ -60,7 +67,10 @@ corto_int16 _CarBrands_Connector_construct(CarBrands_Connector this) {
 /* $end */
 }
 
-corto_resultIter _CarBrands_Connector_onRequest(CarBrands_Connector this, corto_string parent, corto_string expr, corto_string param, corto_bool setContent) {
+corto_resultIter _CarBrands_Connector_onRequest(
+    CarBrands_Connector this,
+    corto_request *request)
+{
 /* $begin(CarBrands/Connector/onRequest) */
 
     /* This function is invoked when a select occurs on the scope that the

@@ -13,7 +13,9 @@
 #include <errno.h>
 /* $end */
 
-corto_int16 _FileBrowser_Connector_construct(FileBrowser_Connector this) {
+corto_int16 _FileBrowser_Connector_construct(
+    FileBrowser_Connector this)
+{
 /* $begin(FileBrowser/Connector/construct) */
     /* Let corto know which serialized format this replicator is using */
     corto_replicator_setContentType(this, "text/json");
@@ -33,14 +35,17 @@ void FileBrowser_Connector_iterRelease(corto_iter *iter) {
     corto_llIterRelease(iter);
 }
 /* $end */
-corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, corto_string parent, corto_string expr, corto_string param, corto_bool setContent) {
+corto_resultIter _FileBrowser_Connector_onRequest(
+    FileBrowser_Connector this,
+    corto_request *request)
+{
 /* $begin(FileBrowser/Connector/onRequest) */
     corto_id path;
     corto_ll data = corto_llNew(); /* Will contain result of request */
     corto_iter result;
 
     /* Obtain list of files from 'parent' relative to path */
-    sprintf(path, "%s/%s", this->path ? this->path : ".", parent);
+    sprintf(path, "%s/%s", this->path ? this->path : ".", request->parent);
     corto_ll dirs = corto_opendir(path);
 
     /* Walk files, add files to result */
@@ -62,7 +67,7 @@ corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, co
             }
 
             /* When required, provide object value in JSON */
-            if (setContent) {
+            if (request->content) {
                 char modified[20];
 
                 strftime(
@@ -79,7 +84,8 @@ corto_resultIter _FileBrowser_Connector_onRequest(FileBrowser_Connector this, co
             corto_resultSet(
                 corto_resultListAppendAlloc(data),
                 f, /* Name */
-                parent, /* Parent */
+                NULL,
+                ".", /* Parent */
                 S_ISDIR (attr.st_mode) ? "os/Directory" : "os/File", /* Type */
                 (corto_word) value /* Value */
             );

@@ -7,7 +7,6 @@
 #define SELECT_H
 
 #include "corto/corto.h"
-#include "_interface.h"
 
 #ifdef __cplusplus
 extern "C" {

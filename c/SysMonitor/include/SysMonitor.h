@@ -7,7 +7,6 @@
 #define SYSMONITOR_H
 
 #include "corto/corto.h"
-#include "_interface.h"
 
 #include "corto/sys/sys.h"
 #include "corto/web/web.h"

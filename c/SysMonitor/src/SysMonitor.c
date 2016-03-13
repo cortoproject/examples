@@ -9,18 +9,20 @@ int SysMonitorMain(int argc, char *argv[]) {
     corto_object Stats_o = corto_voidCreateChild(root_o, "Stats");
 
     /* Create one system monitor for the current system */
-    sys_Monitor mon_o = sys_MonitorCreateChild(Stats_o, "mon");
+    // sys_Monitor mon_o = sys_MonitorCreateChild(Stats_o, "mon");
 
     /* Resolve static cpu information once */
-    sys_Monitor_refresh(mon_o, Sys_CpuInfo);
+    // sys_Monitor_refresh(mon_o, Sys_CpuInfo);
+    corto_int32 *i = corto_int32CreateChild(Stats_o, "mon", 10);
 
     /* Infinite update loop */
     while (1) {
         /* The refresh method obtains new data and updates the object */
-        sys_Monitor_refresh(mon_o, Sys_Cpu | Sys_Mem);
+        // sys_Monitor_refresh(mon_o, Sys_Cpu | Sys_Mem);
+        corto_int32Update(i, 12);
 
         /* Refresh every second */
-        corto_sleep(1, 0);
+        corto_sleep(0, 0);
     }
 
     return 0;
