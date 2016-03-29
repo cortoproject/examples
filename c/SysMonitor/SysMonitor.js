@@ -1,5 +1,5 @@
 if (Meteor.isClient) {
-  remote = DDP.connect("127.0.0.1:8000");
+  remote = DDP.connect(window.location.hostname + ":8000");
   Stats = new Meteor.Collection("Stats", remote);
   Clients = new Meteor.Collection("ddp/__sessions", remote);
   remote.subscribe("Stats", {value: true});

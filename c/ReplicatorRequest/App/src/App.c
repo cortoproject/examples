@@ -9,7 +9,7 @@ int AppMain(int argc, char *argv[]) {
     CarBrands_ConnectorCreate_auto(r, Cars);
 
     /* Select all contents of the 'Cars' scope */
-    corto_iter it = corto_select("/", "Cars/*").iter();
+    corto_iter it = corto_select("/", "Cars/*").iter(NULL);
 
     /* Iterate over the select results */
     corto_resultIterForeach(it, e) {
