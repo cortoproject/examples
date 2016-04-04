@@ -6,7 +6,7 @@ CORTO_OBSERVER(onUpdate) {
     corto_string value = corto_str(observable, 0);
 
     printf("[sub] %s updated with value %s\n", 
-        corto_nameof(observable),
+        corto_idof(observable),
         value);
 
     /* Free resources */

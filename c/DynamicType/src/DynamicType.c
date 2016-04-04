@@ -16,7 +16,7 @@ int DynamicTypeMain(int argc, char *argv[]) {
 
     /* Print the value to the console */
     corto_string value = corto_str(p, 0);
-    printf("value of %s is %s\n", corto_nameof(p), value);
+    printf("value of %s is %s\n", corto_idof(p), value);
     corto_dealloc(value);
 
     return 0;

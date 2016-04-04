@@ -22,7 +22,7 @@ CORTO_OBSERVER(onUpdateScope) {
     corto_string value = corto_str(observable, 0);
 
     printf("onUpdateScope: object %s updated (value = %s)\n",
-        corto_nameof(observable),
+        corto_idof(observable),
         value);
 
     corto_dealloc(value);
@@ -32,7 +32,7 @@ CORTO_OBSERVER(onUpdateTree) {
     corto_string value = corto_str(observable, 0);
 
     printf("onUpdateTree: object %s updated (value = %s)\n",
-        corto_nameof(observable),
+        corto_idof(observable),
         value);
 
     corto_dealloc(value);
@@ -47,7 +47,7 @@ CORTO_OBSERVER(onDefineTree) {
     corto_string value = corto_str(observable, 0);
 
     printf("onDefineTree: object %s defined (value = %s)\n",
-        corto_nameof(observable),
+        corto_idof(observable),
         value);
 
     corto_dealloc(value);
@@ -55,7 +55,7 @@ CORTO_OBSERVER(onDefineTree) {
 
 CORTO_OBSERVER(onDeleteTree) {
     printf("onDeleteScope: object %s deleted\n",
-        corto_nameof(observable));
+        corto_idof(observable));
 }
 
 int NotificationsMain(int argc, char *argv[]) {

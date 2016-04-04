@@ -3,7 +3,7 @@
 /* Observer callback */
 CORTO_OBSERVER(onUpdate) {
     printf("%s updated with value %s\n",
-        corto_nameof(observable),
+        corto_idof(observable),
         corto_str(observable, 0));
 }
 
