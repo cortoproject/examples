@@ -17,9 +17,9 @@ corto_int16 _FileBrowser_Connector_construct(
     FileBrowser_Connector this)
 {
 /* $begin(FileBrowser/Connector/construct) */
-    /* Let corto know which serialized format this replicator is using */
-    corto_replicator_setContentType(this, "text/json");
-    return corto_replicator_construct(this);
+    /* Let corto know which serialized format this mount is using */
+    corto_mount_setContentType(this, "text/json");
+    return corto_mount_construct(this);
 /* $end */
 }
 

@@ -5,7 +5,7 @@ int AppMain(int argc, char *argv[]) {
     /* Create a scope which will hold a list of car brands */
     corto_voidCreateChild_auto(root_o, Cars);
 
-    /* Register a CarBrands replicator with the 'Cars' scope */
+    /* Register a CarBrands mount with the 'Cars' scope */
     CarBrands_ConnectorCreate_auto(r, Cars);
 
     /* Select all contents of the 'Cars' scope */
@@ -16,7 +16,7 @@ int AppMain(int argc, char *argv[]) {
         printf("Found %s of type '%s'\n", e.name, e.type);
     }
 
-    /* Cleanup replicator */
+    /* Cleanup mount */
     corto_delete(r);
 
     return 0;

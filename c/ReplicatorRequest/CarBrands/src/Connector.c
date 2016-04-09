@@ -61,9 +61,9 @@ corto_int16 _CarBrands_Connector_construct(
         0
     );
 
-    /* Call base constructor. This will activate the replicator, and register
+    /* Call base constructor. This will activate the mount, and register
      * with the scope provided in the 'mount' member. */
-    return corto_replicator_construct(this);
+    return corto_mount_construct(this);
 /* $end */
 }
 
@@ -74,13 +74,13 @@ corto_resultIter _CarBrands_Connector_onRequest(
 /* $begin(CarBrands/Connector/onRequest) */
 
     /* This function is invoked when a select occurs on the scope that the
-     * replicator has registered itself for */
+     * mount has registered itself for */
 
     /* Create a persistent iterator (one that does not expire after it runs out
      * of scope). The iterator resources are automatically cleaned up after the
      * iteration is completed. */
 
-    /* In a real life scenario, a replicator could choose to implement its own
+    /* In a real life scenario, a mount could choose to implement its own
      * iterator to tailor the behavior of hasNext and next. */
     return corto_llIterAlloc(this->items);
 
