@@ -1,7 +1,7 @@
 #package ::FileBrowser
 
-class Connector: core/replicator, hidden::
-    alias mount: replicator::mount
+class Connector: core/mount, hidden::
+    alias mount: mount::mount
     path: string
     int16 construct()
     resultIter onRequest(core/request request)

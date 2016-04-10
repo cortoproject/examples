@@ -1,7 +1,7 @@
 #package ::CarBrands
 
-class Connector: replicator, hidden::
-    alias mount: replicator::mount
+class Connector: mount, hidden::
+    alias mount: mount::mount
     items: resultList, private
     int16 construct()
     resultIter onRequest(core/request request)
