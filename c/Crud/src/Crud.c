@@ -1,7 +1,7 @@
 #include "Crud.h"
 
 /* Observer callback */
-CORTO_OBSERVER(onUpdate) {
+void onUpdate(corto_object this, corto_object observable) {
     printf("%s updated with value %s\n",
         corto_idof(observable),
         corto_str(observable, 0));

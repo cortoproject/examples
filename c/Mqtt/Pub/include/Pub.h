@@ -6,16 +6,15 @@
 #ifndef PUB_H
 #define PUB_H
 
-#include "corto/corto.h"
-
-#include "corto/mqtt/mqtt.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <corto/corto.h>
 
 /* $header() */
 /* You can put your own definitions here! */
 /* $end */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifdef __cplusplus
 }

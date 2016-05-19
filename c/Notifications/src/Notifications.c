@@ -16,7 +16,7 @@
  * ON_SELF only triggers on events of the observable itself.
  */
 
-CORTO_OBSERVER(onUpdateScope) {
+void onUpdateScope(corto_object this, corto_object observable) {
     /* Serialize the value of the observable to a string. The '0' indicates
      * the maximum length of the string, where 0 means no limit. */
     corto_string value = corto_str(observable, 0);
@@ -28,7 +28,7 @@ CORTO_OBSERVER(onUpdateScope) {
     corto_dealloc(value);
 }
 
-CORTO_OBSERVER(onUpdateTree) {
+void onUpdateTree(corto_object this, corto_object observable) {
     corto_string value = corto_str(observable, 0);
 
     printf("onUpdateTree: object %s updated (value = %s)\n",
@@ -38,12 +38,12 @@ CORTO_OBSERVER(onUpdateTree) {
     corto_dealloc(value);
 }
 
-CORTO_OBSERVER(onDeclareTree) {
+void onDeclareTree(corto_object this, corto_object observable) {
     printf("onDeclareTree: object %s declared\n",
         corto_fullpath(NULL, observable));
 }
 
-CORTO_OBSERVER(onDefineTree) {
+void onDefineTree(corto_object this, corto_object observable) {
     corto_string value = corto_str(observable, 0);
 
     printf("onDefineTree: object %s defined (value = %s)\n",
@@ -53,7 +53,7 @@ CORTO_OBSERVER(onDefineTree) {
     corto_dealloc(value);
 }
 
-CORTO_OBSERVER(onDeleteTree) {
+void onDeleteTree(corto_object this, corto_object observable) {
     printf("onDeleteScope: object %s deleted\n",
         corto_idof(observable));
 }

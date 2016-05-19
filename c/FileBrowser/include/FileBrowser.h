@@ -6,17 +6,18 @@
 #ifndef FILEBROWSER_H
 #define FILEBROWSER_H
 
-#include "corto/corto.h"
-#include "FileBrowser/_type.h"
-#include "FileBrowser/_api.h"
-#include "FileBrowser/_meta.h"
-#include "FileBrowser/_interface.h"
+#include <corto/corto.h>
+#include <FileBrowser/_interface.h>
+#include <FileBrowser/_type.h>
+#include <FileBrowser/_api.h>
+#include <FileBrowser/_meta.h>
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "FileBrowser/Connector.h"
+#include <FileBrowser/Connector.h>
 
 #ifdef __cplusplus
 }

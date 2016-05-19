@@ -6,7 +6,7 @@
  * when the file is regenerated.
  */
 
-#include "FileBrowser/FileBrowser.h"
+#include <FileBrowser/FileBrowser.h>
 
 /* $header() */
 #include <sys/stat.h>

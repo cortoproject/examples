@@ -1,11 +1,11 @@
 #include "Sub.h"
 
 /* Observer callback function */
-CORTO_OBSERVER(onUpdate) {
+void onUpdate(corto_object this, corto_object observable) {
     /* Convert observable value to string */
     corto_string value = corto_str(observable, 0);
 
-    printf("[sub] %s updated with value %s\n", 
+    printf("[sub] %s updated with value %s\n",
         corto_idof(observable),
         value);
 
@@ -25,7 +25,7 @@ int SubMain(int argc, char *argv[]) {
     /* Listen for updates in the scope of root */
     corto_observer observer = corto_observerCreate(
         CORTO_ON_UPDATE | CORTO_ON_SCOPE,
-        root_o,              
+        root_o,
         onUpdate);
 
     /* Keep application running */
