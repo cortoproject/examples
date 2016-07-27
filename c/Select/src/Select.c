@@ -26,19 +26,19 @@ int SelectMain(int argc, char *argv[]) {
     corto_voidCreateChild_auto(b, d);
 
     /* Select a single nested object */
-    iter = corto_select("/", "a/b/d").iter(NULL); iterate(&iter);
+    corto_select("/", "a/b/d").iter(&iter); iterate(&iter);
 
     /* Select the parent of d (b) */
-    iter = corto_select("/d", "..").iter(NULL); iterate(&iter);
+    corto_select("/d", "..").iter(&iter); iterate(&iter);
 
     /* Select all objects in the root scope */
-    iter = corto_select("/", "*").iter(NULL); iterate(&iter);
+    corto_select("/", "*").iter(&iter); iterate(&iter);
 
     /* Select all descendants of a */
-    iter = corto_select("/", "a//*").iter(NULL); iterate(&iter);
+    corto_select("/", "a//*").iter(&iter); iterate(&iter);
 
     /* Select all objects in the store that start with a 'w' */
-    iter = corto_select("/", "//w*").iter(NULL); iterate(&iter);
+    corto_select("/", "//w*").iter(&iter); iterate(&iter);
 
     return 0;
 }
