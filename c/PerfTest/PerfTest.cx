@@ -1,0 +1,5 @@
+#package /PerfTest
+
+class MyMount: core/mount, hidden::
+    alias mount: mount/mount
+    void onUpdate(object observable) observer
