@@ -13,8 +13,5 @@ corto_void _PerfTest_MyMount_onUpdate(
     corto_object observable)
 {
 /* $begin(PerfTest/MyMount/onUpdate) */
-
-    printf("update: %s\n", corto_idof(observable));
-
 /* $end */
 }
