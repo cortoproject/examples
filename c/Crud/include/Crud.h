@@ -3,8 +3,8 @@
  * This file is generated. Do not modify.
  */
 
-#ifndef CRUD_H
-#define CRUD_H
+#ifndef _CRUD_H
+#define _CRUD_H
 
 #include <corto/corto.h>
 

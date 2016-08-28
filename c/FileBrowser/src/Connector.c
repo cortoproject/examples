@@ -55,6 +55,7 @@ corto_resultIter _FileBrowser_Connector_onRequest(
             corto_string f = corto_iterNext(&iter);
             corto_string value = NULL; /* only used when setContent is TRUE */
             struct stat attr;
+            corto_bool isDir = FALSE;
 
             /* Build full path to file from current directory */
             corto_id fpath; sprintf(fpath, "%s/%s", path, f);
@@ -80,13 +81,16 @@ corto_resultIter _FileBrowser_Connector_onRequest(
                   attr.st_size, modified, attr.st_uid, attr.st_gid);
             }
 
+            isDir = S_ISDIR(attr.st_mode);
+
             /* Create and initialize new result element */
-            corto_resultSet(
+            corto_resultAssign(
                 corto_resultListAppendAlloc(data),
                 f, /* Name */
                 NULL,
                 ".", /* Parent */
-                S_ISDIR (attr.st_mode) ? "os/Directory" : "os/File", /* Type */
+                isDir ? "os/Directory" : "os/File", /* Type */
+                isDir,
                 (corto_word) value /* Value */
             );
         }

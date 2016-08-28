@@ -3,8 +3,8 @@
  * This file is generated. Do not modify.
  */
 
-#ifndef SELECT_H
-#define SELECT_H
+#ifndef _SELECT_H
+#define _SELECT_H
 
 #include <corto/corto.h>
 

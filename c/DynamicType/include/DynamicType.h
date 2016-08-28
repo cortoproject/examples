@@ -3,8 +3,8 @@
  * This file is generated. Do not modify.
  */
 
-#ifndef DYNAMICTYPE_H
-#define DYNAMICTYPE_H
+#ifndef _DYNAMICTYPE_H
+#define _DYNAMICTYPE_H
 
 #include <corto/corto.h>
 

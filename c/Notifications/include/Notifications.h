@@ -3,8 +3,8 @@
  * This file is generated. Do not modify.
  */
 
-#ifndef NOTIFICATIONS_H
-#define NOTIFICATIONS_H
+#ifndef _NOTIFICATIONS_H
+#define _NOTIFICATIONS_H
 
 #include <corto/corto.h>
 

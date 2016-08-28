@@ -3,8 +3,8 @@
  * This file is generated. Do not modify.
  */
 
-#ifndef HELLOWORLD_H
-#define HELLOWORLD_H
+#ifndef _HELLOWORLD_H
+#define _HELLOWORLD_H
 
 #include <corto/corto.h>
 
