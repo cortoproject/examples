@@ -1,0 +1,15 @@
+#package /Security
+
+// Mockups for a secure/key
+class MyKey: secure/key::
+    string authenticate(string user, string password)
+
+// Mockups for a secure/lock
+struct AccessRule::
+    user: string
+    action: secure/actionKind
+    access: secure/accessKind
+
+class MyLock: secure/lock::
+    rules: list{AccessRule}
+    secure/accessKind authorize(string token, string object, secure/actionKind action)
