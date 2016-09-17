@@ -1,10 +1,10 @@
 #package /Security
 
-// Mockup for a secure/key
+// A secure/key example implementation
 class MyKey: secure/key::
     string authenticate(string user, string password) // Override secure/key/authenticate
 
-// Mockup for a secure/lock
+// A secure/lock example implementation
 struct AccessRule::
     user: string               // The user for which the rule will be applied
     action: secure/actionKind  // The action for which the rule will be applied
