@@ -11,7 +11,6 @@
 corto_secure_accessKind _Security_MyLock_authorize(
     Security_MyLock this,
     corto_string token,
-    corto_string object,
     corto_secure_actionKind action)
 {
 /* $begin(Security/MyLock/authorize) */
