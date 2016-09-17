@@ -21,7 +21,13 @@ int SecurityMain(int argc, char* argv[]) {
     Security_MyKeyCreate();
 
     /* Create lock that denies reading object /a/b for user 'token_user01' */
-    Security_MyLock lock = Security_MyLockCreate("/a/b", ".", 0, NULL);
+    Security_MyLock lock = Security_MyLockCreate(
+        "/a/b",  /* Object on which to attach lock */
+        ".",     /* Match self (/a/b) */
+        0,       /* Priority of lock is 0 */
+        NULL     /* Rule is configured below */
+    );
+    
     Security_AccessRule rule = {"token_user01", CORTO_SECURE_ACTION_READ, CORTO_SECURE_ACCESS_DENIED};
     Security_AccessRuleListInsert(lock->rules, &rule);
 
