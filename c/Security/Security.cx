@@ -1,15 +1,16 @@
 #package /Security
 
-// Mockups for a secure/key
+// A secure/key example implementation
 class MyKey: secure/key::
-    string authenticate(string user, string password)
+    string authenticate(string user, string password) // Override secure/key/authenticate
 
-// Mockups for a secure/lock
+// A simple access rule type
 struct AccessRule::
-    user: string
-    action: secure/actionKind
-    access: secure/accessKind
+    user: string               // The user for which the rule will be applied
+    action: secure/actionKind  // The action for which the rule will be applied
+    access: secure/accessKind  // Is the user authorized to perform the action (can be GRANTED, DENIED or UNDEFINED)
 
+// A secure/lock example implementation
 class MyLock: secure/lock::
-    rules: list{AccessRule}
-    secure/accessKind authorize(string token, secure/actionKind action)
+    rules: list{AccessRule} // List of access rules
+    secure/accessKind authorize(string token secure/actionKind action) // Override secure/lock/authorize
