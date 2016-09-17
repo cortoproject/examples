@@ -4,12 +4,13 @@
 class MyKey: secure/key::
     string authenticate(string user, string password) // Override secure/key/authenticate
 
-// A secure/lock example implementation
+// A simple access rule type
 struct AccessRule::
     user: string               // The user for which the rule will be applied
     action: secure/actionKind  // The action for which the rule will be applied
     access: secure/accessKind  // Whether the user is allowed to perform the action
 
+// A secure/lock example implementation
 class MyLock: secure/lock::
     rules: list{AccessRule} // List of access rules
     secure/accessKind authorize(string token, string object, secure/actionKind action) // Override secure/lock/authorize
