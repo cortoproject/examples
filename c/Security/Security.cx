@@ -8,7 +8,7 @@ class MyKey: secure/key::
 struct AccessRule::
     user: string               // The user for which the rule will be applied
     action: secure/actionKind  // The action for which the rule will be applied
-    access: secure/accessKind  // Whether the user is allowed to perform the action
+    access: secure/accessKind  // Is the user authorized to perform the action (can be GRANTED, DENIED or UNDEFINED)
 
 // A secure/lock example implementation
 class MyLock: secure/lock::
