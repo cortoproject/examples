@@ -1,7 +1,7 @@
 #include "Crud.h"
 
 /* Observer callback */
-void onUpdate(corto_object this, corto_object observable) {
+void onUpdate(corto_object this, corto_eventMask mask, corto_object observable, corto_observer observer) {
     printf("%s updated with value %s\n",
         corto_idof(observable),
         corto_str(observable, 0));
@@ -16,17 +16,14 @@ int CrudMain(int argc, char *argv[]) {
     corto_int32 *b = corto_int32CreateChild(a, "b", 20);
 
     /* Create an observer that listens for updates of 'a' */
-    corto_observer observe = corto_observerCreate(
-        CORTO_ON_UPDATE, /* We're interested in object updates */
-        a, /* Listen to updates of only 'a' */
-        onUpdate /* Callback to observer implementation */
-    );
+    corto_observer observer = corto_observe(CORTO_ON_UPDATE, a)
+        .callback(onUpdate);
 
     /* Update value of 'a'. This will notify the observer. */
     corto_int32Update(a, 11);
 
     /* Delete observer */
-    corto_delete(observe);
+    corto_delete(observer);
 
     /* Delete objects */
     corto_delete(b);

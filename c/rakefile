@@ -4,12 +4,14 @@ COMPONENTS = %w(
     DynamicType
     FileBrowser
     HelloWorld
-    Mqtt
     Notifications
     ReplicatorRequest
     Select
+    Serializer
     SimpleMeteor
+    Subscriber
     SysMonitor
+    Mqtt
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"
