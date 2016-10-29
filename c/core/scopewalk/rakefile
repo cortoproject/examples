@@ -1,0 +1,4 @@
+
+TARGET = 'scopewalk'
+
+require "#{ENV['CORTO_BUILD']}/application"

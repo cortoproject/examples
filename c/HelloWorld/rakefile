@@ -1,4 +1,0 @@
-
-TARGET = 'HelloWorld'
-
-require "#{ENV['CORTO_BUILD']}/application"

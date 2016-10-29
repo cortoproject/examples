@@ -1,7 +1,0 @@
-#package ::CarBrands
-
-class Connector: mount, hidden::
-    alias mount: mount::mount
-    items: resultList, private
-    int16 construct()
-    resultIter onRequest(core/request request)

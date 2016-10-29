@@ -1,0 +1,4 @@
+
+TARGET = 'select_historical'
+
+require "#{ENV['CORTO_BUILD']}/application"

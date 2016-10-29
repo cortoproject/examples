@@ -1,4 +1,0 @@
-
-TARGET = 'Select'
-
-require "#{ENV['CORTO_BUILD']}/application"

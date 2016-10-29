@@ -1,4 +1,0 @@
-
-TARGET = 'Notifications'
-
-require "#{ENV['CORTO_BUILD']}/application"

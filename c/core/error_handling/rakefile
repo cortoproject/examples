@@ -1,0 +1,4 @@
+
+TARGET = 'error_handling'
+
+require "#{ENV['CORTO_BUILD']}/application"

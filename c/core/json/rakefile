@@ -1,0 +1,4 @@
+
+TARGET = 'json'
+
+require "#{ENV['CORTO_BUILD']}/application"

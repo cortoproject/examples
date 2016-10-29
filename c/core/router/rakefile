@@ -1,0 +1,4 @@
+
+TARGET = 'router'
+
+require "#{ENV['CORTO_BUILD']}/application"

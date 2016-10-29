@@ -1,0 +1,38 @@
+
+COMPONENTS = %w(
+    attributes
+    debugging
+    dynamic_call
+    error_handling
+    identifier_expr
+    json
+    object_local_storage
+    objects
+    objects_fwddecl
+    objects_hierarchy
+    objects_invalid
+    observer_instance
+    observer_simple
+    observer_type
+    ownership
+    path_identifiers
+    resolve
+    router
+    scopewalk
+    security
+    select
+    select_contentType
+    select_historical
+    serializer
+    state
+    string_serializer
+    subscriber_instance
+    subscriber_simple
+    subscriber_type
+    thread_dispatcher
+    type_serializer
+    value_casting
+    value_expressions
+)
+
+require "#{ENV['CORTO_BUILD']}/forward"

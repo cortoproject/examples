@@ -1,7 +1,0 @@
-
-COMPONENTS = %w(
-    Pub
-    Sub
-)
-
-require "#{ENV['CORTO_BUILD']}/forward"

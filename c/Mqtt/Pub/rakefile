@@ -1,4 +1,0 @@
-
-TARGET = 'Pub'
-
-require "#{ENV['CORTO_BUILD']}/application"

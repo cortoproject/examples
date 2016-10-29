@@ -1,0 +1,4 @@
+
+TARGET = 'security'
+
+require "#{ENV['CORTO_BUILD']}/application"

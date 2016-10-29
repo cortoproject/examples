@@ -1,3 +1,0 @@
-/corto/sys
-/corto/web
-/corto/web/server

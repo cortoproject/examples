@@ -1,0 +1,4 @@
+
+TARGET = 'serializer'
+
+require "#{ENV['CORTO_BUILD']}/application"

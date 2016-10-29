@@ -1,7 +1,0 @@
-
-COMPONENTS = %w(
-    CarBrands
-    App
-)
-
-require "#{ENV['CORTO_BUILD']}/forward"

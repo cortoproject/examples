@@ -1,7 +1,0 @@
-#package ::FileBrowser
-
-class Connector: core/mount, hidden::
-    alias mount: mount::mount
-    path: string
-    int16 construct()
-    resultIter onRequest(core/request request)

@@ -1,0 +1,4 @@
+
+TARGET = 'debugging'
+
+require "#{ENV['CORTO_BUILD']}/application"

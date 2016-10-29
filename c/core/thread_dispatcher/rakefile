@@ -1,0 +1,4 @@
+
+TARGET = 'thread_dispatcher'
+
+require "#{ENV['CORTO_BUILD']}/application"

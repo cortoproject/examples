@@ -1,4 +1,0 @@
-
-TARGET = 'PerfTest'
-
-require "#{ENV['CORTO_BUILD']}/application"
