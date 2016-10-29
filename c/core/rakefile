@@ -11,6 +11,8 @@ COMPONENTS = %w(
     objects_fwddecl
     objects_hierarchy
     objects_invalid
+    objects_invalid_constructor
+    observer_hierarchy
     observer_instance
     observer_simple
     observer_type
