@@ -1,6 +1,6 @@
 #include "observer_instance.h"
 
-/* observer_simple
+/* observer_instance
  *
  * This example shows using a mechanism that allows an application to filter out
  * events that it has created itself. A typical application is a class that is

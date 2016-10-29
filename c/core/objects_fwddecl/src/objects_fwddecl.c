@@ -4,8 +4,9 @@
  *
  * This example shows basic usage of core API functions to forward declare
  * objects. If you use corto_createChild (see objects example) the object is
- * defined with a default value. As creating an object generates a DEFINE event,
- * you may want to override the default value of the object.
+ * defined with a default value. Creating an object generates a DEFINE event, so
+ * you may want to override this value so that observers of the DEFINE event can
+ * receive the object after a custom value has been assigned.
  *
  * Forward declarations allow you to create an object that has not yet been
  * defined. This allows you to set the value of the object before it is defined.
@@ -73,7 +74,7 @@ int objects_fwddeclMain(int argc, char *argv[]) {
         *fwddecl = 10;
 
         /* Now that the value is set, we can define the object. The observer
-         * will receive a DEFINE notification with the right value set. */
+         * will receive a DEFINE notification after the value is assigned. */
         if (corto_define(fwddecl)) {
             goto error;
         }
@@ -90,7 +91,7 @@ int objects_fwddeclMain(int argc, char *argv[]) {
     }
 
     /* Delete fwddecl object */
-    if (corto_delete(regular)) {
+    if (corto_delete(fwddecl)) {
         goto error;
     }
 

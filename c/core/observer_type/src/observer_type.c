@@ -1,7 +1,7 @@
 #include "observer_type.h"
 
 
-/* observer_simple
+/* observer_type
  *
  * This example shows how to create an observer that filters objects of a
  * specified type.

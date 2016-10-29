@@ -1,10 +1,10 @@
-/* resolve.h
+/* lookup.h
  *
  * This file is generated. Do not modify.
  */
 
-#ifndef _RESOLVE_H
-#define _RESOLVE_H
+#ifndef _LOOKUP_H
+#define _LOOKUP_H
 
 #include <corto/corto.h>
 

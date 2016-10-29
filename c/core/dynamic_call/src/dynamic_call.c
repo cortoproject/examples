@@ -1,8 +1,38 @@
 #include "dynamic_call.h"
 
+/* dynamic_call
+ *
+ * This example shows how to use corto_call to dynamically call corto functions.
+ */
+
+corto_int32 add(corto_int32 a, corto_int32 b) {
+    return a + b;
+}
+
 int dynamic_callMain(int argc, char *argv[]) {
 
-    printf("Hello Corto!\n");
+    /* Create a function object in Corto, assign it with a C function */
+    corto_function f = corto_declareChild(root_o, "add(int32 a,int32 b)", corto_function_o);
+    f->kind = CORTO_PROCEDURE_CDECL;
+    f->fptr = (corto_word)add;
+    corto_setref(&f->returnType, corto_int32_o);
+    if (corto_define(f)) {
+        goto error;
+    }
+
+    /* Now call it */
+    corto_int32 result;
+    corto_call(f, &result, 10, 20);
+    printf("corto_call, result = %d\n", result);
+
+    /* Call it with an array of arguments */
+    corto_int32 a = 20, b = 30;
+    void *args[] = {&a, &b};
+    corto_callb(f, &result, args);
+    printf("corto_callb, result = %d\n", result);
 
     return 0;
+error:
+    corto_error("error: %s", corto_lasterr());
+    return -1;
 }

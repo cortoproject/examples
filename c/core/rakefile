@@ -6,6 +6,7 @@ COMPONENTS = %w(
     error_handling
     identifier_expr
     json
+    lookup
     object_local_storage
     objects
     objects_fwddecl
@@ -18,7 +19,6 @@ COMPONENTS = %w(
     observer_type
     ownership
     path_identifiers
-    resolve
     router
     scopewalk
     security
