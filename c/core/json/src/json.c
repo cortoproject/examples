@@ -23,7 +23,7 @@ void onNotify(
 int jsonMain(int argc, char *argv[]) {
 
     /* Create a subscriber that listens to create, update and delete events for
-     * an object called 'o'. The subscriber specifies JSON as the contentType
+     * an object called 'p'. The subscriber specifies JSON as the contentType
      * which means that all notifications will be delivered as JSON. */
     corto_subscriber s = corto_subscribe(
         CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE, "/", "p")

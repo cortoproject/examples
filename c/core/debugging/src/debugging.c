@@ -1,6 +1,5 @@
 #include "debugging.h"
 
-
 /* dynamic_call
  *
  * This example shows how to enable debugging information. The example will

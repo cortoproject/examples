@@ -1,8 +1,12 @@
 #include "serializer.h"
 
-int serializerMain(int argc, char *argv[]) {
+/* select_contentType
+ *
+ * This example shows how to walk over the members of an object using the
+ * corto_serializer API.
+ */
 
-    printf("Hello Corto!\n");
+int serializerMain(int argc, char *argv[]) {
 
     return 0;
 }

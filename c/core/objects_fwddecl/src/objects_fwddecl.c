@@ -39,8 +39,8 @@ int objects_fwddeclMain(int argc, char *argv[]) {
         CORTO_ON_DECLARE|CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE|CORTO_ON_SCOPE, root_o)
         .callback(onNotify);
 
-    /* First, show creating a regular object so we can compare the sequence with
-     * creating a forward declared object */
+    /* First, show creating a regular object so we can compare the sequence of
+     * notifications with creating a forward declared object */
     corto_int32 *regular = corto_createChild(root_o, "regular", corto_int32_o);
     if (!regular) {
         goto error;

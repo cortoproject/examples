@@ -19,19 +19,14 @@ COMPONENTS = %w(
     observer_type
     ownership
     path_identifiers
-    router
-    scopewalk
-    security
     select
     select_contentType
     select_historical
     serializer
     state
-    string_serializer
     subscriber_instance
     subscriber_simple
     subscriber_type
-    thread_dispatcher
     type_serializer
     value_casting
     value_expressions
