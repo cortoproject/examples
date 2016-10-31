@@ -1,0 +1,4 @@
+
+TARGET = 'dynamic_struct'
+
+require "#{ENV['CORTO_BUILD']}/application"

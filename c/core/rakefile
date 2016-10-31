@@ -3,6 +3,10 @@ COMPONENTS = %w(
     attributes
     debugging
     dynamic_call
+    dynamic_class
+    dynamic_collection
+    dynamic_primitive
+    dynamic_struct
     error_handling
     identifier_expr
     json
