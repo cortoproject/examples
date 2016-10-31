@@ -12,7 +12,6 @@ int dynamic_primitiveMain(int argc, char *argv[]) {
     if (!_long) {
         goto error;
     }
-
     if (!corto_checkState(_long, CORTO_DEFINED)) {
         /* Set width member of the baseclass of 'int' (primitive) */
         corto_primitive(_long)->width = CORTO_WIDTH_32;
@@ -26,7 +25,6 @@ int dynamic_primitiveMain(int argc, char *argv[]) {
     if (!ulong) {
         goto error;
     }
-
     if (!corto_checkState(ulong, CORTO_DEFINED)) {
         /* Set width member of the baseclass of 'int' (primitive) */
         corto_primitive(ulong)->width = CORTO_WIDTH_64;
