@@ -9,6 +9,7 @@ COMPONENTS = %w(
     dynamic_enum
     dynamic_primitive
     dynamic_struct
+    dynamic_struct_inheritance
     error_handling
     identifier_expr
     json
