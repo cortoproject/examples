@@ -14,6 +14,7 @@ COMPONENTS = %w(
     identifier_expr
     json
     lookup
+    mount_fibo
     object_local_storage
     objects
     objects_fwddecl
