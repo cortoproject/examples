@@ -3,18 +3,11 @@
 /* mount_fibo
  *
  * This example shows how to create a connector that mounts the fibonacci sequence.
- * It showcases how the corto mount interface can be utilized to use very little
- * resources while exposing (literally) unlimited datasets.
+ * It demonstrates how a corto mount can be built to use very little
+ * resources while exposing a (literally) unlimited dataset.
  */
 
-struct iterData {
-    uint64_t current;
-    char id[21];
-    char value[21];
-    corto_result result;
-};
-
-/* Somewhat efficient iterative fibonacci implementation */
+/* iterative fibonacci implementation */
 uint64_t fibo(uint64_t n) {
     if (n == 0) return 0;
     uint64_t previous = 0;
@@ -32,15 +25,28 @@ int hasNext(corto_iter *it) {
     return 1; /* there is always more data */
 }
 
+/* Context data for iterator */
+struct iterData {
+    uint64_t current; /* Current fibonacci number */
+    char id[21]; /* Buffer to hold id (stringified current) */
+    char value[21]; /* Buffer to hold result (stringified fibo(current)) */
+    corto_result result; /* Result that the iterator will return */
+};
+
 void* next(corto_iter *it) {
-    struct iterData *data = it->udata;
-    uint64_t value = fibo(data->current);
-    sprintf(data->id, "%lu", data->current);
-    sprintf(data->value, "%lu", value);
-    data->result.id = data->id;
-    data->result.value = (corto_word)data->value;
-    data->current ++;
-    return &data->result;
+    struct iterData *ctx = it->udata;
+
+    /* Compute fibonacci number */
+    uint64_t value = fibo(ctx->current);
+
+    /* Set the id of the object and value in the result */
+    sprintf(ctx->id, "%lu", ctx->current);
+    sprintf(ctx->value, "%lu", value);
+
+    /* Increase fibonacci number */
+    ctx->current ++;
+
+    return &ctx->result;
 }
 
 void release(corto_iter *it) {
@@ -58,17 +64,22 @@ int isnumber(char *str) {
 corto_iter onRequest(corto_object mount, corto_request *request) {
     corto_iter result;
 
-    /* Create data for iterator, prepare static fields of result */
-    struct iterData *data = corto_calloc(sizeof(struct iterData));
-    if (isnumber(request->expr)) {
-        data->current = atoi(request->expr);
-    } else {
-        data->current = request->offset;
-    }
-    data->result.parent = ".";
-    data->result.type = "uint64";
-    data->result.leaf = TRUE;
-    result.udata = data;
+    /* Create context data for the iterator */
+    struct iterData *ctx = corto_calloc(sizeof(struct iterData));
+
+    /* Support queries for a single number or starting from an offset */
+    if (isnumber(request->expr)) ctx->current = atoi(request->expr);
+    else ctx->current = request->offset;
+
+    /* Preset id and value to reusable buffers in the iterData structure */
+    ctx->result.id = ctx->id;
+    ctx->result.value = (corto_word)ctx->value;
+
+    /* Set values that will be the same for every result */
+    ctx->result.parent = ".";
+    ctx->result.type = "uint64";
+    ctx->result.leaf = TRUE;
+    result.udata = ctx;
 
     /* Set iterator callbacks */
     result.hasNext = hasNext;
@@ -121,8 +132,9 @@ corto_mount createMountInstance(corto_class mountClass) {
         goto error;
     }
 
-    /* Encode data in the corto string format */
+    /* Return data in the corto string format */
     corto_setstr(&corto_subscriber(connector)->contentType, "text/corto");
+
     if (corto_define(connector)) {
         goto error;
     }
