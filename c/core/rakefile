@@ -35,6 +35,7 @@ COMPONENTS = %w(
     subscriber_instance
     subscriber_simple
     subscriber_type
+    target_actual
     type_serializer
     value_casting
     value_expressions

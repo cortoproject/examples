@@ -29,19 +29,20 @@ int hasNext(corto_iter *it) {
 struct iterData {
     uint64_t current; /* Current fibonacci number */
     char id[21]; /* Buffer to hold id (stringified current) */
-    char value[21]; /* Buffer to hold result (stringified fibo(current)) */
     corto_result result; /* Result that the iterator will return */
 };
 
 void* next(corto_iter *it) {
     struct iterData *ctx = it->udata;
+    char valueBuffer[21]; /* Buffer to hold result (stringified fibo(current)) */
 
     /* Compute fibonacci number */
     uint64_t value = fibo(ctx->current);
 
     /* Set the id of the object and value in the result */
     sprintf(ctx->id, "%lu", ctx->current);
-    sprintf(ctx->value, "%lu", value);
+    sprintf(valueBuffer, "%lu", value);
+    ctx->result.value = (corto_word)corto_strdup(valueBuffer);
 
     /* Increase fibonacci number */
     ctx->current ++;
@@ -73,7 +74,6 @@ corto_iter onRequest(corto_object mount, corto_request *request) {
 
     /* Preset id and value to reusable buffers in the iterData structure */
     ctx->result.id = ctx->id;
-    ctx->result.value = (corto_word)ctx->value;
 
     /* Set values that will be the same for every result */
     ctx->result.parent = ".";
