@@ -48,7 +48,7 @@ int debuggingMain(int argc, char *argv[]) {
     /* When in debugging mode, every corto_seterr() will be printed to the
      * console */
     corto_seterr("this will be printed to the console with a stack trace");
-    corto_lasterr(); /* 'catch' the error, otherwise it's printed again */
+    corto_lasterr(); /* 'catch' the error, otherwise it is printed again */
 
     return 0;
 error:

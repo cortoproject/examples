@@ -1,0 +1,4 @@
+
+TARGET = 'event'
+
+require "#{ENV['CORTO_BUILD']}/application"

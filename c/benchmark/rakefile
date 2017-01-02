@@ -1,0 +1,8 @@
+
+COMPONENTS = %w(
+  create_delete
+  event
+  lookup
+)
+
+require "#{ENV['CORTO_BUILD']}/forward"

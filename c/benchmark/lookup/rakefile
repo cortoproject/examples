@@ -1,0 +1,4 @@
+
+TARGET = 'lookup'
+
+require "#{ENV['CORTO_BUILD']}/application"

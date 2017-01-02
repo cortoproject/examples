@@ -1,0 +1,4 @@
+
+TARGET = 'create_delete'
+
+require "#{ENV['CORTO_BUILD']}/application"
