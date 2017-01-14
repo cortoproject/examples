@@ -2,6 +2,8 @@ language: c
 
 sudo: false
 
+dist: trusty
+
 before_install:
   - cd ..
   - mkdir cortoproject
@@ -12,18 +14,14 @@ before_install:
   - git clone https://github.com/cortoproject/json.git
   - git clone https://github.com/cortoproject/xml.git
   - git clone https://github.com/cortoproject/corto-language.git
-  - git clone https://github.com/cortoproject/io.git
-  - git clone https://github.com/cortoproject/cortodoc.git
   - git clone https://github.com/cortoproject/test.git
+  - git clone https://github.com/cortoproject/web.git
+  - git clone https://github.com/cortoproject/admin.git
   - |+
-    echo 'COMPONENTS = %w(corto c-binding json xml corto-language io cortodoc test)
+    echo 'COMPONENTS = %w(corto c-binding json xml corto-language test web admin examples)
     require "#{ENV["CORTO_BUILD"]}/forward"' > rakefile
 
-install:
+script:
   - source corto/configure
   - rake
 
-script:
-  - cd examples
-  - ./run.sh
-  - cd ..
