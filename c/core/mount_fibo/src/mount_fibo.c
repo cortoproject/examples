@@ -99,7 +99,7 @@ corto_class createFiboClass(void) {
     /* Inherit from the corto mount class */
     corto_setref(&corto_interface(FiboClass)->base, corto_mount_o);
 
-    /* Create onNotify method (called when the mount receives an update) */
+    /* Create onRequest method (called when API requests data, typically a corto_select) */
     corto_method onRequestMethod = corto_declareChild(
         FiboClass,
         "onRequest(core/request request)",
