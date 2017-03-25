@@ -1,11 +1,22 @@
-#include "dynamic_bitmask.h"
+/* $CORTO_GENERATED
+ *
+ * dynamic_bitmask.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/dynamic_bitmask.h>
+
+/* $header() */
 /* dynamic_bitmask
  *
  * This example shows how to dynamically create a new bitmask type.
  */
+/* $end */
 
 int dynamic_bitmaskMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a new enum */
     corto_bitmask Color = corto_declareChild(root_o, "Color", corto_bitmask_o);
@@ -54,4 +65,5 @@ int dynamic_bitmaskMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

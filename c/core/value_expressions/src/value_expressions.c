@@ -1,5 +1,14 @@
-#include "value_expressions.h"
+/* $CORTO_GENERATED
+ *
+ * value_expressions.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/value_expressions.h>
+
+/* $header() */
 /* value_expressions
  *
  * This example shows how to use the corto_value API to evaluate expressions on
@@ -18,8 +27,10 @@ void printValue(char *expr, corto_value *v) {
     printf("%20s: %s (%s)\n", expr, str, corto_fullpath(NULL, type));
     corto_dealloc(str);
 }
+/* $end */
 
 int value_expressionsMain(int argc, char *argv[]) {
+/* $begin(main) */
     corto_value left, right, result = corto_value_init();
 
     /* Add two integers */
@@ -73,4 +84,5 @@ int value_expressionsMain(int argc, char *argv[]) {
     return 0;
 error:
     return -1;
+/* $end */
 }

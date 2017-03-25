@@ -1,12 +1,23 @@
-#include "lookup.h"
+/* $CORTO_GENERATED
+ *
+ * lookup.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/lookup.h>
+
+/* $header() */
 /* lookup
  *
  * This example shows basic usage of core API functions to lookup objects in the
  * object hierarchy.
  */
+/* $end */
 
 int lookupMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a few objects so we have something to lookup */
     corto_object tier1 = corto_createChild(root_o, "tier1", corto_void_o);
@@ -57,4 +68,5 @@ int lookupMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

@@ -1,5 +1,14 @@
-#include "target_actual.h"
+/* $CORTO_GENERATED
+ *
+ * target_actual.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/target_actual.h>
+
+/* $header() */
 /* target_actual
  *
  * This example shows how to use the corto/lang/target type for implementing
@@ -14,9 +23,12 @@
 typedef struct temperatureControl {
     corto_int32 actual;
     corto_int32 target;
+    corto_int32 objective;
 } temperatureControl;
+/* $end */
 
 int target_actualMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create an int32 target type that represents a temperature */
     corto_target temperatureControl_o = corto_declare(corto_target_o);
@@ -92,4 +104,5 @@ int target_actualMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

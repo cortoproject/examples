@@ -1,5 +1,14 @@
-#include "lookup.h"
+/* $CORTO_GENERATED
+ *
+ * lookup.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/lookup.h>
+
+/* $header() */
 static corto_time start;
 
 void benchmark_start(void) {
@@ -64,8 +73,10 @@ static stats benchmark(corto_uint32 n, corto_bool useResolve, corto_string looku
 
     return result;
 }
+/* $end */
 
-int lookupMain(int argc, char* argv[]) {
+int lookupMain(int argc, char *argv[]) {
+/* $begin(main) */
     printf("\n=== corto_lookup: (nanoseconds)\n");
     printf("%9s %9s %9s\n", "min", "avg", "max");
     benchmark(1000000, FALSE, "/");
@@ -92,4 +103,5 @@ int lookupMain(int argc, char* argv[]) {
     printf("\n");
 
     return 0;
+/* $end */
 }

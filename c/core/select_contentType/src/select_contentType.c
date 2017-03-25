@@ -1,5 +1,14 @@
-#include "select_contentType.h"
+/* $CORTO_GENERATED
+ *
+ * select_contentType.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/select_contentType.h>
+
+/* $header() */
 /* select_contentType
  *
  * This example shows how to browse through objects using corto_select, and
@@ -9,8 +18,10 @@
  * There are easier ways to achieve this with definition files and the c-binding.
  * See the c-binding examples for more details.
  */
+/* $end */
 
 int select_contentTypeMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a Point type, so we have something to serialize to JSON */
     corto_struct Point = corto_declareChild(root_o, "Point", corto_struct_o);
@@ -93,4 +104,5 @@ int select_contentTypeMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

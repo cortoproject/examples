@@ -1,5 +1,14 @@
-#include "observer_instance.h"
+/* $CORTO_GENERATED
+ *
+ * observer_instance.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/observer_instance.h>
+
+/* $header() */
 /* observer_instance
  *
  * This example shows using a mechanism that allows an application to filter out
@@ -24,8 +33,10 @@ void onNotify(
 {
     printf("this = '%s', update '%s'\n", corto_idof(this), corto_idof(o));
 }
+/* $end */
 
 int observer_instanceMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create an object that will be the instance we associate with our observer.
      * Updates "from this instance" will not trigger the observer. */
@@ -72,4 +83,5 @@ int observer_instanceMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

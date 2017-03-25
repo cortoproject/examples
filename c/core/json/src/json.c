@@ -1,5 +1,14 @@
-#include "json.h"
+/* $CORTO_GENERATED
+ *
+ * json.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/json.h>
+
+/* $header() */
 /* json
  *
  * This example shows how to write applications that just use JSON to create,
@@ -19,8 +28,10 @@ void onNotify(
 {
     printf("update '%s', value = '%s'\n", o->id, corto_result_getText(o));
 }
+/* $end */
 
 int jsonMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a subscriber that listens to create, update and delete events for
      * an object called 'p'. The subscriber specifies JSON as the contentType
@@ -102,4 +113,5 @@ int jsonMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

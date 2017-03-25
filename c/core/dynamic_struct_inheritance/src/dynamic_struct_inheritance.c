@@ -1,5 +1,14 @@
-#include "dynamic_struct_inheritance.h"
+/* $CORTO_GENERATED
+ *
+ * dynamic_struct_inheritance.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/dynamic_struct_inheritance.h>
+
+/* $header() */
 /* dynamic_struct_inheritance
  *
  * This example shows how to dynamically create structs with inheritance.
@@ -15,8 +24,10 @@ typedef struct Point3D_t {
     Point_t super;
     corto_int32 z;
 } Point3D_t;
+/* $end */
 
 int dynamic_struct_inheritanceMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a new struct */
     corto_struct Point = corto_declareChild(root_o, "Point", corto_struct_o);
@@ -110,4 +121,5 @@ int dynamic_struct_inheritanceMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

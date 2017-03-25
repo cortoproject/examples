@@ -1,5 +1,14 @@
-#include "object_local_storage.h"
+/* $CORTO_GENERATED
+ *
+ * object_local_storage.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/object_local_storage.h>
+
+/* $header() */
 /* object_local_storage
  *
  * This example shows how you can attach userdata to an object after it has been
@@ -10,8 +19,10 @@ void myDestructor(void *value) {
     printf("myDestructor called\n");
     free(value);
 }
+/* $end */
 
 int object_local_storageMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create an object to experiment on */
     corto_object o = corto_createChild(root_o, "o", corto_void_o);
@@ -41,4 +52,5 @@ int object_local_storageMain(int argc, char *argv[]) {
     return 0;
 error:
     return -1;
+/* $end */
 }

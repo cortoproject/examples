@@ -1,6 +1,7 @@
 #include "rest.h"
 
 int restMain(int argc, char *argv[]) {
+/* $begin(main) */
     /* Create a service on the same port that serves a REST API */
     server_REST rest = server_RESTCreate(8000, "api", "/");
     if (!rest) {
@@ -37,4 +38,5 @@ int restMain(int argc, char *argv[]) {
 error:
     corto_error("rest: %s", corto_lasterr());
     return -1;
+/* $end */
 }

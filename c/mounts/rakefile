@@ -1,0 +1,6 @@
+
+COMPONENTS = %w(
+    sinksource
+)
+
+require "#{ENV['CORTO_BUILD']}/forward"

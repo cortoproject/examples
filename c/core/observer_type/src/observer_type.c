@@ -1,6 +1,14 @@
-#include "observer_type.h"
+/* $CORTO_GENERATED
+ *
+ * observer_type.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/observer_type.h>
 
+/* $header() */
 /* observer_type
  *
  * This example shows how to create an observer that filters objects of a
@@ -16,8 +24,10 @@ void onNotify(
 {
     printf("trigger for %s\n", corto_idof(o));
 }
+/* $end */
 
 int observer_typeMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Observe notifications only for objects of the int32 type */
     corto_observer observer = corto_observe(CORTO_ON_DEFINE|CORTO_ON_SCOPE, root_o)
@@ -45,4 +55,5 @@ int observer_typeMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

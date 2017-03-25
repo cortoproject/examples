@@ -1,5 +1,14 @@
-#include "event.h"
+/* $CORTO_GENERATED
+ *
+ * event.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/event.h>
+
+/* $header() */
 static corto_time start;
 
 void benchmark_start(void) {
@@ -134,8 +143,10 @@ void benchmark_set(corto_bool publish, corto_eventMask scope, corto_bool voidTyp
 
     printf("\n");
 }
+/* $end */
 
-int eventMain(int argc, char* argv[]) {
+int eventMain(int argc, char *argv[]) {
+/* $begin(main) */
     printf("\n=== corto_update:\n");
     printf("%5s %8s %s\n",
         "",  "", " observers (nanosec/event)");
@@ -166,4 +177,5 @@ int eventMain(int argc, char* argv[]) {
     printf("\n");
 
     return 0;
+/* $end */
 }

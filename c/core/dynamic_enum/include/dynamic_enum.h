@@ -1,17 +1,22 @@
 /* dynamic_enum.h
  *
- * This file is generated. Do not modify.
+ * This file contains generated code. Do not modify!
  */
 
-#ifndef _DYNAMIC_ENUM_H
-#define _DYNAMIC_ENUM_H
+#ifndef DYNAMIC_ENUM_H
+#define DYNAMIC_ENUM_H
 
 #include <corto/corto.h>
-
+#include <include/_project.h>
 #include <corto/core/c/c.h>
 #include <corto/lang/c/c.h>
+
 /* $header() */
 /* You can put your own definitions here! */
+/* $end */
+
+/* $body() */
+/* Enter code that requires types here */
 /* $end */
 
 #ifdef __cplusplus
@@ -21,5 +26,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
 #endif
 

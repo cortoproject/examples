@@ -1,5 +1,14 @@
-#include "objects_hierarchy.h"
+/* $CORTO_GENERATED
+ *
+ * objects_hierarchy.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/objects_hierarchy.h>
+
+/* $header() */
 /* objects_hierarchy
  *
  * This example shows basic usage of core API functions to create, update
@@ -12,8 +21,10 @@ void printInfo(corto_object o) {
       corto_fullpath(NULL, corto_parentof(o)),
       corto_fullpath(NULL, corto_typeof(o)));
 }
+/* $end */
 
 int objects_hierarchyMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create an object in the global object hierarchy */
     corto_object *parent = corto_createChild(root_o, "parent", corto_void_o);
@@ -42,4 +53,5 @@ int objects_hierarchyMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

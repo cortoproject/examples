@@ -1,5 +1,14 @@
-#include "observer_simple.h"
+/* $CORTO_GENERATED
+ *
+ * observer_simple.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/observer_simple.h>
+
+/* $header() */
 /* observer_simple
  *
  * This example shows basic usage of core API functions to observer create,
@@ -22,8 +31,10 @@ void onNotify(
     }
     printf("'%s'\n", corto_idof(o));
 }
+/* $end */
 
 int observer_simpleMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Observe notifications from objects created in the root scope */
     corto_observer observer = corto_observe(
@@ -61,4 +72,5 @@ int observer_simpleMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

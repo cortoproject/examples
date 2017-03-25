@@ -1,6 +1,7 @@
 #include "select_objects.h"
 
 int select_objectsMain(int argc, char *argv[]) {
+/* $begin(main) */
     corto_loaderCreate();
     
     corto_iter it;
@@ -11,4 +12,5 @@ int select_objectsMain(int argc, char *argv[]) {
     }
 
     return 0;
+/* $end */
 }

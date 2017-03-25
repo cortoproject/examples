@@ -1,5 +1,14 @@
-#include "subscriber_instance.h"
+/* $CORTO_GENERATED
+ *
+ * subscriber_instance.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/subscriber_instance.h>
+
+/* $header() */
 /* subscriber_simple
  *
  * This example shows basic usage of corto_subscribe to use one instance that
@@ -17,8 +26,10 @@ void onNotify(
 {
     printf("%s: UPDATE '%s'\n", corto_idof(this), o->id);
 }
+/* $end */
 
 int subscriber_instanceMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a subscriber that is created disabled. This will give us the
      * opportunity to subscribe it for multiple instances. */
@@ -75,4 +86,5 @@ int subscriber_instanceMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

@@ -1,0 +1,19 @@
+#package sinksource
+
+// Demo mount used to illustrates difference between SINK and SOURCE
+class DemoMount: core/mount, hidden ::
+    // Members
+    alias kind: mount/kind         // Allow setting mount kind (SINK, SOURCE)
+    alias mount: mount/mount       // Allow setting mount point
+    objects: list{result}, private // List of objects managed by mount
+
+    // Methods
+    int16 construct()              // Constructor
+    void add(string id)            // Add an object to the mount
+    int16 update(string id, int32 value) // Make the mount update an object
+    core/resultIter onRequest(core/request request) // Default onRequest
+    void onNotify(eventMask event, result object) // Default onNotify
+
+// To demonstrate ownership, define a 'target' type, that depending on
+// whether an object is owned sets a 'target' or 'actual' member.
+target DemoType: int32

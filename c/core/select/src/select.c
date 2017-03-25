@@ -1,5 +1,14 @@
-#include "select.h"
+/* $CORTO_GENERATED
+ *
+ * select.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/select.h>
+
+/* $header() */
 /* select
  *
  * This example shows a simple example of how to use the corto_select API to
@@ -12,8 +21,10 @@ void iterate(corto_iter *it) {
         printf("id: '%s', parent: '%s', type: '%s'\n", r->id, r->parent, r->type);
     }
 }
+/* $end */
 
 int selectMain(int argc, char *argv[]) {
+/* $begin(main) */
     corto_iter it;
     corto_int16 ret;
 
@@ -89,4 +100,5 @@ int selectMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

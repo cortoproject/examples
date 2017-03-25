@@ -1,5 +1,14 @@
-#include "attributes.h"
+/* $CORTO_GENERATED
+ *
+ * attributes.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/attributes.h>
+
+/* $header() */
 /* attributes
  *
  * Attributes are specified at object creation, and specify what the capabilities
@@ -24,8 +33,10 @@ void printAttr(corto_object o) {
     }
     printf("\n");
 }
+/* $end */
 
 int attributesMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Attributes are set per thread. All objects created in a thread will be
      * created with the configured attributes specific to that thread. */
@@ -39,4 +50,5 @@ int attributesMain(int argc, char *argv[]) {
     printAttr(i);
 
     return 0;
+/* $end */
 }

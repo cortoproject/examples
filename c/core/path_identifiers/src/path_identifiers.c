@@ -1,11 +1,22 @@
-#include "path_identifiers.h"
+/* $CORTO_GENERATED
+ *
+ * path_identifiers.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/path_identifiers.h>
+
+/* $header() */
 /* path_identifiers
  *
  * This example shows how to obtain path identifiers from objects.
  */
+/* $end */
 
 int path_identifiersMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a few (nested) objects */
     corto_object tier1 = corto_createChild(root_o, "tier1", corto_void_o);
@@ -61,4 +72,5 @@ int path_identifiersMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

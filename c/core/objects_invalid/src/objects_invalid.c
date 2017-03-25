@@ -1,5 +1,14 @@
-#include "objects_invalid.h"
+/* $CORTO_GENERATED
+ *
+ * objects_invalid.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/objects_invalid.h>
+
+/* $header() */
 /* objects_invalid
  *
  * This example shows basic usage of the corto_invalidate function. This
@@ -29,8 +38,10 @@ void printValid(corto_object o) {
       corto_idof(o),
       corto_checkState(o, CORTO_VALID) ? "" : "not ");
 }
+/* $end */
 
 int objects_invalidMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a new object */
     corto_object *o = corto_createChild(root_o, "o", corto_void_o);
@@ -69,4 +80,5 @@ int objects_invalidMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

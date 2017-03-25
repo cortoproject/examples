@@ -1,6 +1,7 @@
 #include "static.h"
 
 int staticMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a service on port 8000 that serves up index.html */
     server_Files s = server_FilesCreate(8000, "", ".");
@@ -17,4 +18,5 @@ int staticMain(int argc, char *argv[]) {
 error:
     corto_error("static: %s", corto_lasterr());
     return -1;
+/* $end */
 }

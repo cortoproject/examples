@@ -1,6 +1,7 @@
 #include "sys_rest.h"
 
 int sys_restMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     sys_Monitor mon = sys_MonitorCreateChild(root_o, "mon");
 
@@ -13,4 +14,5 @@ int sys_restMain(int argc, char *argv[]) {
     }
 
     return 0;
+/* $end */
 }

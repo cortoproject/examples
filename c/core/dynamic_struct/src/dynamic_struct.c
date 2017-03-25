@@ -1,11 +1,22 @@
-#include "dynamic_struct.h"
+/* $CORTO_GENERATED
+ *
+ * dynamic_struct.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/dynamic_struct.h>
+
+/* $header() */
 /* dynamic_struct
  *
  * This example shows how to dynamically create a new struct type.
  */
+/* $end */
 
 int dynamic_structMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a new struct */
     corto_struct Point = corto_declareChild(root_o, "Point", corto_struct_o);
@@ -57,4 +68,5 @@ int dynamic_structMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

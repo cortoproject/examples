@@ -1,5 +1,14 @@
-#include "value_casting.h"
+/* $CORTO_GENERATED
+ *
+ * value_casting.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/value_casting.h>
+
+/* $header() */
 /* value_casting
  *
  * This example shows how to use the corto_value API to cast a value to a
@@ -12,9 +21,10 @@ void printValue(char *expr, corto_value *v) {
     printf("%s: %s (%s)\n", expr, str, corto_fullpath(NULL, type));
     corto_dealloc(str);
 }
-
+/* $end */
 
 int value_castingMain(int argc, char *argv[]) {
+/* $begin(main) */
     corto_value value, result = corto_value_init();
 
     /* Cast integer to string */
@@ -41,4 +51,5 @@ int value_castingMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

@@ -1,8 +1,11 @@
 #include "dependency_resolver.h"
 
+/* $header() */
 #include "depresolver2.h"
+/* $end */
 
 int dependency_resolverMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     corto_stage s = corto_stageCreate();
 
@@ -57,10 +60,6 @@ int dependency_resolverMain(int argc, char *argv[]) {
     corto_fromstr(p, "text/corto", "x=20 y=30 next=q");
     corto_updateEnd(p);
 
-
-
-
-
-
     return 0;
+/* $end */
 }

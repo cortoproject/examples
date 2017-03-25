@@ -1,5 +1,14 @@
-#include "objects.h"
+/* $CORTO_GENERATED
+ *
+ * objects.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/objects.h>
+
+/* $header() */
 /* objects
  *
  * This example shows basic usage of core API functions to create, update
@@ -20,8 +29,10 @@ void onUpdate(
       corto_fullpath(NULL, corto_typeof(o)),
       *corto_int32(o));
 }
+/* $end */
 
 int objectsMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a signed integer object in the global object hierarchy */
     corto_int32 *i = corto_createChild(root_o, "i", corto_int32_o);
@@ -56,4 +67,5 @@ int objectsMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
+/* $end */
 }

@@ -1,5 +1,14 @@
-#include "error_handling.h"
+/* $CORTO_GENERATED
+ *
+ * error_handling.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/error_handling.h>
+
+/* $header() */
 /* error_handling
  *
  * This example shows how basic usage of the error reporting functions in corto.
@@ -17,30 +26,37 @@ corto_int16 dummy_function(int val) {
 error:
     return -1; /* nonzero indicates error */
 }
+/* $end */
 
 int error_handlingMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Set a verbosity level. Available levels are:
-     * DEBUG, TRACE, INFO, OK, WARNING, ERROR, CRITICAL */
+     * DEBUG, TRACE, OK, INFO, WARNING, ERROR, CRITICAL */
     corto_verbosity(CORTO_TRACE);
 
     /* corto_trace is for logging tracing data CORTO_TRACE. The other available
      * functions for logging are corto_debug, corto_info, corto_ok, corto_warning
-     * corto_error and corto_critical. */
-    corto_trace("Starting example");
+     * corto_error and corto_critical. 
+     * 
+     * Note that an identifier, followed by ':' will be interpreted by the
+     * logging framework as a 'component', which can be used in filters.
+     */
+
+    corto_trace("main: starting example");
 
     /* corto_ok is meant to log messages that indicate that a task has finished
      * successfully. */
-    corto_ok("Example started");
+    corto_ok("main: example started");
 
     /* Warnings are meant to indicate something unexpected is happening */
-    corto_warning("About to call a failing function!");
+    corto_warning("main: about to call a failing function!");
 
     /* Try out the dummy function */
     if (dummy_function(10)) {
-        /* corto_error logs an error message to the console */
-        corto_error("dummy_function returned error: %s",
-          corto_lasterr()); /* corto_lasterr has the last error for this thread */
+        /* Add more information to error description of function */
+        corto_seterr("dummy_function returned error: '%s'", corto_lasterr());
+        goto error;
     }
 
     /* Note that when a function fails, an application *MUST* use corto_lasterr
@@ -48,4 +64,11 @@ int error_handlingMain(int argc, char *argv[]) {
      * unnoticed, and will (eventually) report an error to the command line. */
 
     return 0;
+error:
+    /* Log last error to console with corto_error */
+    corto_error("main: dummy_function returned error: %s",
+      corto_lasterr()); /* corto_lasterr has the last error for this thread */
+
+    return -1;
+/* $end */
 }

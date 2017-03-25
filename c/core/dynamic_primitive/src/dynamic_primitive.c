@@ -1,11 +1,22 @@
-#include "dynamic_primitive.h"
+/* $CORTO_GENERATED
+ *
+ * dynamic_primitive.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/dynamic_primitive.h>
+
+/* $header() */
 /* dynamic_primitive
  *
  * This example shows how to dynamically create a new primitive type.
  */
+/* $end */
 
 int dynamic_primitiveMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create a new integer type */
     corto_int _long = corto_declareChild(root_o, "long", corto_int_o);
@@ -46,4 +57,5 @@ int dynamic_primitiveMain(int argc, char *argv[]) {
     return 0;
 error:
     return -1;
+/* $end */
 }

@@ -1,5 +1,14 @@
-#include "create_delete.h"
+/* $CORTO_GENERATED
+ *
+ * create_delete.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
 
+#include <include/create_delete.h>
+
+/* $header() */
 static corto_time start;
 
 void benchmark_start(void) {
@@ -40,11 +49,14 @@ static void benchmark_createDelete(corto_uint32 n) {
       (double)n / t,
       (t / n) * (double)1000000000);
 }
+/* $end */
 
 int create_deleteMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     benchmark_createDelete(1000000);
     benchmark_createDeleteChild(1000000);
 
     return 0;
+/* $end */
 }

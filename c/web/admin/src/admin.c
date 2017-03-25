@@ -1,6 +1,7 @@
 #include "admin.h"
 
 int adminMain(int argc, char *argv[]) {
+/* $begin(main) */
 
     /* Create admin server on port 8000 */
     admin_serverCreate(8000);
@@ -28,4 +29,5 @@ int adminMain(int argc, char *argv[]) {
     /* Open the admin page on http://localhost:8000/admin/ */
 
     return 0;
+/* $end */
 }
