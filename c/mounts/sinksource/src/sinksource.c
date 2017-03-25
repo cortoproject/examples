@@ -25,11 +25,9 @@ int sinksourceMain(int argc, char *argv[]) {
      * A SOURCE mount represents a remote data source. A SINK mount represents a
      * local (typically persistent) data source.
      *
-     * SINK mounts only receive notifications for objects owned by the application,
-     * and can only change objects owned by the application.
+     * SINK mounts only can only change objects owned by the application.
      * 
-     * SOURCE mounts receive notifications for all objects, and can only change
-     * objects that are not owned by the application.
+     * SOURCE mounts can only change objects that are not owned by the application.
      *
      * If an application creates an object that is managed by a SINK mount,
      * corto will automatically restore the latest value from the SINK.
