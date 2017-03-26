@@ -30,7 +30,7 @@ int sinksourceMain(int argc, char *argv[]) {
      * SOURCE mounts can only change objects that are not owned by the application.
      *
      * If an application creates an object that is managed by a SINK mount,
-     * corto will automatically restore the latest value from the SINK.
+     * the latest value will be restored automatically from the SINK.
      *
      * This application uses a 'target' type (DemoType), which contains a 'target'
      * and an 'actual' field. If the object owner updates the object, the 'actual'
