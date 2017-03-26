@@ -25,7 +25,7 @@ int sinksourceMain(int argc, char *argv[]) {
      * A SOURCE mount represents a remote data source. A SINK mount represents a
      * local (typically persistent) data source.
      *
-     * SINK mounts only can only change objects owned by the application.
+     * SINK mounts can only change objects owned by the application.
      * 
      * SOURCE mounts can only change objects that are not owned by the application.
      *
