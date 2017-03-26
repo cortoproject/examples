@@ -59,28 +59,28 @@ int sinksourceMain(int argc, char *argv[]) {
     corto_info("main: corto_createChild('data', 'foo', 'sinksource/DemoType')");
     sinksource_DemoType foo = corto_createChild(data, "foo", sinksource_DemoType_o);
 
-    /* Update foo from main */
+    /* Update foo from main (sets actual) */
     printf("\n");
     corto_info("main: corto_int32Update('foo', 10)");
     corto_int32Update(foo, 10);
 
-    /* Update foo from sink mount */
+    /* Update foo from sink mount (sets actual) */
     printf("\n");
     sinksource_DemoMount_update(snk, "foo", 20);
 
-    /* Update foo from source mount */
+    /* Update foo from source mount (sets target) */
     printf("\n");
     sinksource_DemoMount_update(src, "foo", 30);
 
-    /* Update bar from source */
+    /* Update bar from source (sets actual) */
     printf("\n");
     sinksource_DemoMount_update(src, "bar", 10);
 
-    /* Update bar from sink */
+    /* Update bar from sink (sets target) */
     printf("\n");
     sinksource_DemoMount_update(snk, "bar", 20);
 
-    /* Update bar from main */
+    /* Update bar from main (sets target) */
     printf("\n");
     corto_info("main: corto_int32Update('bar', 30)");
     sinksource_DemoType bar = corto_lookup(data, "bar");
