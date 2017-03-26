@@ -31,6 +31,10 @@ int sinksourceMain(int argc, char *argv[]) {
      *
      * If an application creates an object that is managed by a SINK mount,
      * corto will automatically restore the latest value from the SINK.
+     *
+     * This application uses a 'target' type (DemoType), which contains a 'target'
+     * and an 'actual' field. If the object owner updates the object, the 'actual'
+     * field will be set, otherwise the 'target' will be set.
      */
 
     /* Create a mount point to which we will connect a SINK and a SOURCE */
