@@ -1,4 +1,0 @@
-
-TARGET = 'rest'
-
-require "#{ENV['CORTO_BUILD']}/application"

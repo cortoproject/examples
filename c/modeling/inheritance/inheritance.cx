@@ -1,0 +1,7 @@
+in application inheritance
+
+struct Point:/
+    x, y: int32
+
+struct Point3D: Point :/
+    z: int32

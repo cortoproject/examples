@@ -1,10 +1,22 @@
-#include "admin.h"
+/* $CORTO_GENERATED
+ *
+ * admin.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
+
+#include <include/admin.h>
+
+/* $header() */
+/* Enter code outside of main here. */
+/* $end */
 
 int adminMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Create admin server on port 8000 */
-    admin_serverCreate(8000);
+    admin_serverCreateChild(root_o, "adminServer", 8000);
 
     /* Create dummy data */
     corto_object example = corto_createChild(root_o, "example", corto_void_o);

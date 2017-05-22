@@ -1,0 +1,12 @@
+in application nested
+
+enum color:/ Red, Yellow, Green, Blue
+
+struct Point:/
+    x, y: int32
+
+struct Line:/
+    color: nested/Color
+    start, stop: Point
+
+

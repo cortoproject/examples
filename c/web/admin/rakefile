@@ -1,4 +1,0 @@
-
-TARGET = 'admin'
-
-require "#{ENV['CORTO_BUILD']}/application"

@@ -1,9 +1,21 @@
-#include "rest.h"
+/* $CORTO_GENERATED
+ *
+ * rest.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
+
+#include <include/rest.h>
+
+/* $header() */
+/* Enter code outside of main here. */
+/* $end */
 
 int restMain(int argc, char *argv[]) {
 /* $begin(main) */
     /* Create a service on the same port that serves a REST API */
-    server_REST rest = server_RESTCreate(8000, "api", "/");
+    rest_Server rest = rest_ServerCreate(8000, "api", "/");
     if (!rest) {
         goto error;
     }

@@ -1,0 +1,5 @@
+in application struct
+
+// Simple struct with two integer members
+struct Point:/
+    x, y: int32
