@@ -35,6 +35,15 @@ int nestedMain(int argc, char *argv[]) {
     /* Send update notification for new value */
     nested_LineUpdate(l, Nested_Green, &start, &stop);
 
+    /* Notice that generated enumeration constants automatically adjust their
+     * caps to the constant identifier. If the constants would've been defined
+     * with all caps, the constant would've been NESTED_GREEN. Similarly, if the
+     * constant would've been defined lowercase, it would've been nested_green.
+     *
+     * An enumeration shall always use only one convention which is typically
+     * derived from the first constant. 
+     */
+
     /* Access members natively */
     corto_info("l->color = '%s', l->start = {%d, %d), l->stop = {%d, %d}", 
         /* Trick to get enum constant id without allocating string */

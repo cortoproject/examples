@@ -1,0 +1,40 @@
+in application hierarchy
+
+// This example shows how to model a hierarchy of objects. A hierarchy typically
+// (but not always) starts with a 'container' object. When Corto instantiates a
+// container object, it will look for other container objects in
+// the scope of the container type. There are three kinds of containers:
+//
+// container: an object that can contain one or more objects of any type
+// leaf: a singleton object (within the scope of the container)
+// table: a homogeneous collection of objects (of the same type)
+//
+// When an object of a container type is found, it is automatically instantiated
+// in the scope of the container instance. For example, if 'Car' is instantiated
+// with the name 'myCar' it will create the following object tree (with default
+// values):
+//
+// hierarchy/Car myCar {vin="" color=Red speed=0} :/
+//   tablescope Wheel {position=FrontLeft pressure=0}
+//   hierarchy/Engine Engine {rpm=0 temperature=0}
+//
+
+enum color:/ Red, Yellow, Green, Blue
+enum WheelPosition:/ FrontLeft, FrontRight, RearLeft, RearRight
+
+container Car:/
+  vin: string, key
+  color: hierarchy/color
+  speed: float64
+
+  table Wheel:/
+    position: WheelPosition, key // Key constrains table to 4 wheel objects
+    pressure: float64
+
+  leaf Engine:/
+    rpm: float64
+    temperature: float64
+    fuelLevel: float64
+    oilLevel: float64
+    warningLight: bool
+    
