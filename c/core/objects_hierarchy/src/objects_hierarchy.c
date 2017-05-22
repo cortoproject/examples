@@ -16,7 +16,7 @@
  */
 
 void printInfo(corto_object o) {
-    printf("object '%s' created with parent=%s, type=%s\n",
+    corto_info("object '%s' created with parent='%s', type='%s'",
       corto_fullpath(NULL, o),
       corto_fullpath(NULL, corto_parentof(o)),
       corto_fullpath(NULL, corto_typeof(o)));

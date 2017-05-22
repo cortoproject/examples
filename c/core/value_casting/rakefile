@@ -1,4 +1,0 @@
-
-TARGET = 'value_casting'
-
-require "#{ENV['CORTO_BUILD']}/application"

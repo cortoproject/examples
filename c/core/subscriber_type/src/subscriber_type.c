@@ -15,13 +15,9 @@
  * objects of a specific type.
  */
 
-void onNotify(
-  corto_object this,
-  corto_eventMask event,
-  corto_result *o,
-  corto_subscriber subscriber)
+void onNotify(corto_subscriberEvent *e)
 {
-    printf("UPDATE '%s'\n", o->id);
+    corto_info("UPDATE '%s'", e->data.id);
 }
 /* $end */
 
@@ -30,7 +26,7 @@ int subscriber_typeMain(int argc, char *argv[]) {
 
     /* Create a subscriber that only subscribes for DEFINE events for objects of
      * type int32. */
-    corto_subscriber s = corto_subscribe(CORTO_ON_DEFINE, "/", "*")
+    corto_subscriber s = corto_subscribe(CORTO_ON_DEFINE, "*")
         .type("int32")
         .callback(onNotify);
     if (!s) {

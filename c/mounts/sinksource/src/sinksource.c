@@ -10,7 +10,7 @@
 
 /* $header() */
 void notify(corto_object instance, corto_eventMask event, corto_result *object, corto_subscriber sub) {
-    corto_value v = corto_value_value(corto_eventMask_o, &event);
+    corto_value v = corto_value_value(&event, corto_eventMask_o);
     corto_info("main: onNotify('%s', '%s'): %s",
         corto_value_contentof(&v, "text/corto") + 3,
         object->id,
@@ -27,7 +27,7 @@ int sinksourceMain(int argc, char *argv[]) {
      *
      * SINK mounts only receive notifications for objects owned by the application,
      * and can only change objects owned by the application.
-     * 
+     *
      * SOURCE mounts receive notifications for all objects, and can only change
      * objects that are not owned by the application.
      *

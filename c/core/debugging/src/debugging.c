@@ -16,13 +16,9 @@
  * console.
  */
 
-void onUpdate(
-  corto_object this,
-  corto_eventMask mask,
-  corto_object observable,
-  corto_observer observer)
+void onUpdate(corto_observerEvent *e)
 {
-    printf("update received for '%s'\n", corto_idof(observable));
+    corto_info("update received for '%s'", corto_idof(e->data));
 }
 /* $end */
 
@@ -59,7 +55,7 @@ int debuggingMain(int argc, char *argv[]) {
     /* When in debugging mode, every corto_seterr() will be printed to the
      * console */
     corto_seterr("this will be printed to the console with a stack trace");
-    corto_lasterr(); /* 'catch' the error, otherwise it is printed again */
+    corto_lasterr(); /* read error, otherwise it is logged as uncatched */
 
     return 0;
 error:

@@ -65,13 +65,10 @@ int dynamic_enumMain(int argc, char *argv[]) {
         goto error;
     }
 
-    corto_int32 *myColor = corto_createChild(root_o, "myColor", Color);
-    if (!myColor) {
-        goto error;
-    }
-
-    *myColor = *Purple;
-    printf("myColor = %s\n", corto_contentof(NULL, "text/corto", myColor));
+    int32_t myColor = *Purple;
+    char *str = corto_ptr_contentof(&myColor, Color, "text/corto");
+    corto_info("myColor = '%s'", str);
+    corto_dealloc(str);
 
     return 0;
 error:

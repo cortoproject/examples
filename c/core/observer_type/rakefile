@@ -1,4 +1,0 @@
-
-TARGET = 'observer_type'
-
-require "#{ENV['CORTO_BUILD']}/application"

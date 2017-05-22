@@ -18,23 +18,24 @@
  */
 
  /* Callback for observer */
-void onNotify(
-   corto_object this,
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotify(corto_observerEvent *e)
 {
-    switch(event) {
-    case CORTO_ON_DEFINE: printf("DEFINE "); break;
-    case CORTO_ON_INVALIDATE: printf("INVALIDATE "); break;
-    default: return;
+    char buff[11];
+    switch(e->event) {
+    case CORTO_ON_DECLARE: strcpy(buff, "DECLARE"); break;
+    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
+    case CORTO_ON_INVALIDATE: strcpy(buff, "INVALIDATE"); break;
+    default: 
+        break;
     }
-    printf("'%s'\n", corto_idof(o));
+    corto_info("%s '%s'", buff, corto_idof(e->data));
 }
 
 void printValid(corto_object o) {
     /* The checkstate function can be used to check for validity */
-    printf("object '%s' is %svalid\n",
+    corto_info("object '%s' is %svalid",
       corto_idof(o),
       corto_checkState(o, CORTO_VALID) ? "" : "not ");
 }

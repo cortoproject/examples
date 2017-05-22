@@ -1,4 +1,0 @@
-
-TARGET = 'mount_fibo'
-
-require "#{ENV['CORTO_BUILD']}/application"

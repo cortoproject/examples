@@ -1,4 +1,0 @@
-
-TARGET = 'state'
-
-require "#{ENV['CORTO_BUILD']}/application"

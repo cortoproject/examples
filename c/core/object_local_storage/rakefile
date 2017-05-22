@@ -1,4 +1,0 @@
-
-TARGET = 'object_local_storage'
-
-require "#{ENV['CORTO_BUILD']}/application"

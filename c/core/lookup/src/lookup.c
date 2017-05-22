@@ -38,7 +38,7 @@ int lookupMain(int argc, char *argv[]) {
     /* Lookup an object in the root */
     corto_object o = corto_lookup(root_o, "tier1");
     if (o) {
-        printf("found object '%s'\n", corto_fullpath(NULL, o));
+        corto_info("found object '%s'", corto_fullpath(NULL, o));
 
         /* Release the object so corto knows you no longer need it */
         corto_release(o);
@@ -47,7 +47,7 @@ int lookupMain(int argc, char *argv[]) {
     /* Lookup a nested object */
     o = corto_lookup(root_o, "tier1/tier2");
     if (o) {
-        printf("found object '%s'\n", corto_fullpath(NULL, o));
+        corto_info("found object '%s'", corto_fullpath(NULL, o));
 
         /* Release the object so corto knows you no longer need it */
         corto_release(o);
@@ -56,7 +56,7 @@ int lookupMain(int argc, char *argv[]) {
     /* Lookup a nested object, specify a nested 'from' scope */
     o = corto_lookup(tier1, "tier2/tier3");
     if (o) {
-        printf("found object '%s'\n", corto_fullpath(NULL, o));
+        corto_info("found object '%s'", corto_fullpath(NULL, o));
 
         /* Release the object so corto knows you no longer need it */
         corto_release(o);

@@ -16,20 +16,17 @@
  */
 
  /* Callback for observer */
-void onNotify(
-   corto_object this,
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotify(corto_observerEvent *e)
 {
-    switch(event) {
-    case CORTO_ON_DECLARE: printf("DECLARE "); break;
-    case CORTO_ON_DEFINE: printf("DEFINE "); break;
-    case CORTO_ON_UPDATE: printf("UPDATE "); break;
-    case CORTO_ON_DELETE: printf("DELETE "); break;
+    char buff[9];
+    switch(e->event) {
+    case CORTO_ON_DECLARE: strcpy(buff, "DECLARE"); break;
+    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
     default: break;
     }
-    printf("'%s'\n", corto_idof(o));
+    corto_info("%s '%s'", buff, corto_idof(e->data));
 }
 /* $end */
 

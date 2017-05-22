@@ -18,13 +18,9 @@
  * subscriber needs to notify each instance of that class individually.
  */
 
-void onNotify(
-  corto_object this,
-  corto_eventMask event,
-  corto_result *o,
-  corto_subscriber subscriber)
+void onNotify(corto_subscriberEvent *e)
 {
-    printf("%s: UPDATE '%s'\n", corto_idof(this), o->id);
+    corto_info("%s: UPDATE '%s'", corto_idof(e->instance), e->data.id);
 }
 /* $end */
 
@@ -33,8 +29,7 @@ int subscriber_instanceMain(int argc, char *argv[]) {
 
     /* Create a subscriber that is created disabled. This will give us the
      * opportunity to subscribe it for multiple instances. */
-    corto_subscriber s = corto_subscribe(
-        CORTO_ON_UPDATE, "/", "*")
+    corto_subscriber s = corto_subscribe(CORTO_ON_UPDATE, "*")
         .disabled()
         .callback(onNotify);
     if (!s) {

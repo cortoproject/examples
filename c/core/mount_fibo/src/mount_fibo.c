@@ -14,6 +14,10 @@
  * This example shows how to create a connector that mounts the fibonacci sequence.
  * It demonstrates how a corto mount can be built to use very little
  * resources while exposing a (literally) unlimited dataset.
+ *
+ * This example uses advanced techniques to dynamically a new class, add a method
+ * to that class and implement a custom iterator. It is recommended to study
+ * some of the more basic examples first, like 'dynamic_struct' and 'objects'.
  */
 
 /* iterative fibonacci implementation */
@@ -106,13 +110,13 @@ corto_class createFiboClass(void) {
     }
 
     /* Inherit from the corto mount class */
-    corto_setref(&corto_interface(FiboClass)->base, corto_mount_o);
+    corto_ptr_setref(&corto_interface(FiboClass)->base, corto_mount_o);
 
     /* Create onRequest method (called when API requests data, typically a corto_select) */
     corto_method onRequestMethod = corto_declareChild(
         FiboClass,
         "onRequest(core/request request)",
-        corto_method_o);
+        corto_override_o);
     if (!onRequestMethod) {
         goto error;
     }
@@ -142,7 +146,7 @@ corto_mount createMountInstance(corto_class mountClass) {
     }
 
     /* Return data in the corto string format */
-    corto_setstr(&corto_subscriber(connector)->contentType, "text/corto");
+    corto_mount_setContentType(connector, "text/corto");
 
     if (corto_define(connector)) {
         goto error;
@@ -169,25 +173,31 @@ int mount_fiboMain(int argc, char *argv[]) {
     }
 
     /* Request fibonacci numbers 0 to 10 */
-    corto_resultIter it;
-    corto_select("/fibo", "*").limit(0, 10).contentType("text/corto").iter(&it);
-    {corto_resultIterForeach(it, result) {
-        printf("fibo(%s) = %s\n", result.id, corto_result_getText(&result));
-    }}
+    corto_iter it;
+    corto_select("fibo/*").limit(0, 10).contentType("text/corto").iter(&it);
+    while (corto_iter_hasNext(&it)) {
+        corto_result *r = corto_iter_next(&it);
+        corto_info("fibo(%s) = %s", r->id, corto_result_getText(r));
+
+    }
     printf("\n");
 
     /* Request fibonacci numbers 50 to 60 */
-    corto_select("/fibo", "*").limit(50, 10).contentType("text/corto").iter(&it);
-    {corto_resultIterForeach(it, result) {
-        printf("fibo(%s) = %s\n", result.id, corto_result_getText(&result));
-    }}
+    corto_select("fibo/*").limit(50, 10).contentType("text/corto").iter(&it);
+    while (corto_iter_hasNext(&it)) {
+        corto_result *r = corto_iter_next(&it);
+        corto_info("fibo(%s) = %s", r->id, corto_result_getText(r));
+    }
     printf("\n");
 
     /* Request fibonacci number 75 */
-    corto_select("/fibo", "75").contentType("text/corto").iter(&it);
-    {corto_resultIterForeach(it, result) {
-        printf("fibo(%s) = %s\n", result.id, corto_result_getText(&result));
-    }}
+    corto_select("fibo/75").contentType("text/corto").iter(&it);
+    while (corto_iter_hasNext(&it)) {
+        corto_result *r = corto_iter_next(&it);
+        corto_info("fibo(%s) = %s", r->id, corto_result_getText(r));
+
+    }
+    printf("\n");
 
     return 0;
 error:

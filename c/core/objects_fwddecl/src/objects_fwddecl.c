@@ -12,33 +12,40 @@
 /* objects_fwddecl
  *
  * This example shows basic usage of core API functions to forward declare
- * objects. If you use corto_createChild (see objects example) the object is
- * defined with a default value. Creating an object generates a DEFINE event, so
- * you may want to override this value so that observers of the DEFINE event can
- * receive the object after a custom value has been assigned.
+ * objects. If you use corto_createChild (see objects example) an object is
+ * declared & defined with a default value. As the DEFINE event is a 'data'
+ * event that is potentially synchronized, sometimes an application wants to
+ * set a custom value before defining an object. Forward declaring an object,
+ * then setting the value, then defining it allows for that.
  *
- * Forward declarations allow you to create an object that has not yet been
- * defined. This allows you to set the value of the object before it is defined.
+ * This technique is used in (amongst others) the dynamic_struct example to first
+ * declare the struct (and members) and define it when all members are created.
  *
  * Furthermore, forward declarations can be utilized to instantiate an object
- * graph that contains cycles.
+ * graph declaratively that contains cycles. The word 'declaratively' is key
+ * here. An application is able to create cycles imperatively by first creating
+ * two objects, and then make them both point to each other. However, without
+ * forward declarations, this will generate at least 4 events (create A, 
+ * create B, update A, update B), and the first three events contain an 
+ * 'intermediate' state that ideally is not synchronized.
+ *
+ * With forward declarations an application can define A and B after the cycle
+ * has already been created, thus eliminating the "intermediate" state.
  */
 
  /* Callback for observer */
-void onNotify(
-   corto_object this,
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotify(corto_observerEvent *e)
 {
-    switch(event) {
-    case CORTO_ON_DECLARE: printf("DECLARE "); break;
-    case CORTO_ON_DEFINE: printf("DEFINE "); break;
-    case CORTO_ON_UPDATE: printf("UPDATE "); break;
-    case CORTO_ON_DELETE: printf("DELETE "); break;
+    char buff[8];
+    switch(e->event) {
+    case CORTO_ON_DECLARE: strcpy(buff, "DECLARE"); break;
+    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
     default: break;
     }
-    printf("'%s' with value '%d'\n", corto_idof(o), *(corto_int32*)o);
+    corto_info("%s '%s' with value '%d'", 
+        buff, corto_idof(e->data), *(corto_int32*)e->data);
 }
 /* $end */
 
@@ -80,7 +87,13 @@ int objects_fwddeclMain(int argc, char *argv[]) {
     }
 
     /* This check *guarantees* that we won't overwrite the value of this object
-     * if it has also been declared in another thread. */
+     * if it has also been declared in another thread. If two threads are
+     * declaring the same object, one of the `corto_declareChild` functions will
+     * block until the other thread has defined the object.
+     *
+     * This is the idiomatic, and only safe(!) way to define an object in a multi 
+     * threaded application.
+     */
     if (!corto_checkState(fwddecl, CORTO_DEFINED)) {
         *fwddecl = 10;
 

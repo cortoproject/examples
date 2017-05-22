@@ -1,4 +1,0 @@
-
-TARGET = 'attributes'
-
-require "#{ENV['CORTO_BUILD']}/application"

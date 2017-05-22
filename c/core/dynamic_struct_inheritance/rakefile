@@ -1,4 +1,0 @@
-
-TARGET = 'dynamic_struct_inheritance'
-
-require "#{ENV['CORTO_BUILD']}/application"

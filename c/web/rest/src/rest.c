@@ -27,7 +27,7 @@ int restMain(int argc, char *argv[]) {
     *bar = 20;
     *foo_child = 10.5;
     *bar_child = 20.5;
-    corto_setstr(helloWorld, "Hello World!");
+    corto_ptr_setstr(helloWorld, "Hello World!");
 
     /* Keep server alive */
     while (1) {

@@ -1,4 +1,0 @@
-
-TARGET = 'observer_instance'
-
-require "#{ENV['CORTO_BUILD']}/application"

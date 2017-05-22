@@ -36,37 +36,37 @@ int path_identifiersMain(int argc, char *argv[]) {
 
     /* Use the corto_idof function if you simply want to obtain the id of an
      * object without its parents. */
-    printf("corto_idof(tier1): '%s'\n", corto_idof(tier1));
+    corto_info("corto_idof(tier1): '%s'", corto_idof(tier1));
 
     /* The corto_fullpath function returns the shortest identifier that will
      * resolve an object from root, when using corto_resolve. */
-    printf("corto_fullpath(NULL, tier1): '%s'\n", corto_fullpath(NULL, tier1));
-    printf("corto_fullpath(NULL, tier2): '%s'\n", corto_fullpath(NULL, tier2));
+    corto_info("corto_fullpath(NULL, tier1): '%s'", corto_fullpath(NULL, tier1));
+    corto_info("corto_fullpath(NULL, tier2): '%s'", corto_fullpath(NULL, tier2));
 
     /* Because corto_resolve always looks first in corto/lang, corto_fullpath
      * can return just an id without parents for objects from that scope. */
-    printf("corto_fullpath(NULL, corto_int32_o): '%s'\n", corto_fullpath(NULL, corto_int32_o));
+    corto_info("corto_fullpath(NULL, corto_int32_o): '%s'", corto_fullpath(NULL, corto_int32_o));
 
     /* You can provide a buffer to the first argument of corto_fullpath. If you
      * leave it to NULL, corto will return a managed string which can be freed
      * by subsequent API calls. Up to CORTO_MAX_TLS_STRINGS (5) strings can be
      * used simultaneously. */
     corto_id id;
-    printf("corto_fullpath(id, tier1): '%s'\n", corto_fullpath(id, tier1));
-    printf("  id after corto_fullpath: '%s'\n", id);
+    corto_info("corto_fullpath(id, tier1): '%s'", corto_fullpath(id, tier1));
+    corto_info("  id after corto_fullpath: '%s'", id);
 
     /* The corto_path function returns the shortest identifier that will resolve
      * an object from the 'from' parameter, when using corto_resolve. corto_path
      * also allows you to specify a custom separator. */
-    printf("corto_path(NULL, tier1, tier3, \"/\"): '%s'\n", corto_path(NULL, tier1, tier3, "/"));
+    corto_info("corto_path(NULL, tier1, tier3, \"/\"): '%s'", corto_path(NULL, tier1, tier3, "/"));
 
     /* When generating an id from NULL, corto_path will generate an initial / */
-    printf("corto_path(NULL, NULL, tier1, \"/\"): '%s'\n", corto_path(NULL, NULL, tier1, "/"));
-    printf("corto_path(NULL, root_o, tier1, \"/\"): '%s'\n", corto_path(NULL, root_o, tier1, "/"));
+    corto_info("corto_path(NULL, NULL, tier1, \"/\"): '%s'", corto_path(NULL, NULL, tier1, "/"));
+    corto_info("corto_path(NULL, root_o, tier1, \"/\"): '%s'", corto_path(NULL, root_o, tier1, "/"));
 
     /* The first argument of corto_path works the same as corto_fullpath */
-    printf("corto_path(id, tier1, tier3, \"/\"): '%s'\n", corto_path(id, tier1, tier3, "/"));
-    printf("  id after corto_path: '%s'\n", id);
+    corto_info("corto_path(id, tier1, tier3, \"/\"): '%s'", corto_path(id, tier1, tier3, "/"));
+    corto_info("  id after corto_path: '%s'", id);
 
     return 0;
 error:

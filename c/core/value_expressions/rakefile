@@ -1,4 +1,0 @@
-
-TARGET = 'value_expressions'
-
-require "#{ENV['CORTO_BUILD']}/application"

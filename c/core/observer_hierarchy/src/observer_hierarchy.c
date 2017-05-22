@@ -15,22 +15,14 @@
  * tree of objects.
  */
 
-void onNotifyScope(
-   corto_object this,
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotifyScope(corto_observerEvent *e)
 {
-    printf("onNotifyScope: trigger for %s\n", corto_fullpath(NULL, o));
+    corto_info("onNotifyScope: trigger for '%s'", corto_fullpath(NULL, e->data));
 }
 
-void onNotifyTree(
-   corto_object this,
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotifyTree(corto_observerEvent *e)
 {
-    printf("onNotifyTree: trigger for %s\n", corto_fullpath(NULL, o));
+    corto_info("onNotifyTree: trigger for '%s'", corto_fullpath(NULL, e->data));
 }
 /* $end */
 

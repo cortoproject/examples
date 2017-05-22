@@ -27,13 +27,12 @@ corto_void _sinksource_DemoMount_add(
 /* $end */
 }
 
-corto_int16 _sinksource_DemoMount_construct(
+int16_t _sinksource_DemoMount_construct(
     sinksource_DemoMount this)
 {
 /* $begin(sinksource/DemoMount/construct) */
     corto_mount_setContentType(this, "text/corto");
     return corto_mount_construct(this);
-
 /* $end */
 }
 
@@ -43,9 +42,9 @@ corto_void _sinksource_DemoMount_onNotify(
     corto_result *object)
 {
 /* $begin(sinksource/DemoMount/onNotify) */
-    corto_value v = corto_value_value(corto_eventMask_o, &event);
+    corto_value v = corto_value_value(&event, corto_eventMask_o);
     corto_info("%s: onNotify('%s', '%s')",
-        corto_mount(this)->kind == CORTO_SINK ? "SINK" : "SOURCE", 
+        corto_mount(this)->kind == CORTO_SINK ? "SINK" : "SOURCE",
         corto_value_contentof(&v, "text/corto") + 3,
         object->id);
 
@@ -62,14 +61,14 @@ corto_resultIter _sinksource_DemoMount_onRequest(
         corto_mount(this)->kind == CORTO_SINK ? "SINK" : "SOURCE", request->expr);
 
     /* Create iterator for object list that outlives function scope */
-    return corto_llIterAlloc(this->objects);
+    return corto_ll_iterAlloc(this->objects);
 /* $end */
 }
 
-corto_int16 _sinksource_DemoMount_update(
+int16_t _sinksource_DemoMount_update(
     sinksource_DemoMount this,
     corto_string id,
-    corto_int32 value)
+    int32_t value)
 {
 /* $begin(sinksource/DemoMount/update) */
     corto_bool newObject = FALSE;
@@ -84,7 +83,7 @@ corto_int16 _sinksource_DemoMount_update(
     sinksource_DemoType o = corto_findOrDeclare(corto_mount(this)->mount, id, sinksource_DemoType_o);
     if (!o) corto_error("%s", corto_lasterr());
     if (!corto_checkState(o, CORTO_DEFINED)) newObject = TRUE;
-    
+
     /* Update object, set target or actual depending on ownership */
     corto_int32 result = corto_int32Update(o, value);
 

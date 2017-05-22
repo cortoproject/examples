@@ -1,4 +1,0 @@
-
-TARGET = 'path_identifiers'
-
-require "#{ENV['CORTO_BUILD']}/application"

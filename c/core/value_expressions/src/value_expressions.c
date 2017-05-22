@@ -22,21 +22,21 @@
  */
 
 void printValue(char *expr, corto_value *v) {
-    corto_type type = corto_value_getType(v);
-    corto_string str = corto_strv(v, 0);
-    printf("%20s: %s (%s)\n", expr, str, corto_fullpath(NULL, type));
+    corto_type type = corto_value_typeof(v);
+    corto_string str = corto_value_str(v, 0);
+    corto_info("%20s: %s ('%s')", expr, str, corto_fullpath(NULL, type));
     corto_dealloc(str);
 }
 /* $end */
 
 int value_expressionsMain(int argc, char *argv[]) {
 /* $begin(main) */
-    corto_value left, right, result = corto_value_init();
+    corto_value left, right, result = corto_value_empty();
 
     /* Add two integers */
-    left = corto_value_literalInteger(10);
-    right = corto_value_literalInteger(20);
-    if (corto_value_binaryOperator(CORTO_ADD, &left, &right, &result)) {
+    left = corto_value_int(10);
+    right = corto_value_int(20);
+    if (corto_value_binaryOp(CORTO_ADD, &left, &right, &result)) {
         goto error;
     }
 
@@ -46,9 +46,9 @@ int value_expressionsMain(int argc, char *argv[]) {
 
 
     /* Subtract two numbers of different type */
-    left = corto_value_literalFloatingPoint(20.5);
-    right = corto_value_literalInteger(10);
-    if (corto_value_binaryOperator(CORTO_SUB, &left, &right, &result)) {
+    left = corto_value_float(20.5);
+    right = corto_value_int(10);
+    if (corto_value_binaryOp(CORTO_SUB, &left, &right, &result)) {
         goto error;
     }
 
@@ -58,9 +58,9 @@ int value_expressionsMain(int argc, char *argv[]) {
 
 
     /* Add a number to a string */
-    left = corto_value_literalInteger(10);
-    right = corto_value_literalString(" + 20 = 30");
-    if (corto_value_binaryOperator(CORTO_ADD, &left, &right, &result)) {
+    left = corto_value_int(10);
+    right = corto_value_string(" + 20 = 30");
+    if (corto_value_binaryOp(CORTO_ADD, &left, &right, &result)) {
         goto error;
     }
 
@@ -70,9 +70,9 @@ int value_expressionsMain(int argc, char *argv[]) {
 
 
     /* Evaluate a conditional expression */
-    left = corto_value_literalString("Foo");
-    right = corto_value_literalString("Bar");
-    if (corto_value_binaryOperator(CORTO_COND_EQ, &left, &right, &result)) {
+    left = corto_value_string("Foo");
+    right = corto_value_string("Bar");
+    if (corto_value_binaryOp(CORTO_COND_EQ, &left, &right, &result)) {
         goto error;
     }
 

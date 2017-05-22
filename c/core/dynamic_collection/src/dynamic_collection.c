@@ -19,30 +19,34 @@ int dynamic_collectionMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Create a new array */
-    corto_array ints = corto_declareChild(root_o, "ints", corto_array_o);
-    if (!ints) {
+    corto_array intArray = corto_declare(corto_array_o);
+    if (!intArray) {
         goto error;
-    }
-    if (!corto_checkState(ints, CORTO_DEFINED)) {
-        /* Set the element type and max size on the base collection class */
-        corto_setref(&corto_collection(ints)->elementType, corto_int32_o);
-        corto_collection(ints)->max = 3;
-        if (corto_define(ints)) {
-            goto error;
-        }
     }
 
-    /* Create instance of ints */
-    corto_int32 *myArray = corto_createChild(root_o, "myArray", ints);
-    if (!myArray) {
+    /* Set the element type and max size on the base collection class */
+    corto_ptr_setref(&corto_collection(intArray)->elementType, corto_int32_o);
+    corto_collection(intArray)->max = 3;
+    if (corto_define(intArray)) {
         goto error;
     }
+
+    /* Note that a shorter version of the above would be to use corto_resolve to
+     * create an anonymous type, but for sake of demonstration, it is done 
+     * manually. To create the same array type with corto_resolve, do: 
+     * corto_resolve(NULL, "array{int32, 3}")
+     */
+
+    /* Create instance of intArray */
+    int32_t myArray[3];
 
     myArray[0] = 10;
     myArray[1] = 20;
     myArray[2] = 30;
 
-    printf("myArray = %s\n", corto_contentof(NULL, "text/corto", myArray));
+    char *str = corto_ptr_contentof(myArray, intArray, "text/corto");
+    corto_info("myArray = '%s'", str);
+    corto_dealloc(str);
 
     return 0;
 error:

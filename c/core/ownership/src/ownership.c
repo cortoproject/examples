@@ -41,7 +41,8 @@
 
 void onNotify(corto_mount this, corto_eventMask event, corto_result *object) {
     if (event == CORTO_ON_UPDATE) {
-        printf(" => %s: received update for '%s'\n", corto_idof(this), object->id);
+        corto_info("%s: received update for '%s'", 
+            corto_idof(this), object->id);
     }
 }
 /* $end */
@@ -57,7 +58,7 @@ int ownershipMain(int argc, char *argv[]) {
 
     if (!corto_checkState(myMount, CORTO_DEFINED)) {
         /* Inherit from the corto mount class */
-        corto_setref(&corto_interface(myMount)->base, corto_mount_o);
+        corto_ptr_setref(&corto_interface(myMount)->base, corto_mount_o);
 
         /* Create onNotify method (called when the mount receives an update) */
         corto_method onNotifyMethod = corto_declareChild(
@@ -68,17 +69,15 @@ int ownershipMain(int argc, char *argv[]) {
             goto error;
         }
 
-        if (!corto_checkState(onNotifyMethod, CORTO_DEFINED)) {
-            corto_function(onNotifyMethod)->kind = CORTO_PROCEDURE_CDECL;
-            corto_function(onNotifyMethod)->fptr = (corto_word)onNotify;
-            if (corto_define(onNotifyMethod)) {
-                goto error;
-            }
+        corto_function(onNotifyMethod)->kind = CORTO_PROCEDURE_CDECL;
+        corto_function(onNotifyMethod)->fptr = (corto_word)onNotify;
+        if (corto_define(onNotifyMethod)) {
+            goto error;
+        }
 
-            /* Finalize class */
-            if (corto_define(myMount)) {
-                goto error;
-            }
+        /* Finalize class */
+        if (corto_define(myMount)) {
+            goto error;
         }
     }
 
@@ -96,12 +95,10 @@ int ownershipMain(int argc, char *argv[]) {
     }
 
     /* Mount connectorA on /mount */
-    if (!corto_checkState(connectorA, CORTO_DEFINED)) {
-        /* Set 'parent' member of the baseclass of mount (subscriber) */
-        corto_setstr(&corto_subscriber(connectorA)->parent, "/mount");
-        if (corto_define(connectorA)) {
-            goto error;
-        }
+    /* Set 'parent' member of the baseclass of mount (subscriber) */
+    corto_ptr_setstr(&corto_subscriber(connectorA)->parent, "/mount");
+    if (corto_define(connectorA)) {
+        goto error;
     }
 
     corto_mount connectorB = corto_declareChild(root_o, "connectorB", myMount);
@@ -110,12 +107,10 @@ int ownershipMain(int argc, char *argv[]) {
     }
 
     /* Also mount connectorB on /mount */
-    if (!corto_checkState(connectorB, CORTO_DEFINED)) {
-        /* Set 'parent' member of the baseclass of mount (subscriber) */
-        corto_setstr(&corto_subscriber(connectorB)->parent, "/mount");
-        if (corto_define(connectorB)) {
-            goto error;
-        }
+    /* Set 'parent' member of the baseclass of mount (subscriber) */
+    corto_ptr_setstr(&corto_subscriber(connectorB)->parent, "/mount");
+    if (corto_define(connectorB)) {
+        goto error;
     }
 
     /* The corto_setOwner call sets the owner for the current thread. First we'll
@@ -130,7 +125,7 @@ int ownershipMain(int argc, char *argv[]) {
     }
 
     /* Show that the owner of a is connectorA */
-    printf("The owner of a = '%s'\n", corto_idof(corto_ownerof(a)));
+    corto_info("The owner of a = '%s'", corto_idof(corto_ownerof(a)));
 
     /* Now we'll set the owner to mountB and create another object */
     corto_setOwner(connectorB);
@@ -141,7 +136,7 @@ int ownershipMain(int argc, char *argv[]) {
     }
 
     /* Show that the owner of b is connectorB */
-    printf("The owner of b = '%s'\n", corto_idof(corto_ownerof(b)));
+    corto_info("The owner of b = '%s'", corto_idof(corto_ownerof(b)));
 
     /* Set ownership to no owner (this application) */
     corto_setOwner(NULL);
@@ -153,24 +148,24 @@ int ownershipMain(int argc, char *argv[]) {
     }
 
     /* Show that the owner of c is null */
-    printf("The owner of c = %p\n", corto_ownerof(c));
+    corto_info("The owner of c = '%p'", corto_ownerof(c));
 
     /* Now update the objects from their respective owners. This will trigger all
      * observers but the one from the current owner. */
 
-    printf("Update object 'a' from 'connectorA'\n");
+    corto_info("Update object 'a' from 'connectorA'");
     corto_setOwner(connectorA);
     if (corto_update(a)) {
         goto error;
     }
 
-    printf("Update object 'b' from 'connectorB'\n");
+    corto_info("Update object 'b' from 'connectorB'");
     corto_setOwner(connectorB);
     if (corto_update(b)) {
         goto error;
     }
 
-    printf("Update object 'c' from the application\n");
+    corto_info("Update object 'c' from the application");
     corto_setOwner(NULL);
     if (corto_update(c)) {
         goto error;

@@ -13,7 +13,7 @@
  *
  * This example shows how to use corto_call to dynamically call corto functions.
  */
-corto_int32 add(corto_int32 a, corto_int32 b) {
+int32_t add(int32_t a, int32_t b) {
     return a + b;
 }
 /* $end */
@@ -25,21 +25,21 @@ int dynamic_callMain(int argc, char *argv[]) {
     corto_function f = corto_declareChild(root_o, "add(int32 a,int32 b)", corto_function_o);
     f->kind = CORTO_PROCEDURE_CDECL;
     f->fptr = (corto_word)add;
-    corto_setref(&f->returnType, corto_int32_o);
+    corto_ptr_setref(&f->returnType, corto_int32_o);
     if (corto_define(f)) {
         goto error;
     }
 
     /* Now call it */
-    corto_int32 result;
+    int32_t result;
     corto_call(f, &result, 10, 20);
-    printf("corto_call, result = %d\n", result);
+    corto_info("corto_call, result = %d", result);
 
     /* Call it with an array of arguments */
-    corto_int32 a = 20, b = 30;
+    int32_t a = 20, b = 30;
     void *args[] = {&a, &b};
     corto_callb(f, &result, args);
-    printf("corto_callb, result = %d\n", result);
+    corto_info("corto_callb, result = %d", result);
 
     return 0;
 error:

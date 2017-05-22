@@ -28,38 +28,33 @@ int dynamic_bitmaskMain(int argc, char *argv[]) {
      *
      * Values are automatically assigned, but can be overridden as shown.
      */
-    corto_constant *Red = corto_createChild(Color, "Red", corto_constant_o);
-    if (!Red) {
+    corto_constant 
+        *Red = corto_createChild(Color, "Red", corto_constant_o),
+        *Yellow = corto_createChild(Color, "Yellow", corto_constant_o),
+        *Green = corto_createChild(Color, "Green", corto_constant_o),
+        *Blue = corto_createChild(Color, "Blue", corto_constant_o);
+
+    if (!Red || !Yellow || !Green || !Blue) {
         goto error;
     }
 
-    corto_constant *Yellow = corto_createChild(Color, "Yellow", corto_constant_o);
-    if (!Yellow) {
-        goto error;
-    }
-
-    corto_constant *Green = corto_createChild(Color, "Green", corto_constant_o);
-    if (!Green) {
-        goto error;
-    }
-
-    corto_constant *Blue = corto_createChild(Color, "Blue", corto_constant_o);
-    if (!Blue) {
-        goto error;
-    }
+    /* Create a constant with a custom value */
+    corto_constant 
+        *Purple = corto_declareChild(Color, "Purple", corto_constant_o);
+        *Purple = *Red | *Blue;
+        if (corto_define(Purple)) {
+            goto error;
+        }
 
     /* Finalize bitmask */
     if (corto_define(Color)) {
         goto error;
     }
 
-    corto_int32 *myColor = corto_createChild(root_o, "myColor", Color);
-    if (!myColor) {
-        goto error;
-    }
-
-    *myColor = *Red | *Blue;
-    printf("myColor = %s\n", corto_contentof(NULL, "text/corto", myColor));
+    int32_t myColor = *Yellow | *Blue;
+    char *str = corto_ptr_contentof(&myColor, Color, "text/corto");
+    corto_info("myColor = '%s'", str);
+    corto_dealloc(str);
 
     return 0;
 error:

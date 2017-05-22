@@ -25,13 +25,10 @@
  */
 
  /* Callback for observer */
-void onNotify(
-   corto_object this, /* This is the instance passed to corto_observe */
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotify(corto_observerEvent *e)
 {
-    printf("this = '%s', update '%s'\n", corto_idof(this), corto_idof(o));
+    corto_info("this = '%s', update '%s'", 
+      corto_idof(e->instance), corto_idof(e->data));
 }
 /* $end */
 

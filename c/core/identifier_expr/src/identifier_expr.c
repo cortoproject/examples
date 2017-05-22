@@ -30,29 +30,29 @@ int identifier_exprMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Simple expression */
-    printf("match(fo?, foo) = %d\n", corto_match("fo?", "foo"));
+    corto_info("match('fo?', 'foo') = %d", corto_match("fo?", "foo"));
 
     /* NOT expression */
-    printf("match(^foo, foo) = %d\n", corto_match("^foo", "foo"));
+    corto_info("match('^foo', 'foo') = %d", corto_match("^foo", "foo"));
 
     /* OR expression */
-    printf("match(foo|bar, bar) = %d\n", corto_match("foo|bar", "bar"));
+    corto_info("match('foo|bar', 'bar') = %d", corto_match("foo|bar", "bar"));
 
     /* AND expression */
-    printf("match(*fo*&*ba*, foobar) = %d\n", corto_match("*fo*&*ba*", "foobar"));
+    corto_info("match('*fo*&*ba*', 'foobar') = %d", corto_match("*fo*&*ba*", "foobar"));
 
     /* Scope expression */
-    printf("match(foo/*, foo/bar) = %d\n", corto_match("foo/*", "foo/bar"));
+    corto_info("match('foo/*', 'foo/bar') = %d", corto_match("foo/*", "foo/bar"));
 
     /* Returns FALSE, as the number of elements must match exactly */
-    printf("match(foo/*, foo/bar/hello) = %d\n", corto_match("foo/*", "foo/bar/hello"));
+    corto_info("match('foo/*', 'foo/bar/hello') = %d", corto_match("foo/*", "foo/bar/hello"));
 
     /* Recursive scope expression */
-    printf("match(foo//*, foo/bar/hello/world) = %d\n", corto_match("foo//*", "foo/bar/hello/world"));
+    corto_info("match('foo//*', 'foo/bar/hello/world') = %d", corto_match("foo//*", "foo/bar/hello/world"));
 
     /* Use multiple expressions in single string */
-    printf("match(foo,//bar, hello/bar) = %d\n", corto_match("foo,//bar", "hello/bar"));
-    printf("match(foo,//bar, foo) = %d\n", corto_match("foo,//bar", "foo"));
+    corto_info("match('foo,//bar', 'hello/bar') = %d", corto_match("foo,//bar", "hello/bar"));
+    corto_info("match('foo,//bar', 'foo') = %d", corto_match("foo,//bar", "foo"));
 
     /* Show how to use a compiled expression */
     corto_matchProgram program = corto_matchProgram_compile("//^foo|bar", TRUE, TRUE);
@@ -69,7 +69,7 @@ int identifier_exprMain(int argc, char *argv[]) {
     }
     corto_timeGet(&stop);
     stop = corto_timeSub(stop, start);
-    printf("corto_match took %.2f ms (1 million iterations)\n", corto_timeToDouble(stop) * 1000);
+    corto_info("corto_match took %.2f ms (1 million iterations)", corto_timeToDouble(stop) * 1000);
 
     /* Measure compiled program */
     corto_timeGet(&start);
@@ -79,7 +79,7 @@ int identifier_exprMain(int argc, char *argv[]) {
     }
     corto_timeGet(&stop);
     stop = corto_timeSub(stop, start);
-    printf("matchProgram_run took %.2f ms (1 million iterations)\n", corto_timeToDouble(stop) * 1000);
+    corto_info("matchProgram_run took %.2f ms (1 million iterations)", corto_timeToDouble(stop) * 1000);
 
     /* Cleanup resources */
     corto_matchProgram_free(program);

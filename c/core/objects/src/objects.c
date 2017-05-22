@@ -16,18 +16,14 @@
  */
 
 /* Callback for observer */
-void onUpdate(
-    corto_object this,
-    corto_eventMask event,
-    corto_object o,
-    corto_observer observer)
+void onUpdate(corto_observerEvent *e)
 {
     /* Show information about the object that triggered the observer */
-    printf("update received for id='%s' parent='%s' type='%s' value='%d'\n",
-      corto_idof(o),
-      corto_fullpath(NULL, corto_parentof(o)),
-      corto_fullpath(NULL, corto_typeof(o)),
-      *corto_int32(o));
+    corto_info("update received for id='%s' parent='%s' type='%s' value='%d'",
+      corto_idof(e->data),
+      corto_fullpath(NULL, corto_parentof(e->data)),
+      corto_fullpath(NULL, corto_typeof(e->data)),
+      *corto_int32(e->data));
 }
 /* $end */
 
@@ -35,7 +31,7 @@ int objectsMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Create a signed integer object in the global object hierarchy */
-    corto_int32 *i = corto_createChild(root_o, "i", corto_int32_o);
+    int32_t *i = corto_createChild(root_o, "i", corto_int32_o);
     if (!i) {
         goto error;
     }

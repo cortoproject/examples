@@ -1,4 +1,0 @@
-
-TARGET = 'ownership'
-
-require "#{ENV['CORTO_BUILD']}/application"

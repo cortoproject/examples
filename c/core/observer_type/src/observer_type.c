@@ -16,13 +16,9 @@
  */
 
  /* Callback for observer */
-void onNotify(
-   corto_object this,
-   corto_eventMask event,
-   corto_object o,
-   corto_observer observer)
+void onNotify(corto_observerEvent *e)
 {
-    printf("trigger for %s\n", corto_idof(o));
+    corto_info("trigger for '%s'", corto_idof(e->data));
 }
 /* $end */
 

@@ -1,4 +1,0 @@
-
-TARGET = 'subscriber_instance'
-
-require "#{ENV['CORTO_BUILD']}/application"

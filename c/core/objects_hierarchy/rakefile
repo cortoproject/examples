@@ -1,4 +1,0 @@
-
-TARGET = 'objects_hierarchy'
-
-require "#{ENV['CORTO_BUILD']}/application"

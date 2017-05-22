@@ -19,40 +19,29 @@ int dynamic_primitiveMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Create a new integer type */
-    corto_int _long = corto_declareChild(root_o, "long", corto_int_o);
-    if (!_long) {
-        goto error;
-    }
-    if (!corto_checkState(_long, CORTO_DEFINED)) {
+    corto_int long_o = corto_declareChild(root_o, "long", corto_int_o);
+        if (!long_o) goto error;
+
         /* Set width member of the baseclass of 'int' (primitive) */
-        corto_primitive(_long)->width = CORTO_WIDTH_32;
-        if (corto_define(_long)) {
-            goto error;
-        }
-    }
+        corto_primitive(long_o)->width = CORTO_WIDTH_32;
+        if (corto_define(long_o)) goto error;
 
     /* Create a new unsigned integer type */
-    corto_int ulong = corto_declareChild(root_o, "ulonglong", corto_uint_o);
-    if (!ulong) {
-        goto error;
-    }
-    if (!corto_checkState(ulong, CORTO_DEFINED)) {
+    corto_int ulong_o = corto_declareChild(root_o, "ulong", corto_uint_o);
+        if (!ulong_o) goto error;
+
         /* Set width member of the baseclass of 'int' (primitive) */
-        corto_primitive(ulong)->width = CORTO_WIDTH_64;
-        if (corto_define(ulong)) {
-            goto error;
-        }
-    }
+        corto_primitive(ulong_o)->width = CORTO_WIDTH_64;
+        if (corto_define(ulong_o)) goto error;
 
-    /* Create instance of long */
-    int32_t *i = corto_createChild(root_o, "i", _long);
-    if (!i) {
-        goto error;
-    }
+    int32_t i = -10;
+    char *long_str = corto_ptr_contentof(&i, long_o, "text/corto");
+    char *ulong_str = corto_ptr_contentof(&i, ulong_o, "text/corto");
 
-    *i = -10;
-
-    printf("i = %s\n", corto_contentof(NULL, "text/corto", i));
+    corto_info("long = %s, ulong = %s", long_str, ulong_str);
+    
+    corto_dealloc(long_str);
+    corto_dealloc(ulong_str);
 
     return 0;
 error:

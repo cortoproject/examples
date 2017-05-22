@@ -23,40 +23,25 @@
 int select_contentTypeMain(int argc, char *argv[]) {
 /* $begin(main) */
 
-    /* Create a Point type, so we have something to serialize to JSON */
+    /* Create a Point type, so we have something to serialize to JSON. This is
+     * the same code as in the dynamic_struct example. */
     corto_struct Point = corto_declareChild(root_o, "Point", corto_struct_o);
-    if (!Point) {
-        goto error;
-    }
+        if (!Point) goto error;
 
-    /* Create x member */
-    corto_member x = corto_declareChild(Point, "x", corto_member_o);
-    if (!x) {
-        goto error;
-    }
-    if (!corto_checkState(x, CORTO_DEFINED)) {
-        corto_setref(&x->type, corto_int32_o);
-        if (corto_define(x)) {
-            goto error;
-        }
-    }
+        /* Create x member */
+        corto_member x = corto_declareChild(Point, "x", corto_member_o);
+            if (!x) goto error;
+            corto_ptr_setref(&x->type, corto_int32_o);
+            if (corto_define(x)) goto error;
 
-    /* Create y member */
-    corto_member y = corto_declareChild(Point, "y", corto_member_o);
-    if (!y) {
-        goto error;
-    }
-    if (!corto_checkState(y, CORTO_DEFINED)) {
-        corto_setref(&y->type, corto_int32_o);
-        if (corto_define(y)) {
-            goto error;
-        }
-    }
+        /* Create y member */
+        corto_member y = corto_declareChild(Point, "y", corto_member_o);
+            if (!y) goto error;
+            corto_ptr_setref(&y->type, corto_int32_o);
+            if (corto_define(y)) goto error;
 
-    /* Finalize Point struct */
-    if (corto_define(Point)) {
-        goto error;
-    }
+        /* Finalize struct */
+        if (corto_define(Point)) goto error;
 
     /* Create two instances of Point. */
     corto_object p1 = corto_declareChild(root_o, "p1", Point);
@@ -64,12 +49,10 @@ int select_contentTypeMain(int argc, char *argv[]) {
         goto error;
     }
 
-    if (!corto_checkState(p1, CORTO_DEFINED)) {
-        *(corto_int32*)CORTO_OFFSET(p1, x->offset) = 10;
-        *(corto_int32*)CORTO_OFFSET(p1, y->offset) = 10;
-        if (corto_define(p1)) {
-            goto error;
-        }
+    *(corto_int32*)CORTO_OFFSET(p1, x->offset) = 10;
+    *(corto_int32*)CORTO_OFFSET(p1, y->offset) = 10;
+    if (corto_define(p1)) {
+        goto error;
     }
 
     corto_object p2 = corto_declareChild(root_o, "p2", Point);
@@ -77,12 +60,10 @@ int select_contentTypeMain(int argc, char *argv[]) {
         goto error;
     }
 
-    if (!corto_checkState(p2, CORTO_DEFINED)) {
-        *(corto_int32*)CORTO_OFFSET(p2, x->offset) = 20;
-        *(corto_int32*)CORTO_OFFSET(p2, y->offset) = 30;
-        if (corto_define(p2)) {
-            goto error;
-        }
+    *(corto_int32*)CORTO_OFFSET(p2, x->offset) = 20;
+    *(corto_int32*)CORTO_OFFSET(p2, y->offset) = 30;
+    if (corto_define(p2)) {
+        goto error;
     }
 
     /* Select all instances of type Point, get value in JSON */
@@ -95,9 +76,9 @@ int select_contentTypeMain(int argc, char *argv[]) {
         goto error;
     }
 
-    while (corto_iterHasNext(&it)) {
-        corto_result *r = corto_iterNext(&it);
-        printf("id: %s, value: %s\n", r->id, corto_result_getText(r));
+    while (corto_iter_hasNext(&it)) {
+        corto_result *r = corto_iter_next(&it);
+        corto_info("id = '%s', value = %s", r->id, corto_result_getText(r));
     }
 
     return 0;

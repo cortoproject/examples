@@ -1,4 +1,0 @@
-
-TARGET = 'select_contentType'
-
-require "#{ENV['CORTO_BUILD']}/application"

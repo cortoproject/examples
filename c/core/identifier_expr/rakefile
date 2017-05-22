@@ -1,4 +1,0 @@
-
-TARGET = 'identifier_expr'
-
-require "#{ENV['CORTO_BUILD']}/application"

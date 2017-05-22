@@ -23,19 +23,17 @@
  * example.
  */
 
-void onNotify(
-   corto_object this,
-   corto_eventMask event,
-   corto_result *o,
-   corto_subscriber subscriber)
+void onNotify(corto_subscriberEvent *e)
 {
-    switch(event) {
-    case CORTO_ON_DEFINE: printf("DEFINE "); break;
-    case CORTO_ON_UPDATE: printf("UPDATE "); break;
-    case CORTO_ON_DELETE: printf("DELETE "); break;
+    char buff[9];
+    switch(e->event) {
+    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
     default: break;
     }
-    printf("'%s' (parent = '%s', type = '%s')\n", o->id, o->parent, o->type);
+    corto_info("%s '%s' (parent = '%s', type = '%s')", 
+        buff, e->data.id, e->data.parent, e->data.type);
 }
 /* $end */
 
@@ -45,7 +43,7 @@ int subscriber_simpleMain(int argc, char *argv[]) {
     /* Create a subscriber that listens to create, update and delete events for
      * all objects in the 'foo' scope. */
     corto_subscriber s = corto_subscribe(
-        CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE, "/foo", "*")
+        CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE, "foo/*")
         .callback(onNotify);
     if (!s) {
         goto error;

@@ -19,14 +19,10 @@
  * c-binding. See the c-binding examples for more details.
  */
 
- /* Callback for observer */
-void onNotify(
-   corto_object this, /* This is the instance passed to corto_observe */
-   corto_eventMask event,
-   corto_result *o,
-   corto_subscriber subscriber)
+ /* Callback for subscriber */
+void onNotify(corto_subscriberEvent *e)
 {
-    printf("update '%s', value = '%s'\n", o->id, corto_result_getText(o));
+    corto_info("update '%s', value = %s", e->data.id, corto_result_getText(&e->data));
 }
 /* $end */
 
@@ -37,44 +33,30 @@ int jsonMain(int argc, char *argv[]) {
      * an object called 'p'. The subscriber specifies JSON as the contentType
      * which means that all notifications will be delivered as JSON. */
     corto_subscriber s = corto_subscribe(
-        CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE, "/", "p")
+        CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE, "p")
         .contentType("text/json")
         .callback(onNotify);
 
-    /* Create a Point type, so we have something to serialize to JSON */
+    /* Create a Point type, so we have something to serialize to JSON (same code
+     * as from dynamic_struct example) */
     corto_struct Point = corto_declareChild(root_o, "Point", corto_struct_o);
-    if (!Point) {
-        goto error;
-    }
+        if (!Point) goto error;
 
-    /* Create x member */
-    corto_member x = corto_declareChild(Point, "x", corto_member_o);
-    if (!x) {
-        goto error;
-    }
-    if (!corto_checkState(x, CORTO_DEFINED)) {
-        corto_setref(&x->type, corto_int32_o);
-        if (corto_define(x)) {
-            goto error;
-        }
-    }
+        /* Create x member */
+        corto_member x = corto_declareChild(Point, "x", corto_member_o);
+            if (!x) goto error;
+            corto_ptr_setref(&x->type, corto_int32_o);
+            if (corto_define(x)) goto error;
 
-    /* Create y member */
-    corto_member y = corto_declareChild(Point, "y", corto_member_o);
-    if (!y) {
-        goto error;
-    }
-    if (!corto_checkState(y, CORTO_DEFINED)) {
-        corto_setref(&y->type, corto_int32_o);
-        if (corto_define(y)) {
-            goto error;
-        }
-    }
+        /* Create y member */
+        corto_member y = corto_declareChild(Point, "y", corto_member_o);
+            if (!y) goto error;
+            corto_ptr_setref(&y->type, corto_int32_o);
+            if (corto_define(y)) goto error;
 
-    /* Finalize Point struct */
-    if (corto_define(Point)) {
-        goto error;
-    }
+        /* Finalize struct */
+        if (corto_define(Point)) goto error;
+
 
     /* Create an instance of Point. This will notify the observer with default
      * values for Point (x = 0, y = 0) */
@@ -98,7 +80,7 @@ int jsonMain(int argc, char *argv[]) {
      * is also serialized to JSON when delivered to the subscriber */
     if (!corto_updateBegin(p)) {
         *(corto_int32*)CORTO_OFFSET(p, x->offset) = 20;
-        *(corto_int32*)CORTO_OFFSET(p, x->offset) = 30;
+        *(corto_int32*)CORTO_OFFSET(p, y->offset) = 30;
         if (corto_updateEnd(p)) {
             goto error;
         }

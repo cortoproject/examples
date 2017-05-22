@@ -28,16 +28,16 @@ typedef struct Point_t {
 
 /* Constructor */
 corto_int16 Point_construct(Point_t *this) {
-    printf("%s: construct %s\n",
-        corto_idof(this),
-        corto_contentof(NULL, "text/corto", this));
+    char *str = corto_contentof(this, "text/corto");
+    corto_info("%s: construct '%s'", corto_idof(this), str);
+    corto_dealloc(str);
     /* Return success */
     return 0;
 }
 
 /* Destructor */
 void Point_destruct(Point_t *this) {
-    printf("%s: destruct\n", corto_idof(this));
+    corto_info("%s: destruct", corto_idof(this));
 }
 
 /* Add method */
@@ -61,7 +61,7 @@ int dynamic_classMain(int argc, char *argv[]) {
         goto error;
     }
     if (!corto_checkState(x, CORTO_DEFINED)) {
-        corto_setref(&x->type, corto_int32_o);
+        corto_ptr_setref(&x->type, corto_int32_o);
         if (corto_define(x)) {
             goto error;
         }
@@ -73,7 +73,7 @@ int dynamic_classMain(int argc, char *argv[]) {
         goto error;
     }
     if (!corto_checkState(y, CORTO_DEFINED)) {
-        corto_setref(&y->type, corto_int32_o);
+        corto_ptr_setref(&y->type, corto_int32_o);
         if (corto_define(y)) {
             goto error;
         }
@@ -98,7 +98,7 @@ int dynamic_classMain(int argc, char *argv[]) {
          *
          * The `returnType` member is from the baseclass of method (function).
          */
-        corto_setref(&corto_function(construct)->returnType, corto_int16_o);
+        corto_ptr_setref(&corto_function(construct)->returnType, corto_int16_o);
 
         /* Bind the object with a C function */
         corto_function(construct)->kind = CORTO_PROCEDURE_CDECL;
@@ -173,7 +173,9 @@ int dynamic_classMain(int argc, char *argv[]) {
     corto_call(add, NULL, p1, p2);
 
     /* Show value of p1 */
-    printf("p1 after add: %s\n", corto_contentof(NULL, "text/corto", p1));
+    char *str = corto_contentof(p1, "text/corto");
+    corto_info("p1 after add: '%s'", str);
+    corto_dealloc(str);
 
     /* Notice that destructors are called when application exits. Objects in the
      * hierarchy are automatically cleaned up when exitting. */

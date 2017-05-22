@@ -1,4 +1,0 @@
-
-TARGET = 'dynamic_collection'
-
-require "#{ENV['CORTO_BUILD']}/application"

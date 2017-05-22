@@ -35,7 +35,7 @@ int target_actualMain(int argc, char *argv[]) {
     if (!temperatureControl_o) {
         goto error;
     }
-    corto_setref(&temperatureControl_o->type, corto_int32_o);
+    corto_ptr_setref(&temperatureControl_o->type, corto_int32_o);
     if (corto_define(temperatureControl_o)) {
         goto error;
     }
