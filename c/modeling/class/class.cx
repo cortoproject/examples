@@ -1,0 +1,30 @@
+in application class
+
+// This example shows how to use corto classes. A class is similar to a struct
+// but differs in that it is a reference type. Reference types are types that
+// mandate that their instances must be objects, that is, they cannot live on
+// the stack, and have to be created with corto_declare* or corto_create*. 
+//
+// Because instances of a class are always objects, classes contain extra
+// features that influence object lifecycle and runtime type inspection, such as
+// constructors, destructors overridable methods and the ability to implement 
+// interfaces.
+//
+// Constructors in corto do not, because corto is declarative, accept a
+// parameterlist as is common in most OOP languages. Instead, a constructor is invoked
+// after the initial value of an object is set. The initial object value essentially
+// replaces the function of the arguments. This means that a constructor can be
+// executed when an object value is synchronized to another node.
+
+class Animal:/
+  hunger: uint16
+  canFly: bool, readonly
+  int16 construct()
+  void destruct()
+  void eat() overridable // This method can be overridden by a subclass
+
+class Dog: Animal:/
+  void eat() override
+  int16 construct()
+  void destruct()
+  
