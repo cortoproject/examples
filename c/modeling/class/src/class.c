@@ -15,7 +15,8 @@
 int classMain(int argc, char *argv[]) {
 /* $begin(main) */
 
-    /* Create a new dog instance */
+    /* Create a new dog instance. Notice that because Dog inherits from Animal,
+     * the Animal/hunger member shows up in the Dog Create function. */
     class_Dog lassie = class_DogCreateChild(root_o, "Lassie", 100);
 
     /* Feed the dog */

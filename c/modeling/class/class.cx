@@ -12,13 +12,13 @@ in application class
 //
 // Constructors in corto do not, because corto is declarative, accept a
 // parameterlist as is common in most OOP languages. Instead, a constructor is invoked
-// after the initial value of an object is set. The initial object value essentially
+// after the initial value of an object is set. The initial value essentially
 // replaces the function of the arguments. This means that a constructor can be
 // executed when an object value is synchronized to another node.
 
 class Animal:/
   hunger: uint16
-  canFly: bool, readonly
+  canFly: bool, readonly // Readonly members can only be set by Animal instances
   int16 construct()
   void destruct()
   void eat() overridable // This method can be overridden by a subclass
@@ -27,4 +27,3 @@ class Dog: Animal:/
   void eat() override
   int16 construct()
   void destruct()
-  

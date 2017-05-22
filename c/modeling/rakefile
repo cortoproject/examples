@@ -3,6 +3,8 @@ COMPONENTS = %w(
     struct
     inheritance
     nested
+    class
+    collection
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"

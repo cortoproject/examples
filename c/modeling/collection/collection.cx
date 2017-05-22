@@ -1,0 +1,17 @@
+in application collection
+
+// This example shows how to use collection types. Collection types contain sets
+// of homogeneous elements (they have the same type). There are currently three
+// types supported, which are an array, a sequence and a linked list. An array
+// has a static length and is layed out sequentially in memory. A sequence has
+// a dynamic length and is layed out sequentially in memory. The linked list is
+// a straightforward linked list implementation.
+
+// A named list collectiontype with element type int
+list intList: int32
+
+// Struct with all three collections
+struct MyCollections:/
+    ints: intList
+    floats: array{float32, 3} // Anonymous array type
+    strings: sequence{string} // Unbounded anonymous sequence type
