@@ -86,7 +86,9 @@ Shows how corto ownership works. Ownership is a mechanism that allows corto to d
 **Difficulty**: hard
 
 ### mount_fibo
-This example uses the corto API to create a mount class from scratch. Note that this is significantly easier to do by defining a mount class in a .cx file- this code just serves as an example that it is possible to do dynamically. The mount class that is created serves up the fibonacci sequence. Purpose of this example is to demonstrate that a mount in corto can potentially expose infinite datasets requiring lots of memory. The example also shows how to use the corto_select API to specify an offset/limit for the returned results.
+This example uses the corto API to create a mount class from scratch. Note that this is significantly easier to do by defining a mount class in a .cx file- this code just serves as an example that it is possible to do dynamically. The mount class that is created serves up the fibonacci sequence. 
+
+The purpose of this example is to demonstrate that a mount in corto can potentially expose infinite datasets without requiring lots of memory. The example also shows how to use the corto_select API to specify an offset/limit for the returned results.
 **Difficulty**: hard
 
 
