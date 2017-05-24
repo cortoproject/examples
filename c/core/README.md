@@ -19,7 +19,7 @@ API for dynamic walking of values.
 See https://corto.io/doc/Corto_API_reference.html for the Core API reference.
 
 ## Examples
-The following list of examples is a non-exhaustive list that, when read in that order, will provide a gentle introduction to the core API.
+The following list of examples is a non-exhaustive list that, when reviewed in that order, will provide a gentle introduction to the core API.
 
 ### objects
 Shows the basic API for creating, reading, updating and deleting objects.
