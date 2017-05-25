@@ -22,7 +22,7 @@ int collectionMain(int argc, char *argv[]) {
      * create an empty list object for the 'ints' member. */
     corto_ptr_init(&value, collection_MyCollections_o);
 
-    /* Add some value to the ints collection */
+    /* Add some values to the ints collection */
     collection_intListAppend(value.ints, 10);
     collection_intListAppend(value.ints, 20);
 
@@ -35,7 +35,8 @@ int collectionMain(int argc, char *argv[]) {
     corto_stringSeqSize(&value.strings, 2);
     corto_ptr_setstr(&value.strings.buffer[0], "Hello");
     corto_ptr_setstr(&value.strings.buffer[1], "World");
-    corto_stringSeqAppend(&value.strings, "Foo");
+    /* Appending elements to a sequence is inefficient, but possible. */
+    corto_stringSeqAppend(&value.strings, "Foo"); 
     corto_stringSeqAppend(&value.strings, "Bar");
 
     /* Print value of object */

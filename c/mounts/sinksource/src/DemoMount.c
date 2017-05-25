@@ -8,7 +8,7 @@
 
 #include <include/sinksource.h>
 
-corto_void _sinksource_DemoMount_add(
+void _sinksource_DemoMount_add(
     sinksource_DemoMount this,
     corto_string id)
 {
@@ -36,7 +36,7 @@ int16_t _sinksource_DemoMount_construct(
 /* $end */
 }
 
-corto_void _sinksource_DemoMount_onNotify(
+void _sinksource_DemoMount_onNotify(
     sinksource_DemoMount this,
     corto_eventMask event,
     corto_result *object)

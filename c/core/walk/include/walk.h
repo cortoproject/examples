@@ -1,19 +1,17 @@
-/* sys_rest.h
+/* walk.h
  *
  * This file contains generated code. Do not modify!
  */
 
-#ifndef SYS_REST_H
-#define SYS_REST_H
+#ifndef WALK_H
+#define WALK_H
 
 #include <corto/corto.h>
 #include <include/_project.h>
-#include <corto/web/server/server.h>
-#include <corto/sys/sys.h>
 #include <corto/c/c.h>
 
 /* $header() */
-/* You can put your own definitions here! */
+/* Enter additional code here. */
 /* $end */
 
 /* $body() */

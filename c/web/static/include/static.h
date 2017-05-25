@@ -1,26 +1,23 @@
 /* static.h
  *
- * This file is generated. Do not modify.
+ * This file contains generated code. Do not modify!
  */
 
-#ifndef _STATIC_H
-#define _STATIC_H
+#ifndef STATIC_H
+#define STATIC_H
 
 #include <corto/corto.h>
-
+#include <include/_project.h>
 #include <corto/web/server/server.h>
-#include <corto/core/c/c.h>
-#include <corto/lang/c/c.h>
+#include <corto/c/c.h>
+
 /* $header() */
 /* You can put your own definitions here! */
 /* $end */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+/* $body() */
+/* Enter code that requires types here */
+/* $end */
 
-#ifdef __cplusplus
-}
-#endif
 #endif
 

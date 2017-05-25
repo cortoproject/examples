@@ -24,6 +24,7 @@ class Animal:/
   void eat() overridable // This method can be overridden by a subclass
 
 class Dog: Animal:/
+  hideBall: bool, private // Private members can only be set/read by the instance
   void eat() override
   int16 construct()
   void destruct()

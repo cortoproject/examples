@@ -1,4 +1,16 @@
-#include "static.h"
+/* $CORTO_GENERATED
+ *
+ * static.c
+ *
+ * Only code written between the begin and end tags will be preserved
+ * when the file is regenerated.
+ */
+
+#include <include/static.h>
+
+/* $header() */
+/* Enter code outside of main here. */
+/* $end */
 
 int staticMain(int argc, char *argv[]) {
 /* $begin(main) */
