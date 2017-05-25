@@ -65,7 +65,7 @@ int16_t walk_primitive(corto_walk_opt *opt, corto_value *info, void *userData) {
     void *ptr = corto_value_ptrof(info);
     corto_type type = corto_value_typeof(info);
     
-    char *str = corto_ptr_str(ptr, type, 0);
+    char *str = corto_ptr_contentof(ptr, type, "text/corto");
     printf("%s", str);
     corto_dealloc(str);
 
@@ -174,7 +174,7 @@ error:
 int walkMain(int argc, char *argv[]) {
 /* $begin(main) */
 
-    /* Create types for our objects */
+    /* Create types for our object */
     if (createTypes()) {
         goto error;
     }
