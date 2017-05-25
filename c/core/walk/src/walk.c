@@ -118,28 +118,15 @@ error:
     return -1;
 }
 
-/* Print member */
-int16_t walk_member(corto_walk_opt *opt, corto_value *info, void *userData) {
+/* Print members and elements */
+int16_t walk_item(corto_walk_opt *opt, corto_value *info, void *userData) {
     uint32_t *indent = userData;
 
-    printf("%*s%s = ", *indent, "", corto_idof(info->is.member.t));
-
-    if (corto_walk_value(opt, info, userData)) {
-        goto error;
+    if (info->kind == CORTO_MEMBER) {
+        printf("%*s%s = ", *indent, "", corto_idof(info->is.member.t));
+    } else if (info->kind == CORTO_ELEMENT) {
+        printf("%*s%d = ", *indent, "", info->is.element.t.index);
     }
-
-    printf("\n");
-
-    return 0;
-error:
-    return -1;
-}
-
-/* Print element */
-int16_t walk_element(corto_walk_opt *opt, corto_value *info, void *userData) {
-    uint32_t *indent = userData;
-
-    printf("%*s%d = ", *indent, "", info->is.element.t.index);
 
     if (corto_walk_value(opt, info, userData)) {
         goto error;
@@ -202,8 +189,8 @@ int walkMain(int argc, char *argv[]) {
 
     /* Callbacks for different kinds of values */
     opt.metaprogram[CORTO_OBJECT] = walk_object;
-    opt.metaprogram[CORTO_MEMBER] = walk_member;
-    opt.metaprogram[CORTO_ELEMENT] = walk_element;
+    opt.metaprogram[CORTO_MEMBER] = walk_item;
+    opt.metaprogram[CORTO_ELEMENT] = walk_item;
 
     /* Call walk, pass indentation variable as state */
     uint32_t indent = 0;
