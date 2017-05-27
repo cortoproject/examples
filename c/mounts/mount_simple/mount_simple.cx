@@ -1,0 +1,12 @@
+in application mount_simple
+
+// 'hidden' hides, but doesn't restrict access to members from mount class that 
+// we won't use in the DemoMount class
+class DemoMount: mount, hidden:/
+    alias parent: mount/parent    // Set mount point
+    data: list{result}, private   // Demo data 
+    int16 construct()
+
+    // onRequest is called whenever an app requests data with corto_select
+    core/resultIter onRequest(core/request request) override
+

@@ -39,6 +39,7 @@ COMPONENTS = %w(
     type_serializer
     value_casting
     value_expressions
+    walk
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"
