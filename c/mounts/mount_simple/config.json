@@ -1,0 +1,9 @@
+{
+    "id": "myMount",
+    "type": "mount_simple/DemoMount",
+    "value": {
+        "query": {
+            "from": "/data"
+        }
+    }
+}

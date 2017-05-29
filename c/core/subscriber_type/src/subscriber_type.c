@@ -24,9 +24,8 @@ void onNotify(corto_subscriberEvent *e)
 int subscriber_typeMain(int argc, char *argv[]) {
 /* $begin(main) */
 
-    /* Create a subscriber that only subscribes for DEFINE events for objects of
-     * type int32. */
-    corto_subscriber s = corto_subscribe(CORTO_ON_DEFINE, "*")
+    /* Create a subscriber that subscribes for events for objects of type int32. */
+    corto_subscriber s = corto_subscribe("*")
         .type("int32")
         .callback(onNotify);
     if (!s) {

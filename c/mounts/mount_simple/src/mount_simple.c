@@ -9,13 +9,14 @@
 #include <include/mount_simple.h>
 
 /* $header() */
+/* Simple demo of a mount that serves up a number of objects when queried. */
 /* $end */
 
 int mount_simpleMain(int argc, char *argv[]) {
 /* $begin(main) */
 
-    /* Create a demo mount instance, mount data under '/data' */
-    if (!mount_simple_DemoMountCreateChild(root_o, "myMount", "/data")) {
+    /* Load mount configuration, data is mounted under /data */
+    if (corto_load("config.json", 0, NULL)) {
         goto error;
     }
 

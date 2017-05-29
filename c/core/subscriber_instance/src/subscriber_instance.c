@@ -29,7 +29,7 @@ int subscriber_instanceMain(int argc, char *argv[]) {
 
     /* Create a subscriber that is created disabled. This will give us the
      * opportunity to subscribe it for multiple instances. */
-    corto_subscriber s = corto_subscribe(CORTO_ON_UPDATE, "*")
+    corto_subscriber s = corto_subscribe("*")
         .disabled()
         .callback(onNotify);
     if (!s) {

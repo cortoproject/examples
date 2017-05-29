@@ -13,10 +13,7 @@ int16_t _mount_simple_DemoMount_construct(
 {
 /* $begin(mount_simple/DemoMount/construct) */
 
-    /* SOURCE means data served up by the mount is not owned by the app. */
-    corto_mount(this)->kind = CORTO_SOURCE;
-
-    /* Data served up by the mount is in the corto string format */
+    /* Values served up by the mount are in the corto string format */
     corto_mount_setContentType(this, "text/corto");
 
     /* Populate the mount with some demo data */
@@ -44,11 +41,11 @@ int16_t _mount_simple_DemoMount_construct(
 /* $end */
 }
 
-corto_resultIter _mount_simple_DemoMount_onRequest(
+corto_resultIter _mount_simple_DemoMount_onQuery(
     mount_simple_DemoMount this,
-    corto_request *request)
+    corto_query *query)
 {
-/* $begin(mount_simple/DemoMount/onRequest) */
+/* $begin(mount_simple/DemoMount/onQuery) */
 
     /* Return iterator to the data that outlives this function scope */
     return corto_ll_iterAlloc(this->data);

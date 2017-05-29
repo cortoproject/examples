@@ -75,15 +75,15 @@ int isnumber(char *str) {
 
 /* This mount implements custom next and hasNext functions to ensure that only
  * the record that is iterated over is stored in memory. */
-corto_iter onRequest(corto_object mount, corto_request *request) {
+corto_iter onQuery(corto_object mount, corto_query *query) {
     corto_iter result;
 
     /* Create context data for the iterator */
     struct iterData *ctx = corto_calloc(sizeof(struct iterData));
 
     /* Support queries for a single number or starting from an offset */
-    if (isnumber(request->expr)) ctx->current = atoi(request->expr);
-    else ctx->current = request->offset;
+    if (isnumber(query->select)) ctx->current = atoi(query->select);
+    else ctx->current = query->offset;
 
     /* Preset id and value to reusable buffers in the iterData structure */
     ctx->result.id = ctx->id;
@@ -112,19 +112,19 @@ corto_class createFiboClass(void) {
     /* Inherit from the corto mount class */
     corto_ptr_setref(&corto_interface(FiboClass)->base, corto_mount_o);
 
-    /* Create onRequest method (called when API requests data, typically a corto_select) */
-    corto_method onRequestMethod = corto_declareChild(
+    /* Create onQuery method (called when API requests data, typically a corto_select) */
+    corto_method onQueryMethod = corto_declareChild(
         FiboClass,
-        "onRequest(core/request request)",
+        "onQuery(core/query query)",
         corto_override_o);
-    if (!onRequestMethod) {
+    if (!onQueryMethod) {
         goto error;
     }
 
-    corto_function(onRequestMethod)->kind = CORTO_PROCEDURE_CDECL;
-    corto_function(onRequestMethod)->fptr = (corto_word)onRequest;
+    corto_function(onQueryMethod)->kind = CORTO_PROCEDURE_CDECL;
+    corto_function(onQueryMethod)->fptr = (corto_word)onQuery;
 
-    if (corto_define(onRequestMethod)) {
+    if (corto_define(onQueryMethod)) {
         goto error;
     }
 

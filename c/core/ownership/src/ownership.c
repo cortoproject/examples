@@ -96,7 +96,7 @@ int ownershipMain(int argc, char *argv[]) {
 
     /* Mount connectorA on /mount */
     /* Set 'parent' member of the baseclass of mount (subscriber) */
-    corto_ptr_setstr(&corto_subscriber(connectorA)->parent, "/mount");
+    corto_ptr_setstr(&corto_subscriber(connectorA)->query.from, "/mount");
     if (corto_define(connectorA)) {
         goto error;
     }
@@ -108,7 +108,7 @@ int ownershipMain(int argc, char *argv[]) {
 
     /* Also mount connectorB on /mount */
     /* Set 'parent' member of the baseclass of mount (subscriber) */
-    corto_ptr_setstr(&corto_subscriber(connectorB)->parent, "/mount");
+    corto_ptr_setstr(&corto_subscriber(connectorB)->query.from, "/mount");
     if (corto_define(connectorB)) {
         goto error;
     }

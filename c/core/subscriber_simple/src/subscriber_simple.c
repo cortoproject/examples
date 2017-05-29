@@ -42,8 +42,7 @@ int subscriber_simpleMain(int argc, char *argv[]) {
 
     /* Create a subscriber that listens to create, update and delete events for
      * all objects in the 'foo' scope. */
-    corto_subscriber s = corto_subscribe(
-        CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE, "foo/*")
+    corto_subscriber s = corto_subscribe("foo/*")
         .callback(onNotify);
     if (!s) {
         goto error;
