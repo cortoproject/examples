@@ -14,12 +14,15 @@ void _mount_write_DemoMount_onNotify(
 {
 /* $begin(mount_write/DemoMount/onNotify) */
 
+    char *str = corto_ptr_str(&event->event, corto_eventMask_o, 0);
     corto_info(
-        "event received for '%s' from '%s' with type '%s' and value %s",
+        "'%s' received for '%s' from '%s' with type '%s' and value %s",
+        str + 3 /* Strip ON_ */,
         event->data.id,
         event->data.parent,
         event->data.type,
         corto_result_getText(&event->data));
+    corto_dealloc(str);
 
 /* $end */
 }

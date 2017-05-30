@@ -13,11 +13,10 @@
 
 int mount_writeMain(int argc, char *argv[]) {
 /* $begin(main) */
-
     /* Load configuration */
     corto_load("config.json", 0, NULL);
 
-    /* Publish create of a virtual object (not in the store) */
+    /* Publish create of a virtual object (triggers DEFINE on mount) */
     corto_publish(CORTO_ON_DEFINE, "data/foo", "int32", "text/json", "10");
 
     /* Create the 'data' scope in the store */
