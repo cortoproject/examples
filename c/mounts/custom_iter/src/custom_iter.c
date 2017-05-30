@@ -9,7 +9,13 @@
 #include <include/custom_iter.h>
 
 /* $header() */
-/* Enter code outside of main here. */
+/* This example demonstrates a mount with a custom iterator implementation. This
+ * allows a mount maximum flexibility over how much data is loaded into memory
+ * for a single request, as corto will request new results from the mount as the
+ * application is iterating through the results.
+ *
+ * Using custom iterators is recommended practice for any mount that potentially
+ * mounts large datasets. */
 /* $end */
 
 int custom_iterMain(int argc, char *argv[]) {

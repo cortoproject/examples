@@ -1,0 +1,13 @@
+{
+    "id": "myMount",
+    "type": "downsampling/DemoMount",
+    "value": {
+        "contentType": "text/json",
+        "query": {
+            "from": "/data"
+        },
+        "policy": {
+            "sampleRate": 1.0
+        }
+    }
+}

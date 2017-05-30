@@ -4,6 +4,7 @@ COMPONENTS = %w(
     write
     custom_iter
     ownership
+    downsampling
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"
