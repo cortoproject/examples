@@ -1,10 +1,10 @@
-/* sinksource.h
+/* ownership.h
  *
  * This file contains generated code. Do not modify!
  */
 
-#ifndef SINKSOURCE_H
-#define SINKSOURCE_H
+#ifndef OWNERSHIP_H
+#define OWNERSHIP_H
 
 #include <corto/corto.h>
 #include <corto/corto.h>
