@@ -1,18 +1,18 @@
 /* $CORTO_GENERATED
  *
- * mount_simple.c
+ * mount_read.c
  *
  * Only code written between the begin and end tags will be preserved
  * when the file is regenerated.
  */
 
-#include <include/mount_simple.h>
+#include <include/mount_read.h>
 
 /* $header() */
 /* Simple demo of a mount that serves up a number of objects when queried. */
 /* $end */
 
-int mount_simpleMain(int argc, char *argv[]) {
+int mount_readMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Load mount configuration, data is mounted under /data */

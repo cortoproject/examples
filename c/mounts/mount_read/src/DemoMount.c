@@ -6,15 +6,12 @@
  * when the file is regenerated.
  */
 
-#include <include/mount_simple.h>
+#include <include/mount_read.h>
 
-int16_t _mount_simple_DemoMount_construct(
-    mount_simple_DemoMount this)
+int16_t _mount_read_DemoMount_construct(
+    mount_read_DemoMount this)
 {
-/* $begin(mount_simple/DemoMount/construct) */
-
-    /* Values served up by the mount are in the corto string format */
-    corto_mount_setContentType(this, "text/corto");
+/* $begin(mount_read/DemoMount/construct) */
 
     /* Populate the mount with some demo data */
     corto_resultAssign(
@@ -41,11 +38,11 @@ int16_t _mount_simple_DemoMount_construct(
 /* $end */
 }
 
-corto_resultIter _mount_simple_DemoMount_onQuery(
-    mount_simple_DemoMount this,
+corto_resultIter _mount_read_DemoMount_onQuery(
+    mount_read_DemoMount this,
     corto_query *query)
 {
-/* $begin(mount_simple/DemoMount/onQuery) */
+/* $begin(mount_read/DemoMount/onQuery) */
 
     /* Return iterator to the data that outlives this function scope */
     return corto_ll_iterAlloc(this->data);

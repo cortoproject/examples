@@ -1,10 +1,10 @@
-/* mount_simple.h
+/* mount_write.h
  *
  * This file contains generated code. Do not modify!
  */
 
-#ifndef MOUNT_SIMPLE_H
-#define MOUNT_SIMPLE_H
+#ifndef MOUNT_WRITE_H
+#define MOUNT_WRITE_H
 
 #include <corto/corto.h>
 #include <corto/corto.h>

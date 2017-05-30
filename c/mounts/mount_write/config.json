@@ -1,7 +1,8 @@
 {
     "id": "myMount",
-    "type": "mount_simple/DemoMount",
+    "type": "mount_write/DemoMount",
     "value": {
+        "contentType": "text/json",
         "query": {
             "from": "/data"
         }

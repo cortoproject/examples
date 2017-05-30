@@ -1,0 +1,8 @@
+in application mount_read
+
+class DemoMount: mount:/
+    data: list{result}, private   // Demo data 
+    int16 construct()
+
+    // onQuery is called whenever an app requests data with corto_select
+    core/resultIter onQuery(core/query query) override

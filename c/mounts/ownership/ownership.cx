@@ -1,7 +1,7 @@
 #package ownership
 
 // Demo mount used to illustrates difference between LOCAL and REMOTE owners
-class DemoMount: core/mount, hidden ::
+class DemoMount: core/mount:/
     objects: list{result}, private // List of objects managed by mount
 
     // Methods
