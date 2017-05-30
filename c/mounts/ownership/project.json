@@ -1,0 +1,9 @@
+{
+    "id": "ownership",
+    "type": "application",
+    "value": {
+        "description": "Example demonstrating difference between LOCAL_OWNER and REMOTE_OWNER",
+        "author": "Sander Mertens",
+        "version": "1.0.0"
+    }
+}

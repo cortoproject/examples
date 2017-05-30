@@ -6,81 +6,82 @@
  * when the file is regenerated.
  */
 
-#include <include/sinksource.h>
+#include <include/ownership.h>
 
-void _sinksource_DemoMount_add(
-    sinksource_DemoMount this,
+void _ownership_DemoMount_add(
+    ownership_DemoMount this,
     corto_string id)
 {
-/* $begin(sinksource/DemoMount/add) */
-
+/* $begin(ownership/DemoMount/add) */
     corto_resultAssign(
         corto_resultListAppendAlloc(this->objects), /* append new element */
         id,                     /* id */
         NULL,                   /* name (same as id) */
         ".",                    /* parent */
-        "/sinksource/DemoType", /* type */
+        "/ownership/DemoType", /* type */
         (corto_word)"{5}",      /* default value */
         TRUE                    /* is node leaf (yes) */
     );
-
 /* $end */
 }
 
-int16_t _sinksource_DemoMount_construct(
-    sinksource_DemoMount this)
+int16_t _ownership_DemoMount_construct(
+    ownership_DemoMount this)
 {
-/* $begin(sinksource/DemoMount/construct) */
+/* $begin(ownership/DemoMount/construct) */
     corto_mount_setContentType(this, "text/corto");
     return corto_mount_construct(this);
 /* $end */
 }
 
-void _sinksource_DemoMount_onNotify(
-    sinksource_DemoMount this,
-    corto_eventMask event,
-    corto_result *object)
+void _ownership_DemoMount_onNotify(
+    ownership_DemoMount this,
+    corto_subscriberEvent *event)
 {
-/* $begin(sinksource/DemoMount/onNotify) */
-    corto_value v = corto_value_value(&event, corto_eventMask_o);
+/* $begin(ownership/DemoMount/onNotify) */
+    char *str = corto_ptr_str(&event, corto_eventMask_o, 0);
     corto_info("%s: onNotify('%s', '%s')",
-        corto_mount(this)->kind == CORTO_SINK ? "SINK" : "SOURCE",
-        corto_value_contentof(&v, "text/corto") + 3,
-        object->id);
+        corto_idof(this),
+        str + 3,
+        event->data.id);
+    corto_dealloc(str);
 
 /* $end */
 }
 
-corto_resultIter _sinksource_DemoMount_onRequest(
-    sinksource_DemoMount this,
-    corto_request *request)
+corto_resultIter _ownership_DemoMount_onQuery(
+    ownership_DemoMount this,
+    corto_query *query)
 {
-/* $begin(sinksource/DemoMount/onRequest) */
-
-    corto_info("%s: onRequest('%s')",
-        corto_mount(this)->kind == CORTO_SINK ? "SINK" : "SOURCE", request->expr);
+/* $begin(ownership/DemoMount/onQuery) */
+    corto_info("%s: onQuery(select='%s', from='%s')",
+        corto_idof(this),
+        query->select,
+        query->from);
 
     /* Create iterator for object list that outlives function scope */
     return corto_ll_iterAlloc(this->objects);
 /* $end */
 }
 
-int16_t _sinksource_DemoMount_update(
-    sinksource_DemoMount this,
+int16_t _ownership_DemoMount_update(
+    ownership_DemoMount this,
     corto_string id,
     int32_t value)
 {
-/* $begin(sinksource/DemoMount/update) */
+/* $begin(ownership/DemoMount/update) */
     corto_bool newObject = FALSE;
 
     corto_info("%s: corto_int32Update('%s', %d)",
-        corto_mount(this)->kind == CORTO_SINK ? "SINK" : "SOURCE", id, value);
+        corto_idof(this),
+        id,
+        value);
 
     /* Set owner for current thread to mount */
     corto_object prevOwner = corto_setOwner(this);
 
     /* Find or create object */
-    sinksource_DemoType o = corto_findOrDeclare(corto_mount(this)->mount, id, sinksource_DemoType_o);
+    ownership_DemoType o = corto_findOrDeclare(corto_mount(this)->mount, id, ownership_DemoType_o);
     if (!o) corto_error("%s", corto_lasterr());
     if (!corto_checkState(o, CORTO_DEFINED)) newObject = TRUE;
 
@@ -94,7 +95,5 @@ int16_t _sinksource_DemoMount_update(
     if (!newObject) corto_release(o);
 
     return result;
-error:
-    return -1;
 /* $end */
 }

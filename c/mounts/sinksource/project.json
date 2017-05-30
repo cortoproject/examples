@@ -1,9 +1,0 @@
-{
-    "id": "sinksource",
-    "type": "application",
-    "value": {
-        "description": "Example demonstrating difference between SINK and SOURCE",
-        "author": "Sander Mertens",
-        "version": "1.0.0"
-    }
-}

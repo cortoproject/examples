@@ -1,0 +1,26 @@
+[
+{
+    "id": "local",
+    "type": "ownership/DemoMount",
+    "value": {
+        "query": {
+            "from": "/data"
+        },
+        "policy": {
+            "ownership": "LOCAL_OWNER"
+        }
+    }
+},
+{
+    "id": "remote",
+    "type": "ownership/DemoMount",
+    "value": {
+        "query": {
+            "from": "/data"
+        },
+        "policy": {
+            "ownership": "REMOTE_OWNER"
+        }
+    }
+}
+]
