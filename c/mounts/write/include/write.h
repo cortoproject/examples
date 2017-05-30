@@ -1,10 +1,10 @@
-/* mount_read.h
+/* write.h
  *
  * This file contains generated code. Do not modify!
  */
 
-#ifndef MOUNT_READ_H
-#define MOUNT_READ_H
+#ifndef WRITE_H
+#define WRITE_H
 
 #include <corto/corto.h>
 #include <corto/corto.h>

@@ -1,4 +1,4 @@
-in application mount_read
+in application read
 
 class DemoMount: mount:/
     data: list{result}, private   // Demo data 

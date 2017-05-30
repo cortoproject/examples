@@ -1,6 +1,6 @@
 {
     "id": "myMount",
-    "type": "mount_read/DemoMount",
+    "type": "read/DemoMount",
     "value": {
         "contentType": "text/json",
         "query": {

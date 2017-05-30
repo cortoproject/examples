@@ -6,13 +6,13 @@
  * when the file is regenerated.
  */
 
-#include <include/mount_write.h>
+#include <include/write.h>
 
-void _mount_write_DemoMount_onNotify(
-    mount_write_DemoMount this,
+void _write_DemoMount_onNotify(
+    write_DemoMount this,
     corto_subscriberEvent *event)
 {
-/* $begin(mount_write/DemoMount/onNotify) */
+/* $begin(write/DemoMount/onNotify) */
 
     char *str = corto_ptr_str(&event->event, corto_eventMask_o, 0);
     corto_info(

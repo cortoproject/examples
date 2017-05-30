@@ -1,17 +1,17 @@
 /* $CORTO_GENERATED
  *
- * mount_write.c
+ * write.c
  *
  * Only code written between the begin and end tags will be preserved
  * when the file is regenerated.
  */
 
-#include <include/mount_write.h>
+#include <include/write.h>
 
 /* $header() */
 /* $end */
 
-int mount_writeMain(int argc, char *argv[]) {
+int writeMain(int argc, char *argv[]) {
 /* $begin(main) */
     /* Load configuration */
     corto_load("config.json", 0, NULL);

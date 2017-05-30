@@ -1,7 +1,8 @@
 
 COMPONENTS = %w(
-    mount_simple
-    sinksource
+    read
+    write
+    ownership
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"

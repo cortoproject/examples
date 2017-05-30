@@ -1,4 +1,4 @@
-in application mount_write
+in application write
 
 class DemoMount: mount:/
 
