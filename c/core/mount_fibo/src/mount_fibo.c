@@ -46,7 +46,7 @@ struct iterData {
 };
 
 void* next(corto_iter *it) {
-    struct iterData *ctx = it->udata;
+    struct iterData *ctx = it->ctx;
     char valueBuffer[21]; /* Buffer to hold result (stringified fibo(current)) */
 
     /* Compute fibonacci number */
@@ -64,7 +64,7 @@ void* next(corto_iter *it) {
 }
 
 void release(corto_iter *it) {
-    corto_dealloc(it->udata);
+    corto_dealloc(it->ctx);
 }
 
 int isnumber(char *str) {
@@ -92,7 +92,7 @@ corto_iter onQuery(corto_object mount, corto_query *query) {
     ctx->result.parent = ".";
     ctx->result.type = "uint64";
     ctx->result.leaf = TRUE;
-    result.udata = ctx;
+    result.ctx = ctx;
 
     /* Set iterator callbacks */
     result.hasNext = hasNext;

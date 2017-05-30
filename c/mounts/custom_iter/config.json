@@ -1,8 +1,8 @@
 {
     "id": "myMount",
-    "type": "read/DemoMount",
+    "type": "custom_iter/DemoMount",
     "value": {
-        "contentType": "text/json",
+        "contentType": "text/corto",
         "query": {
             "from": "/data"
         }

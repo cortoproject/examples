@@ -2,6 +2,7 @@
 COMPONENTS = %w(
     read
     write
+    custom_iter
     ownership
 )
 
