@@ -1,19 +1,11 @@
-/* $CORTO_GENERATED
- *
- * read.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/read.h>
 
-/* $header() */
+
 /* Simple demo of a mount that serves up a number of objects when queried. */
-/* $end */
 
 int readMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Load mount configuration, data is mounted under /data */
     if (corto_load("config.json", 0, NULL)) {
@@ -39,5 +31,5 @@ int readMain(int argc, char *argv[]) {
 error:
     corto_error("%s", corto_lasterr());
     return -1;
-/* $end */
 }
+

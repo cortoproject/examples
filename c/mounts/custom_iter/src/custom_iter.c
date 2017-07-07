@@ -1,14 +1,8 @@
-/* $CORTO_GENERATED
- *
- * custom_iter.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/custom_iter.h>
 
-/* $header() */
+
 /* This example demonstrates a mount with a custom iterator implementation. This
  * allows a mount maximum flexibility over how much data is loaded into memory
  * for a single request, as corto will request new results from the mount as the
@@ -16,10 +10,8 @@
  *
  * Using custom iterators is recommended practice for any mount that potentially
  * mounts large datasets. */
-/* $end */
 
 int custom_iterMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     if (corto_load("config.json", 0, NULL)) {
         goto error;
@@ -42,5 +34,5 @@ int custom_iterMain(int argc, char *argv[]) {
 error:
     corto_error("%s", corto_lasterr());
     return -1;
-/* $end */
 }
+

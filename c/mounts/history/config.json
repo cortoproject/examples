@@ -1,0 +1,13 @@
+{
+    "id": "myMount",
+    "type": "history/DemoMount",
+    "value": {
+        "query": {
+            "from": "/data"
+        },
+        "policy": {
+            "ownership": "LOCAL_OWNER",
+            "readWrite": "HISTORY_READ"
+        }
+    }
+}

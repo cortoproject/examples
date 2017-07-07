@@ -1,9 +1,9 @@
 /* This is a managed file. Do not delete this comment. */
 
-#include <include/read.h>
+#include <include/history.h>
 
-int16_t read_DemoMount_construct(
-    read_DemoMount this)
+int16_t history_DemoMount_construct(
+    history_DemoMount this)
 {
 
     /* Populate the mount with some demo data */
@@ -27,15 +27,17 @@ int16_t read_DemoMount_construct(
         TRUE                        /* is node a leaf */
     );
 
+    /* Create history samples to the two results */
+
     return corto_super_construct(this);
 }
 
-corto_resultIter read_DemoMount_onQuery(
-    read_DemoMount this,
+corto_resultIter history_DemoMount_onQueryHistorical(
+    history_DemoMount this,
     corto_query *query)
 {
 
-    /* Return iterator to the data that outlives this function scope */
-    return corto_ll_iterAlloc(this->data);
+    /* << Insert implementation >> */
+
 }
 

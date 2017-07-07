@@ -15,7 +15,7 @@ in application hierarchy
 // values):
 //
 // hierarchy/Car myCar {vin="" color=Red speed=0} :/
-//   tablescope Wheel {position=FrontLeft pressure=0}
+//   tableinstance Wheel {position=FrontLeft pressure=0}
 //   hierarchy/Engine Engine {rpm=0 temperature=0}
 //
 

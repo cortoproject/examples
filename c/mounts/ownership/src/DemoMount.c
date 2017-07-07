@@ -1,18 +1,11 @@
-/* $CORTO_GENERATED
- *
- * DemoMount.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/ownership.h>
 
-void _ownership_DemoMount_add(
+void ownership_DemoMount_add(
     ownership_DemoMount this,
     corto_string id)
 {
-/* $begin(ownership/DemoMount/add) */
     corto_resultAssign(
         corto_resultListAppendAlloc(this->objects), /* append new element */
         id,                     /* id */
@@ -22,23 +15,19 @@ void _ownership_DemoMount_add(
         (corto_word)"{5}",      /* default value */
         TRUE                    /* is node leaf (yes) */
     );
-/* $end */
 }
 
-int16_t _ownership_DemoMount_construct(
+int16_t ownership_DemoMount_construct(
     ownership_DemoMount this)
 {
-/* $begin(ownership/DemoMount/construct) */
     corto_mount_setContentType(this, "text/corto");
     return corto_mount_construct(this);
-/* $end */
 }
 
-void _ownership_DemoMount_onNotify(
+void ownership_DemoMount_onNotify(
     ownership_DemoMount this,
     corto_subscriberEvent *event)
 {
-/* $begin(ownership/DemoMount/onNotify) */
     char *str = corto_ptr_str(&event, corto_eventMask_o, 0);
     corto_info("%s: onNotify('%s', '%s')",
         corto_idof(this),
@@ -46,14 +35,12 @@ void _ownership_DemoMount_onNotify(
         event->data.id);
     corto_dealloc(str);
 
-/* $end */
 }
 
-corto_resultIter _ownership_DemoMount_onQuery(
+corto_resultIter ownership_DemoMount_onQuery(
     ownership_DemoMount this,
     corto_query *query)
 {
-/* $begin(ownership/DemoMount/onQuery) */
     corto_info("%s: onQuery(select='%s', from='%s')",
         corto_idof(this),
         query->select,
@@ -61,15 +48,13 @@ corto_resultIter _ownership_DemoMount_onQuery(
 
     /* Create iterator for object list that outlives function scope */
     return corto_ll_iterAlloc(this->objects);
-/* $end */
 }
 
-int16_t _ownership_DemoMount_update(
+int16_t ownership_DemoMount_update(
     ownership_DemoMount this,
     corto_string id,
     int32_t value)
 {
-/* $begin(ownership/DemoMount/update) */
     corto_bool newObject = FALSE;
 
     corto_info("%s: corto_int32Update('%s', %d)",
@@ -95,5 +80,5 @@ int16_t _ownership_DemoMount_update(
     if (!newObject) corto_release(o);
 
     return result;
-/* $end */
 }
+

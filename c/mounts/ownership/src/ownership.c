@@ -1,14 +1,8 @@
-/* $CORTO_GENERATED
- *
- * ownership.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/ownership.h>
 
-/* $header() */
+
 void notify(corto_subscriberEvent *e) {
     char *str = corto_ptr_str(&e->event, corto_eventMask_o, 0);
     corto_info("main: onNotify('%s', '%s'): %s",
@@ -17,10 +11,8 @@ void notify(corto_subscriberEvent *e) {
         corto_result_getText(&e->data));
     corto_dealloc(str);
 }
-/* $end */
 
 int ownershipMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* This example shows mounts with local and remote ownership.
      *
@@ -99,5 +91,5 @@ int ownershipMain(int argc, char *argv[]) {
 error:
     corto_error("%s", corto_lasterr());
     return -1;
-/* $end */
 }
+

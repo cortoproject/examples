@@ -1,18 +1,10 @@
-/* $CORTO_GENERATED
- *
- * write.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/write.h>
 
-/* $header() */
-/* $end */
+
 
 int writeMain(int argc, char *argv[]) {
-/* $begin(main) */
     /* Load configuration */
     corto_load("config.json", 0, NULL);
 
@@ -33,5 +25,5 @@ int writeMain(int argc, char *argv[]) {
      * core/objects_fwddecl example on how to do that. */
 
     return 0;
-/* $end */
 }
+

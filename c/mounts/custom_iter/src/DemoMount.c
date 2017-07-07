@@ -1,14 +1,8 @@
-/* $CORTO_GENERATED
- *
- * DemoMount.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/custom_iter.h>
 
-/* $header(custom_iter/DemoMount/onQuery) */
+
 
 /* Iterator context */
 struct iter_data {
@@ -44,12 +38,11 @@ void release(corto_iter *it) {
     struct iter_data *data = it->ctx;
     free(data);
 }
-/* $end */
-corto_resultIter _custom_iter_DemoMount_onQuery(
+
+corto_resultIter custom_iter_DemoMount_onQuery(
     custom_iter_DemoMount this,
     corto_query *query)
 {
-/* $begin(custom_iter/DemoMount/onQuery) */
     corto_iter result;
 
     /* Prepare iterator context */
@@ -71,5 +64,5 @@ corto_resultIter _custom_iter_DemoMount_onQuery(
 
     /* Return custom iterator */
     return result;
-/* $end */
 }
+

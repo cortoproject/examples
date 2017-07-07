@@ -1,0 +1,13 @@
+in application history
+
+struct HistoryRecord:/
+    result: core/result
+    samples: list{core/sample}
+
+class DemoMount: mount:/
+    data: list{HistoryRecord}, private   // Demo data 
+
+    int16 construct()
+
+    // Called whenever an application requests historical data
+    core/resultIter onQueryHistorical(core/query query) override

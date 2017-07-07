@@ -1,18 +1,11 @@
-/* $CORTO_GENERATED
- *
- * DemoMount.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/downsampling.h>
 
-void _downsampling_DemoMount_onNotify(
+void downsampling_DemoMount_onNotify(
     downsampling_DemoMount this,
     corto_subscriberEvent *event)
 {
-/* $begin(downsampling/DemoMount/onNotify) */
 
     char *str = corto_ptr_str(&event->event, corto_eventMask_o, 0);
     corto_info(
@@ -24,5 +17,5 @@ void _downsampling_DemoMount_onNotify(
         corto_result_getText(&event->data));
     corto_dealloc(str);
 
-/* $end */
 }
+
