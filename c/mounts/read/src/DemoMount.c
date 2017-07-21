@@ -14,7 +14,7 @@ int16_t read_DemoMount_construct(
         ".",                        /* parent */
         "int32",                    /* type */
         (corto_word)"10",           /* value */
-        TRUE                        /* is node a leaf */
+        CORTO_RESULT_LEAF           /* does object have children */
     );
 
     corto_resultAssign(
@@ -24,7 +24,7 @@ int16_t read_DemoMount_construct(
         ".",                        /* parent */
         "string",                   /* type */
         (corto_word)"Hello World",  /* value */
-        TRUE                        /* is node a leaf */
+        CORTO_RESULT_LEAF           /* does object have children */
     );
 
     return corto_super_construct(this);

@@ -91,7 +91,7 @@ corto_iter onQuery(corto_object mount, corto_query *query) {
     /* Set values that will be the same for every result */
     ctx->result.parent = ".";
     ctx->result.type = "uint64";
-    ctx->result.leaf = TRUE;
+    ctx->result.flags = CORTO_RESULT_LEAF;
     result.ctx = ctx;
 
     /* Set iterator callbacks */
@@ -198,6 +198,13 @@ int mount_fiboMain(int argc, char *argv[]) {
 
     }
     printf("\n");
+
+
+
+    corto_select("RED").from("dds/Circle").require("durability.kind", "PERSISTENT");
+    corto_select("GREEN").from("dds/Circle").require("durability.kind", "PERSISTENT");
+
+
 
     return 0;
 error:

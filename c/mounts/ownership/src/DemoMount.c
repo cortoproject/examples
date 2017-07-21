@@ -13,7 +13,7 @@ void ownership_DemoMount_add(
         ".",                    /* parent */
         "/ownership/DemoType", /* type */
         (corto_word)"{5}",      /* default value */
-        TRUE                    /* is node leaf (yes) */
+        CORTO_RESULT_LEAF       /* does object have children */
     );
 }
 

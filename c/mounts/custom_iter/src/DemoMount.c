@@ -54,7 +54,7 @@ corto_resultIter custom_iter_DemoMount_onQuery(
     data->result.id = data->id;
     data->result.parent = ".";
     data->result.type = "string";
-    data->result.leaf = true;
+    data->result.flags = CORTO_RESULT_LEAF;
 
     /* Prepare iterator with custom next, hasNext and release functions */
     result.ctx = data;
