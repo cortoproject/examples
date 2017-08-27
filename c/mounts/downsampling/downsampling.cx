@@ -3,4 +3,4 @@ in application downsampling
 class DemoMount: mount:/
 
     // onNotify is called whenever an app publishes data
-    void onNotify(core/subscriberEvent event) override
+    void onNotify(vstore/subscriberEvent event) override

@@ -3,4 +3,4 @@ in application custom_iter
 class DemoMount: mount:/
 
     // onQuery method that returns a custom iterator
-    core/resultIter onQuery(core/query query) override
+    vstore/resultIter onQuery(vstore/query query) override

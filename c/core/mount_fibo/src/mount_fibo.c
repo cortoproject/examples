@@ -115,7 +115,7 @@ corto_class createFiboClass(void) {
     /* Create onQuery method (called when API requests data, typically a corto_select) */
     corto_method onQueryMethod = corto_declareChild(
         FiboClass,
-        "onQuery(core/query query)",
+        "onQuery(vstore/query query)",
         corto_override_o);
     if (!onQueryMethod) {
         goto error;

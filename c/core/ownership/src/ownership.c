@@ -63,7 +63,7 @@ int ownershipMain(int argc, char *argv[]) {
         /* Create onNotify method (called when the mount receives an update) */
         corto_method onNotifyMethod = corto_declareChild(
             myMount,
-            "onNotify(core/eventMask event,core/result object)",
+            "onNotify(vstore/eventMask event,vstore/result object)",
             corto_method_o);
         if (!onNotifyMethod) {
             goto error;

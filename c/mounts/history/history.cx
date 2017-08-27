@@ -1,8 +1,8 @@
 in application history
 
 struct HistoryRecord:/
-    result: core/result
-    samples: list{core/sample}
+    result: vstore/result
+    samples: list{vstore/sample}
 
 class DemoMount: mount:/
     data: list{HistoryRecord}, private   // Demo data 
@@ -10,4 +10,4 @@ class DemoMount: mount:/
     int16 construct()
 
     // Called whenever an application requests historical data
-    core/resultIter onHistoryQuery(core/query query) override
+    vstore/resultIter onHistoryQuery(vstore/query query) override
