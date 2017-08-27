@@ -38,10 +38,10 @@ void onNotify(corto_observerEvent *e)
 {
     char buff[8];
     switch(e->event) {
-    case CORTO_ON_DECLARE: strcpy(buff, "DECLARE"); break;
-    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
-    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
-    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
+    case CORTO_DECLARE: strcpy(buff, "DECLARE"); break;
+    case CORTO_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_DELETE: strcpy(buff, "DELETE"); break;
     default: break;
     }
     corto_info("%s '%s' with value '%d'", 
@@ -54,7 +54,7 @@ int objects_fwddeclMain(int argc, char *argv[]) {
 
     /* Create an observer to make the object-creation sequence visible */
     corto_observer observer = corto_observe(
-        CORTO_ON_DECLARE|CORTO_ON_DEFINE|CORTO_ON_UPDATE|CORTO_ON_DELETE|CORTO_ON_SCOPE, root_o)
+        CORTO_DECLARE|CORTO_DEFINE|CORTO_UPDATE|CORTO_DELETE|CORTO_ON_SCOPE, root_o)
         .callback(onNotify);
 
     /* First, show creating a regular object so we can compare the sequence of

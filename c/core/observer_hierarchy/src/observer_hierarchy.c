@@ -30,11 +30,11 @@ int observer_hierarchyMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Observe notifications for children of root */
-    corto_observer onScope = corto_observe(CORTO_ON_DEFINE|CORTO_ON_SCOPE, root_o)
+    corto_observer onScope = corto_observe(CORTO_DEFINE|CORTO_ON_SCOPE, root_o)
       .callback(onNotifyScope);
 
     /* Observe notifications for tree of root */
-    corto_observer onTree = corto_observe(CORTO_ON_DEFINE|CORTO_ON_TREE, root_o)
+    corto_observer onTree = corto_observe(CORTO_DEFINE|CORTO_ON_TREE, root_o)
       .callback(onNotifyTree);
 
     /* This object will trigger the onScope and onTree */

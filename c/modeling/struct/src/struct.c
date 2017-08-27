@@ -1,19 +1,11 @@
-/* $CORTO_GENERATED
- *
- * struct.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/struct.h>
 
-/* $header() */
+
 /* Simple example that shows how to model and use a struct type. */
-/* $end */
 
 int structMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create new instance of struct type
      * 
@@ -65,5 +57,5 @@ int structMain(int argc, char *argv[]) {
     return 0;
 error:
     return -1;
-/* $end */
 }
+

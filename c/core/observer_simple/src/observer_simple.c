@@ -20,10 +20,10 @@ void onNotify(corto_observerEvent *e)
 {
     char buff[9];
     switch(e->event) {
-    case CORTO_ON_DECLARE: strcpy(buff, "DECLARE"); break;
-    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
-    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
-    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
+    case CORTO_DECLARE: strcpy(buff, "DECLARE"); break;
+    case CORTO_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_DELETE: strcpy(buff, "DELETE"); break;
     default: break;
     }
     corto_info("%s '%s'", buff, corto_idof(e->data));
@@ -35,9 +35,9 @@ int observer_simpleMain(int argc, char *argv[]) {
 
     /* Observe notifications from objects created in the root scope */
     corto_observer observer = corto_observe(
-      CORTO_ON_DEFINE| /* Create notifications */
-      CORTO_ON_UPDATE| /* Update notifications */
-      CORTO_ON_DELETE| /* Delete notifications */
+      CORTO_DEFINE| /* Create notifications */
+      CORTO_UPDATE| /* Update notifications */
+      CORTO_DELETE| /* Delete notifications */
       CORTO_ON_SCOPE,  /* All objects in the scope of the observable */
       root_o)          /* root_o is the observable */
       .callback(onNotify); /* The callback function */

@@ -37,7 +37,7 @@ int objectsMain(int argc, char *argv[]) {
     }
 
     /* Observe the object for updates */
-    corto_observer observer = corto_observe(CORTO_ON_UPDATE, i).callback(onUpdate);
+    corto_observer observer = corto_observe(CORTO_UPDATE, i).callback(onUpdate);
 
     /* Change the value of the object */
     if (!corto_updateBegin(i)) {

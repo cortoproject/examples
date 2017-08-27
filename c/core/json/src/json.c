@@ -66,7 +66,7 @@ int jsonMain(int argc, char *argv[]) {
 
     /* Update the object using corto_publish with JSON content */
     if (corto_publish(
-        CORTO_ON_UPDATE,
+        CORTO_UPDATE,
         "/p",         /* The object id */
         "Point",      /* The object type */
         "text/json",  /* The contentType */

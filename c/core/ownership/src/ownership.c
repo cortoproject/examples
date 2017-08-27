@@ -40,7 +40,7 @@
  */
 
 void onNotify(corto_mount this, corto_eventMask event, corto_result *object) {
-    if (event == CORTO_ON_UPDATE) {
+    if (event == CORTO_UPDATE) {
         corto_info("%s: received update for '%s'", 
             corto_idof(this), object->id);
     }

@@ -37,7 +37,7 @@ int debuggingMain(int argc, char *argv[]) {
 
     /* Create observer */
     corto_debug("Creating observer...");
-    corto_observer observer = corto_observe(CORTO_ON_UPDATE, i).callback(onUpdate);
+    corto_observer observer = corto_observe(CORTO_UPDATE, i).callback(onUpdate);
     if (!observer) {
         goto error;
     }

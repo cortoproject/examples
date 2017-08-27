@@ -49,7 +49,7 @@ int observer_instanceMain(int argc, char *argv[]) {
     }
 
     /* Create an observer that is associated with the instance */
-    corto_observer observer = corto_observe(CORTO_ON_UPDATE, observable)
+    corto_observer observer = corto_observe(CORTO_UPDATE, observable)
       .instance(myInstance)  /* The instance associated with the observer */
       .callback(onNotify);
 

@@ -14,7 +14,7 @@ int downsamplingMain(int argc, char *argv[]) {
 
     /* Publish a new value every 1msec */
     while (true) {
-        corto_publish(CORTO_ON_UPDATE, "data/foo", "int32", "text/corto", "10");
+        corto_publish(CORTO_UPDATE, "data/foo", "int32", "text/corto", "10");
         corto_sleep(0, 1000000);
     }
 

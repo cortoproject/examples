@@ -1,19 +1,11 @@
-/* $CORTO_GENERATED
- *
- * class.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/class.h>
 
-/* $header() */
+
 /* Enter code outside of main here. */
-/* $end */
 
 int classMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create a new dog instance. Notice that because Dog inherits from Animal,
      * the Animal/hunger member shows up in the Dog Create function. */
@@ -27,5 +19,5 @@ int classMain(int argc, char *argv[]) {
     corto_delete(lassie);
 
     return 0;
-/* $end */
 }
+

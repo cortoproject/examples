@@ -26,7 +26,7 @@ int observer_typeMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Observe notifications only for objects of the int32 type */
-    corto_observer observer = corto_observe(CORTO_ON_DEFINE|CORTO_ON_SCOPE, root_o)
+    corto_observer observer = corto_observe(CORTO_DEFINE|CORTO_ON_SCOPE, root_o)
       .type("int32")
       .callback(onNotify);
 

@@ -54,11 +54,11 @@ static stats benchmark(int observers, int n, corto_bool publish, corto_eventMask
     int i;
     for (i = 0; i < observers; i ++) {
         if (scope == CORTO_ON_SELF) {
-            observerArray[i] = corto_observe(CORTO_ON_UPDATE, parent).callback(onUpdate);
+            observerArray[i] = corto_observe(CORTO_UPDATE, parent).callback(onUpdate);
         } else if (scope == CORTO_ON_SCOPE) {
-            observerArray[i] = corto_observe(CORTO_ON_UPDATE|CORTO_ON_SCOPE, parent).callback(onUpdate);
+            observerArray[i] = corto_observe(CORTO_UPDATE|CORTO_ON_SCOPE, parent).callback(onUpdate);
         } else if (scope == CORTO_ON_TREE) {
-           observerArray[i] = corto_observe(CORTO_ON_UPDATE|CORTO_ON_TREE, parent).callback(onUpdate);
+           observerArray[i] = corto_observe(CORTO_UPDATE|CORTO_ON_TREE, parent).callback(onUpdate);
        }
     }
 
@@ -93,7 +93,7 @@ static stats benchmark(int observers, int n, corto_bool publish, corto_eventMask
             }
         } else {
             for (i = 0; i < batch; i ++) {
-                corto_publish(CORTO_ON_UPDATE, observableId, "void", "text/corto", value);
+                corto_publish(CORTO_UPDATE, observableId, "void", "text/corto", value);
             }
         }
         double t = benchmark_stop();

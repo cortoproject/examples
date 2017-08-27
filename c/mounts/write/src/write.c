@@ -9,7 +9,7 @@ int writeMain(int argc, char *argv[]) {
     corto_load("config.json", 0, NULL);
 
     /* Publish create of a virtual object (triggers DEFINE on mount) */
-    corto_publish(CORTO_ON_DEFINE, "data/foo", "int32", "text/json", "10");
+    corto_publish(CORTO_DEFINE, "data/foo", "int32", "text/json", "10");
 
     /* Create the 'data' scope in the store */
     corto_object data = corto_createChild(root_o, "data", corto_void_o);

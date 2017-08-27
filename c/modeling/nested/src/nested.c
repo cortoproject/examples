@@ -1,19 +1,11 @@
-/* $CORTO_GENERATED
- *
- * nested.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/nested.h>
 
-/* $header() */
+
 /* This example shows how to use a nested struct with an enumeration */
-/* $end */
 
 int nestedMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create two Point values on the stack */
     nested_Point
@@ -57,5 +49,5 @@ int nestedMain(int argc, char *argv[]) {
 error:
     corto_error("%s", corto_lasterr());
     return -1;
-/* $end */
 }
+

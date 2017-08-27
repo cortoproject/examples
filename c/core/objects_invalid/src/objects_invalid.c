@@ -22,11 +22,11 @@ void onNotify(corto_observerEvent *e)
 {
     char buff[11];
     switch(e->event) {
-    case CORTO_ON_DECLARE: strcpy(buff, "DECLARE"); break;
-    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
-    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
-    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
-    case CORTO_ON_INVALIDATE: strcpy(buff, "INVALIDATE"); break;
+    case CORTO_DECLARE: strcpy(buff, "DECLARE"); break;
+    case CORTO_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_DELETE: strcpy(buff, "DELETE"); break;
+    case CORTO_INVALIDATE: strcpy(buff, "INVALIDATE"); break;
     default: 
         break;
     }
@@ -53,7 +53,7 @@ int objects_invalidMain(int argc, char *argv[]) {
     printValid(o);
 
     /* Create observer to observe INVALIDATE and DEFINE events */
-    corto_observer observer = corto_observe(CORTO_ON_DEFINE|CORTO_ON_INVALIDATE, o)
+    corto_observer observer = corto_observe(CORTO_DEFINE|CORTO_INVALIDATE, o)
       .callback(onNotify);
     if (!observer) {
         goto error;

@@ -1,19 +1,11 @@
-/* $CORTO_GENERATED
- *
- * collection.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
+/* This is a managed file. Do not delete this comment. */
 
 #include <include/collection.h>
 
-/* $header() */
+
 /* This example shows how to use simple corto collections */
-/* $end */
 
 int collectionMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create new struct instance on stack */
     collection_MyCollections value;
@@ -48,5 +40,5 @@ int collectionMain(int argc, char *argv[]) {
     corto_ptr_deinit(&value, collection_MyCollections_o);
 
     return 0;
-/* $end */
 }
+

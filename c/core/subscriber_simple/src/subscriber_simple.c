@@ -27,9 +27,9 @@ void onNotify(corto_subscriberEvent *e)
 {
     char buff[9];
     switch(e->event) {
-    case CORTO_ON_DEFINE: strcpy(buff, "DEFINE"); break;
-    case CORTO_ON_UPDATE: strcpy(buff, "UPDATE"); break;
-    case CORTO_ON_DELETE: strcpy(buff, "DELETE"); break;
+    case CORTO_DEFINE: strcpy(buff, "DEFINE"); break;
+    case CORTO_UPDATE: strcpy(buff, "UPDATE"); break;
+    case CORTO_DELETE: strcpy(buff, "DELETE"); break;
     default: break;
     }
     corto_info("%s '%s' (parent = '%s', type = '%s')", 
@@ -76,17 +76,17 @@ int subscriber_simpleMain(int argc, char *argv[]) {
       * object store. */
 
      /* Publish a DEFINE for an object */
-     if (corto_publish(CORTO_ON_DEFINE, "/foo/zoo", "int32", "text/corto", "10")) {
+     if (corto_publish(CORTO_DEFINE, "/foo/zoo", "int32", "text/corto", "10")) {
         goto error;
      }
 
      /* Publish an UPDATE for an object */
-     if (corto_publish(CORTO_ON_UPDATE, "/foo/zoo", "int32", "text/corto", "20")) {
+     if (corto_publish(CORTO_UPDATE, "/foo/zoo", "int32", "text/corto", "20")) {
         goto error;
      }
 
      /* Publish a DELETE for an object */
-     if (corto_publish(CORTO_ON_DELETE, "/foo/zoo", "int32", NULL, NULL)) {
+     if (corto_publish(CORTO_DELETE, "/foo/zoo", "int32", NULL, NULL)) {
         goto error;
      }
 
