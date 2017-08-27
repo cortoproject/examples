@@ -1,7 +1,0 @@
-{
-    "id": "admin",
-    "type": "application",
-    "value": {
-        "dependencies": ["corto/admin"]
-    }
-}

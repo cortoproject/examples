@@ -41,7 +41,7 @@ int structMain(int argc, char *argv[]) {
     p = corto_declare(struct_Point_o);
 
     /* Check if object is defined, in case multiple threads are creating it */
-    if (!corto_checkState(p, CORTO_DEFINED)) {
+    if (!corto_checkState(p, CORTO_VALID)) {
         p->x = 10;
         p->y = 20;
         if (corto_define(p)) {

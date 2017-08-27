@@ -1,7 +1,0 @@
-{
-    "id": "rest",
-    "type": "application",
-    "value": {
-        "dependencies": ["corto/rest", "corto/web/server"]
-    }
-}

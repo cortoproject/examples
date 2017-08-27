@@ -10,4 +10,4 @@ class DemoMount: mount:/
     int16 construct()
 
     // Called whenever an application requests historical data
-    core/resultIter onQueryHistorical(core/query query) override
+    core/resultIter onHistoryQuery(core/query query) override

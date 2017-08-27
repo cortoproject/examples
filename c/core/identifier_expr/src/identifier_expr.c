@@ -30,32 +30,32 @@ int identifier_exprMain(int argc, char *argv[]) {
 /* $begin(main) */
 
     /* Simple expression */
-    corto_info("match('fo?', 'foo') = %d", corto_match("fo?", "foo"));
+    corto_info("match('fo?', 'foo') = %d", corto_idmatch("fo?", "foo"));
 
     /* NOT expression */
-    corto_info("match('^foo', 'foo') = %d", corto_match("^foo", "foo"));
+    corto_info("match('^foo', 'foo') = %d", corto_idmatch("^foo", "foo"));
 
     /* OR expression */
-    corto_info("match('foo|bar', 'bar') = %d", corto_match("foo|bar", "bar"));
+    corto_info("match('foo|bar', 'bar') = %d", corto_idmatch("foo|bar", "bar"));
 
     /* AND expression */
-    corto_info("match('*fo*&*ba*', 'foobar') = %d", corto_match("*fo*&*ba*", "foobar"));
+    corto_info("match('*fo*&*ba*', 'foobar') = %d", corto_idmatch("*fo*&*ba*", "foobar"));
 
     /* Scope expression */
-    corto_info("match('foo/*', 'foo/bar') = %d", corto_match("foo/*", "foo/bar"));
+    corto_info("match('foo/*', 'foo/bar') = %d", corto_idmatch("foo/*", "foo/bar"));
 
     /* Returns FALSE, as the number of elements must match exactly */
-    corto_info("match('foo/*', 'foo/bar/hello') = %d", corto_match("foo/*", "foo/bar/hello"));
+    corto_info("match('foo/*', 'foo/bar/hello') = %d", corto_idmatch("foo/*", "foo/bar/hello"));
 
     /* Recursive scope expression */
-    corto_info("match('foo//*', 'foo/bar/hello/world') = %d", corto_match("foo//*", "foo/bar/hello/world"));
+    corto_info("match('foo//*', 'foo/bar/hello/world') = %d", corto_idmatch("foo//*", "foo/bar/hello/world"));
 
     /* Use multiple expressions in single string */
-    corto_info("match('foo,//bar', 'hello/bar') = %d", corto_match("foo,//bar", "hello/bar"));
-    corto_info("match('foo,//bar', 'foo') = %d", corto_match("foo,//bar", "foo"));
+    corto_info("match('foo,//bar', 'hello/bar') = %d", corto_idmatch("foo,//bar", "hello/bar"));
+    corto_info("match('foo,//bar', 'foo') = %d", corto_idmatch("foo,//bar", "foo"));
 
     /* Show how to use a compiled expression */
-    corto_matchProgram program = corto_matchProgram_compile("//^foo|bar", TRUE, TRUE);
+    corto_idmatch_program program = corto_idmatch_compile("//^foo|bar", TRUE, TRUE);
 
     /* Compare performance of a program vs. just corto_match */
     corto_time start, stop;
@@ -64,8 +64,8 @@ int identifier_exprMain(int argc, char *argv[]) {
     /* Measure corto_match */
     int i;
     for (i = 0; i < 100000; i++) {
-        corto_match("//^foo|bar", "/hello/world/zoo"); // matching value
-        corto_match("//^foo|bar", "/hello/world/bar"); // non-matching value
+        corto_idmatch("//^foo|bar", "/hello/world/zoo"); // matching value
+        corto_idmatch("//^foo|bar", "/hello/world/bar"); // non-matching value
     }
     corto_timeGet(&stop);
     stop = corto_timeSub(stop, start);
@@ -74,15 +74,15 @@ int identifier_exprMain(int argc, char *argv[]) {
     /* Measure compiled program */
     corto_timeGet(&start);
     for (i = 0; i < 100000; i++) {
-        corto_matchProgram_run(program, "/hello/world/zoo"); // matching value
-        corto_matchProgram_run(program, "/hello/world/bar"); // non-matching value
+        corto_idmatch_run(program, "/hello/world/zoo"); // matching value
+        corto_idmatch_run(program, "/hello/world/bar"); // non-matching value
     }
     corto_timeGet(&stop);
     stop = corto_timeSub(stop, start);
     corto_info("matchProgram_run took %.2f ms (1 million iterations)", corto_timeToDouble(stop) * 1000);
 
     /* Cleanup resources */
-    corto_matchProgram_free(program);
+    corto_idmatch_free(program);
 
     return 0;
 /* $end */

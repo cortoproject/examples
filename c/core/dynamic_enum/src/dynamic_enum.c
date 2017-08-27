@@ -52,7 +52,7 @@ int dynamic_enumMain(int argc, char *argv[]) {
     if (!Purple) {
         goto error;
     }
-    if (!corto_checkState(Purple, CORTO_DEFINED)) {
+    if (!corto_checkState(Purple, CORTO_VALID)) {
         /* Silly example to show how to specify a custom constant value */
         *Purple = 10;
         if (corto_define(Purple)) {

@@ -1,9 +1,0 @@
-
-COMPONENTS = %w(
-  admin
-  rest
-  static
-  sys_rest
-)
-
-require "#{ENV['CORTO_BUILD']}/forward"

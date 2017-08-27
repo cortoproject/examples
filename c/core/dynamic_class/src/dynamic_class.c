@@ -60,7 +60,7 @@ int dynamic_classMain(int argc, char *argv[]) {
     if (!x) {
         goto error;
     }
-    if (!corto_checkState(x, CORTO_DEFINED)) {
+    if (!corto_checkState(x, CORTO_VALID)) {
         corto_ptr_setref(&x->type, corto_int32_o);
         if (corto_define(x)) {
             goto error;
@@ -72,7 +72,7 @@ int dynamic_classMain(int argc, char *argv[]) {
     if (!y) {
         goto error;
     }
-    if (!corto_checkState(y, CORTO_DEFINED)) {
+    if (!corto_checkState(y, CORTO_VALID)) {
         corto_ptr_setref(&y->type, corto_int32_o);
         if (corto_define(y)) {
             goto error;
@@ -90,7 +90,7 @@ int dynamic_classMain(int argc, char *argv[]) {
     if (!construct) {
         goto error;
     }
-    if (!corto_checkState(construct, CORTO_DEFINED)) {
+    if (!corto_checkState(construct, CORTO_VALID)) {
         /* Constructors in corto must return a zero (ok) or nonzero (nok)
          * returncode to indicate whether construction was successful. If the
          * constructor fails, the object will be marked invalid after which the
@@ -114,7 +114,7 @@ int dynamic_classMain(int argc, char *argv[]) {
     if (!destruct) {
         goto error;
     }
-    if (!corto_checkState(destruct, CORTO_DEFINED)) {
+    if (!corto_checkState(destruct, CORTO_VALID)) {
         /* Bind the object with a C function */
         corto_function(destruct)->kind = CORTO_PROCEDURE_CDECL;
         corto_function(destruct)->fptr = (corto_word)Point_destruct;
@@ -133,7 +133,7 @@ int dynamic_classMain(int argc, char *argv[]) {
     if (!add) {
         goto error;
     }
-    if (!corto_checkState(add, CORTO_DEFINED)) {
+    if (!corto_checkState(add, CORTO_VALID)) {
         /* Bind the object with a C function */
         corto_function(add)->kind = CORTO_PROCEDURE_CDECL;
         corto_function(add)->fptr = (corto_word)Point_add;
@@ -158,7 +158,7 @@ int dynamic_classMain(int argc, char *argv[]) {
     if (!p2) {
         goto error;
     }
-    if (!corto_checkState(p2, CORTO_DEFINED)) {
+    if (!corto_checkState(p2, CORTO_VALID)) {
         p2->x = 10;
         p2->y = 20;
 

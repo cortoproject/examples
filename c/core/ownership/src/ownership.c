@@ -56,7 +56,7 @@ int ownershipMain(int argc, char *argv[]) {
         goto error;
     }
 
-    if (!corto_checkState(myMount, CORTO_DEFINED)) {
+    if (!corto_checkState(myMount, CORTO_VALID)) {
         /* Inherit from the corto mount class */
         corto_ptr_setref(&corto_interface(myMount)->base, corto_mount_o);
 

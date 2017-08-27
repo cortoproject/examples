@@ -64,19 +64,19 @@ int ownershipMain(int argc, char *argv[]) {
 
     /* Update foo from local mount (sets actual) */
     printf("\n");
-    ownership_DemoMount_update(local, "foo", 20);
+    ownership_DemoMount_updateObject(local, "foo", 20);
 
     /* Update foo from remote mount (sets target) */
     printf("\n");
-    ownership_DemoMount_update(remote, "foo", 30);
+    ownership_DemoMount_updateObject(remote, "foo", 30);
 
     /* Update bar from remote (sets actual) */
     printf("\n");
-    ownership_DemoMount_update(remote, "bar", 10);
+    ownership_DemoMount_updateObject(remote, "bar", 10);
 
     /* Update bar from local (sets target) */
     printf("\n");
-    ownership_DemoMount_update(local, "bar", 20);
+    ownership_DemoMount_updateObject(local, "bar", 20);
 
     /* Update bar from main (sets target) */
     printf("\n");

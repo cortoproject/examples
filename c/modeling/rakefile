@@ -5,6 +5,7 @@ COMPONENTS = %w(
     nested
     class
     collection
+    lifecycle
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"

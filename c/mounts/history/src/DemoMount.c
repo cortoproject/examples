@@ -32,7 +32,7 @@ int16_t history_DemoMount_construct(
     return corto_super_construct(this);
 }
 
-corto_resultIter history_DemoMount_onQueryHistorical(
+corto_resultIter history_DemoMount_onHistoryQuery(
     history_DemoMount this,
     corto_query *query)
 {

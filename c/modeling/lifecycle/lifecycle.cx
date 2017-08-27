@@ -1,0 +1,12 @@
+in application lifecycle
+
+class Foo:/
+    value: int32
+    int16 init()
+    void deinit()
+    int16 construct()
+    void define()
+    int16 validate()
+    void update()
+    void destruct()
+    void delete()

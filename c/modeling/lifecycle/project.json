@@ -1,0 +1,8 @@
+{
+    "id": "lifecycle",
+    "type": "application",
+    "value": {
+        "description": "Project that demonstrates lifecycle hooks",
+        "language": "c"
+    }
+}

@@ -199,13 +199,6 @@ int mount_fiboMain(int argc, char *argv[]) {
     }
     printf("\n");
 
-
-
-    corto_select("RED").from("dds/Circle").require("durability.kind", "PERSISTENT");
-    corto_select("GREEN").from("dds/Circle").require("durability.kind", "PERSISTENT");
-
-
-
     return 0;
 error:
     corto_error("error: %s", corto_lasterr());

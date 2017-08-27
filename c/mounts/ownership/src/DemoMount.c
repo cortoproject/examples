@@ -50,7 +50,7 @@ corto_resultIter ownership_DemoMount_onQuery(
     return corto_ll_iterAlloc(this->objects);
 }
 
-int16_t ownership_DemoMount_update(
+int16_t ownership_DemoMount_updateObject(
     ownership_DemoMount this,
     corto_string id,
     int32_t value)
@@ -68,7 +68,7 @@ int16_t ownership_DemoMount_update(
     /* Find or create object */
     ownership_DemoType o = corto_findOrDeclare(corto_mount(this)->mount, id, ownership_DemoType_o);
     if (!o) corto_error("%s", corto_lasterr());
-    if (!corto_checkState(o, CORTO_DEFINED)) newObject = TRUE;
+    if (!corto_checkState(o, CORTO_VALID)) newObject = TRUE;
 
     /* Update object, set target or actual depending on ownership */
     corto_int32 result = corto_int32Update(o, value);

@@ -92,7 +92,7 @@ int objects_invalid_constructorMain(int argc, char *argv[]) {
     corto_info("object is %svalid",
       corto_checkState(instance, CORTO_VALID) ? "" : "not ");
 
-    if (!corto_checkState(instance, CORTO_DEFINED)) {
+    if (!corto_checkState(instance, CORTO_VALID)) {
         /* Try again to validate the object, this time with valid data */
         *(int32_t*)CORTO_OFFSET(instance, myMember->offset) = 0;
 

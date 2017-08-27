@@ -94,7 +94,7 @@ int objects_fwddeclMain(int argc, char *argv[]) {
      * This is the idiomatic, and only safe(!) way to define an object in a multi 
      * threaded application.
      */
-    if (!corto_checkState(fwddecl, CORTO_DEFINED)) {
+    if (!corto_checkState(fwddecl, CORTO_VALID)) {
         *fwddecl = 10;
 
         /* Now that the value is set, we can define the object. The observer
