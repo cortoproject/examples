@@ -10,7 +10,7 @@ void downsampling_DemoMount_onNotify(
     char *str = corto_ptr_str(&event->event, corto_eventMask_o, 0);
     corto_info(
         "'%s' received for '%s' from '%s' with type '%s' and value %s",
-        str + 3 /* Strip ON_ */,
+        str,
         event->data.id,
         event->data.parent,
         event->data.type,

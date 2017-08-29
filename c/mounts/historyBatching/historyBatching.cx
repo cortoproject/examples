@@ -1,0 +1,6 @@
+in application historyBatching
+
+class DemoMount: mount:/
+
+    // onBatchNotify is called every 'policy.sampleRate' interval
+    void onHistoryBatchNotify(iterator{vstore/subscriberEvent} events) override

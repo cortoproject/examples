@@ -1,0 +1,14 @@
+{
+    "id": "myMount",
+    "type": "historyBatching/DemoMount",
+    "value": {
+        "contentType": "text/json",
+        "query": {
+            "from": "/data"
+        },
+        "policy": {
+            "sampleRate": 0.5,
+            "queue.max": 1000
+        }
+    }
+}

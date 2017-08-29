@@ -1,0 +1,6 @@
+in application batching
+
+class DemoMount: mount:/
+
+    // onBatchNotify is called every 'policy.sampleRate' interval
+    void onBatchNotify(iterator{vstore/subscriberEvent} events) override

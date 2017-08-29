@@ -6,6 +6,8 @@ COMPONENTS = %w(
     ownership
     downsampling
     history
+    batching
+    historyBatching
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"
