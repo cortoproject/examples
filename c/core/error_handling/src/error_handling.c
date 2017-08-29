@@ -1,15 +1,7 @@
-/* $CORTO_GENERATED
- *
- * error_handling.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/error_handling.h>
 
-/* $header() */
-/* error_handling
+/** error_handling
  *
  * This example shows how basic usage of the error reporting functions in corto.
  */
@@ -26,10 +18,8 @@ corto_int16 dummy_function(int val) {
 error:
     return -1; /* nonzero indicates error */
 }
-/* $end */
 
 int error_handlingMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Set a verbosity level. Available levels are:
      * DEBUG, TRACE, OK, INFO, WARNING, ERROR, CRITICAL */
@@ -70,5 +60,4 @@ error:
       corto_lasterr()); /* corto_lasterr has the last error for this thread */
 
     return -1;
-/* $end */
 }

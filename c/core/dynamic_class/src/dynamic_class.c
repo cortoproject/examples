@@ -1,15 +1,6 @@
-/* $CORTO_GENERATED
- *
- * dynamic_class.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
-
 #include <include/dynamic_class.h>
 
-/* $header() */
-/* dynamic_class
+/** dynamic_class
  *
  * This example shows how to dynamically create a new class type. A class is
  * very similar to a struct, except that it is considered a reference type. This
@@ -45,10 +36,8 @@ void Point_add(Point_t *this, Point_t *p) {
     this->x += p->x;
     this->y += p->y;
 }
-/* $end */
 
 int dynamic_classMain(int argc, char *argv[]) {
-/* $begin(main) */
     /* Create a new class */
     corto_class Point = corto_declareChild(root_o, "Point", corto_class_o);
     if (!Point) {
@@ -184,5 +173,4 @@ int dynamic_classMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

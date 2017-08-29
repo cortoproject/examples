@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * observer_hierarchy.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/observer_hierarchy.h>
 
-/* $header() */
 /* observer_hierarchy
  *
  * This example shows how to create observers that listen for notifications on a
@@ -24,10 +16,8 @@ void onNotifyTree(corto_observerEvent *e)
 {
     corto_info("onNotifyTree: trigger for '%s'", corto_fullpath(NULL, e->data));
 }
-/* $end */
 
 int observer_hierarchyMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Observe notifications for children of root */
     corto_observer onScope = corto_observe(CORTO_DEFINE|CORTO_ON_SCOPE, root_o)
@@ -62,5 +52,4 @@ int observer_hierarchyMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

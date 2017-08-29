@@ -1,22 +1,11 @@
-/* $CORTO_GENERATED
- *
- * dynamic_enum.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
-
 #include <include/dynamic_enum.h>
 
-/* $header() */
-/* dynamic_enum
+/** dynamic_enum
  *
  * This example shows how to dynamically create a new enum type.
  */
-/* $end */
 
 int dynamic_enumMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create a new enum */
     corto_struct Color = corto_declareChild(root_o, "Color", corto_enum_o);
@@ -74,5 +63,4 @@ int dynamic_enumMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

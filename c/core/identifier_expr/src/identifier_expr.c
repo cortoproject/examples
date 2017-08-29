@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * identifier_expr.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/identifier_expr.h>
 
-/* $header() */
 /* identifier_expr
  *
  * This example shows how to use the corto_match API. This API is used to match
@@ -24,10 +16,8 @@
  * from the matched set (^) AND and OR operations (&, |) and the ability to
  * specify multiple expressions in one string (,).
  */
-/* $end */
 
 int identifier_exprMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Simple expression */
     corto_info("match('fo?', 'foo') = %d", corto_idmatch("fo?", "foo"));
@@ -85,5 +75,4 @@ int identifier_exprMain(int argc, char *argv[]) {
     corto_idmatch_free(program);
 
     return 0;
-/* $end */
 }

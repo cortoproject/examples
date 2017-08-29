@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * subscriber_simple.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/subscriber_simple.h>
 
-/* $header() */
 /* subscriber_simple
  *
  * This example shows basic usage corto_subscribe to to subscribe for create,
@@ -35,10 +27,8 @@ void onNotify(corto_subscriberEvent *e)
     corto_info("%s '%s' (parent = '%s', type = '%s')", 
         buff, e->data.id, e->data.parent, e->data.type);
 }
-/* $end */
 
 int subscriber_simpleMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create a subscriber that listens to create, update and delete events for
      * all objects in the 'foo' scope. */
@@ -94,5 +84,4 @@ int subscriber_simpleMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

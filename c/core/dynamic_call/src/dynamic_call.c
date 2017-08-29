@@ -1,25 +1,14 @@
-/* $CORTO_GENERATED
- *
- * dynamic_call.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
-
 #include <include/dynamic_call.h>
 
-/* $header() */
-/* dynamic_call
+/** dynamic_call
  *
  * This example shows how to use corto_call to dynamically call corto functions.
  */
 int32_t add(int32_t a, int32_t b) {
     return a + b;
 }
-/* $end */
 
 int dynamic_callMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create a function object in Corto, assign it with a C function */
     corto_function f = corto_declareChild(root_o, "add(int32 a,int32 b)", corto_function_o);
@@ -45,5 +34,4 @@ int dynamic_callMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

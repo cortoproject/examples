@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * objects_fwddecl.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/objects_fwddecl.h>
 
-/* $header() */
 /* objects_fwddecl
  *
  * This example shows basic usage of core API functions to forward declare
@@ -47,10 +39,8 @@ void onNotify(corto_observerEvent *e)
     corto_info("%s '%s' with value '%d'", 
         buff, corto_idof(e->data), *(corto_int32*)e->data);
 }
-/* $end */
 
 int objects_fwddeclMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create an observer to make the object-creation sequence visible */
     corto_observer observer = corto_observe(
@@ -127,5 +117,4 @@ int objects_fwddeclMain(int argc, char *argv[]) {
     return 0;
 error:
     return -1;
-/* $end */
 }

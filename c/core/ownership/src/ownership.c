@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * ownership.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/ownership.h>
 
-/* $header() */
 /* ownership
  *
  * Ownership is a simple mechanism where each object has an 'owner', which
@@ -45,10 +37,8 @@ void onNotify(corto_mount this, corto_eventMask event, corto_result *object) {
             corto_idof(this), object->id);
     }
 }
-/* $end */
 
 int ownershipMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create a mount class */
     corto_class myMount = corto_declareChild(root_o, "MyMount", corto_class_o);
@@ -175,5 +165,4 @@ int ownershipMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

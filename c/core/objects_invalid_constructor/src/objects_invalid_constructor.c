@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * objects_invalid_constructor.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/objects_invalid_constructor.h>
 
-/* $header() */
 /* objects_invalid_constructor
  *
  * This example shows advanced usage of creating a class with a constructor that
@@ -31,10 +23,8 @@ corto_int16 onConstruct(corto_object this) {
     corto_info("Constructor called, myMember = %d", value);
     return value;
 }
-/* $end */
 
 int objects_invalid_constructorMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Forward declare a class */
     corto_class myClass = corto_declareChild(root_o, "MyClass", corto_class_o);
@@ -111,5 +101,4 @@ int objects_invalid_constructorMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

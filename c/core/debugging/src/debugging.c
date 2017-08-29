@@ -1,15 +1,7 @@
-/* $CORTO_GENERATED
- *
- * debugging.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/debugging.h>
 
-/* $header() */
-/* dynamic_call
+/** dynamic_call
  *
  * This example shows how to enable debugging information. The example will
  * perform a few actions to show what kind of information is logged to the
@@ -20,10 +12,8 @@ void onUpdate(corto_observerEvent *e)
 {
     corto_info("update received for '%s'", corto_idof(e->data));
 }
-/* $end */
 
 int debuggingMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* This enables logging of debugging information */
     corto_verbosity(CORTO_DEBUG);
@@ -61,5 +51,4 @@ int debuggingMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }

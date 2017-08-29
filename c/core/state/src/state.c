@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * state.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/state.h>
 
-/* $header() */
 /* state
  *
  * This example shows how an object state changes while it goes through
@@ -22,10 +14,7 @@ void printState(corto_object o) {
     corto_dealloc(state_str);
 }
 
-/* $end */
-
 int stateMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Declare a signed integer object in the global object hierarchy */
     int32_t *i = corto_declareChild(root_o, "i", corto_int32_o);
@@ -73,5 +62,4 @@ int stateMain(int argc, char *argv[]) {
 error:
     corto_error("%s", corto_lasterr());
     return -1;
-/* $end */
 }

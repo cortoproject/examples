@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * walk.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/walk.h>
 
-/* $header() */
 /* This example shows how to use the corto_walk API to dynamically walk the
  * value of a corto object.
  */
@@ -156,10 +148,7 @@ error:
     return -1;
 }
 
-/* $end */
-
 int walkMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Create types for our object */
     if (createTypes()) {
@@ -208,5 +197,4 @@ int walkMain(int argc, char *argv[]) {
 error:
     corto_error("%s", corto_lasterr());
     return -1;
-/* $end */
 }

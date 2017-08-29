@@ -1,15 +1,7 @@
-/* $CORTO_GENERATED
- *
- * attributes.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/attributes.h>
 
-/* $header() */
-/* attributes
+/** attributes
  *
  * Attributes are specified at object creation, and specify what the capabilities
  * of an object will be. By limiting the amount of attributes, you can reduce
@@ -31,10 +23,8 @@ void printAttr(corto_object o) {
     if (corto_attrof(o) == 0) strcat(buff, "none");
     corto_info("attributes of '%s': '%s'", corto_fullpath(NULL, o), buff);
 }
-/* $end */
 
 int attributesMain(int argc, char *argv[]) {
-/* $begin(main) */
 
     /* Attributes are set per thread. All objects created in a thread will be
      * created with the configured attributes specific to that thread. */
@@ -58,5 +48,4 @@ int attributesMain(int argc, char *argv[]) {
     corto_delete(j);
 
     return 0;
-/* $end */
 }

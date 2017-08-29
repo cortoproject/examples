@@ -1,14 +1,6 @@
-/* $CORTO_GENERATED
- *
- * mount_fibo.c
- *
- * Only code written between the begin and end tags will be preserved
- * when the file is regenerated.
- */
 
 #include <include/mount_fibo.h>
 
-/* $header() */
 /* mount_fibo
  *
  * This example shows how to create a connector that mounts the fibonacci sequence.
@@ -156,10 +148,8 @@ corto_mount createMountInstance(corto_class mountClass) {
 error:
     return NULL;
 }
-/* $end */
 
 int mount_fiboMain(int argc, char *argv[]) {
-/* $begin(main) */
     /* Create class that mounts fibonacci numbers */
     corto_class FiboClass = createFiboClass();
     if (!FiboClass) {
@@ -203,5 +193,4 @@ int mount_fiboMain(int argc, char *argv[]) {
 error:
     corto_error("error: %s", corto_lasterr());
     return -1;
-/* $end */
 }
