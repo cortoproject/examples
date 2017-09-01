@@ -67,10 +67,10 @@ int jsonMain(int argc, char *argv[]) {
 
     /* Just because we can, change the values on the p object, and show that it
      * is also serialized to JSON when delivered to the subscriber */
-    if (!corto_updateBegin(p)) {
+    if (!corto_update_begin(p)) {
         *(corto_int32*)CORTO_OFFSET(p, x->offset) = 20;
         *(corto_int32*)CORTO_OFFSET(p, y->offset) = 30;
-        if (corto_updateEnd(p)) {
+        if (corto_update_end(p)) {
             goto error;
         }
     } else {

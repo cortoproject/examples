@@ -44,10 +44,10 @@ int structMain(int argc, char *argv[]) {
     }
 
     /* Send update notification for new value */
-    if (!corto_updateBegin(p)) {
+    if (!corto_update_begin(p)) {
         p->x = 20;
         p->y = 30;
-        if (corto_updateEnd(p)) goto error;
+        if (corto_update_end(p)) goto error;
     } else {
         goto error;
     }

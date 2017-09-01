@@ -7,8 +7,7 @@
             "from": "/data"
         },
         "policy": {
-            "sampleRate": 0.5,
-            "queue.max": 1000
+            "sampleRate": 1
         }
     }
 }

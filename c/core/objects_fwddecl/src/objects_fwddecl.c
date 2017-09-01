@@ -55,9 +55,9 @@ int objects_fwddeclMain(int argc, char *argv[]) {
     }
 
     /* Update regular object with new value */
-    if (!corto_updateBegin(regular)) {
+    if (!corto_update_begin(regular)) {
         *regular = 10;
-        if (corto_updateEnd(regular)) {
+        if (corto_update_end(regular)) {
             goto error;
         }
     } else {
@@ -95,9 +95,9 @@ int objects_fwddeclMain(int argc, char *argv[]) {
     }
 
     /* Updating the forward declared object works exactly the same */
-    if (!corto_updateBegin(fwddecl)) {
+    if (!corto_update_begin(fwddecl)) {
         *fwddecl = 20;
-        if (corto_updateEnd(fwddecl)) {
+        if (corto_update_end(fwddecl)) {
             goto error;
         }
     } else {

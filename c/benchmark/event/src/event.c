@@ -87,8 +87,8 @@ static stats benchmark(int observers, int n, corto_bool publish, corto_eventMask
                 }
             } else {
                 for (i = 0; i < batch; i ++) {
-                    corto_updateBegin(observable);
-                    corto_updateEnd(observable);
+                    corto_update_begin(observable);
+                    corto_update_end(observable);
                 }
             }
         } else {

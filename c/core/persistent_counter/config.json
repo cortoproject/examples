@@ -1,0 +1,9 @@
+{
+    "id": "config/filestore",
+    "type": "driver/mnt/filestore/mount",
+    "value": {
+        "storedir": "data",
+        "query.from": "data",
+        "policy.ownership": "local_owner"
+    }
+}

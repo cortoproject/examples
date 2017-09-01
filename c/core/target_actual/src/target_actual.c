@@ -48,10 +48,10 @@ int target_actualMain(int argc, char *argv[]) {
     /* Update temperature with new target. Had the object not been of a target
      * type this would not have been possible because the object is owned by
      * the mount, not the application. */
-    if (!corto_updateBegin(dial)) {
+    if (!corto_update_begin(dial)) {
         /* A well behaving app should only set target */
         dial->target = 60;
-        if (corto_updateEnd(dial)) {
+        if (corto_update_end(dial)) {
             goto error;
         }
     } else {
@@ -65,11 +65,11 @@ int target_actualMain(int argc, char *argv[]) {
     /* Another (safe) way of assigning target members is by deserializing a value
      * into the object. The deserializer will set either target or actual depending
      * on the context, but never both. */
-    if (!corto_updateBegin(dial)) {
+    if (!corto_update_begin(dial)) {
 
         /* This code only sets 'target' and discards 'actual' */
         corto_fromcontent(dial, "text/corto", "{target=10, actual=20}");
-        if (corto_updateEnd(dial)) {
+        if (corto_update_end(dial)) {
            goto error;
         }
     } else {
@@ -78,11 +78,11 @@ int target_actualMain(int argc, char *argv[]) {
 
     /* If the mount is set as owner, the 'actual' member will be set */
     prev = corto_setOwner(m);
-    if (!corto_updateBegin(dial)) {
+    if (!corto_update_begin(dial)) {
 
         /* This code only sets 'actual' and discards 'target' */
         corto_fromcontent(dial, "text/corto", "{target=30, actual=40}");
-        if (corto_updateEnd(dial)) {
+        if (corto_update_end(dial)) {
            goto error;
         }
     } else {

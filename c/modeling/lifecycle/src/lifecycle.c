@@ -32,11 +32,11 @@ int lifecycleMain(int argc, char *argv[]) {
 
     /* Begin update */
     corto_info("function: 'updateBegin'");    
-    if (!corto_updateBegin(instance)) {
+    if (!corto_update_begin(instance)) {
         instance->value = 20;
     
         corto_info("function: 'updateEnd'");
-        if (corto_updateEnd(instance)) {
+        if (corto_update_end(instance)) {
             goto error;
         }
     } else {

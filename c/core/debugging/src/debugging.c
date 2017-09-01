@@ -33,9 +33,9 @@ int debuggingMain(int argc, char *argv[]) {
     }
 
     /* Notify observer- will log debugging information */
-    if (!corto_updateBegin(i)) {
+    if (!corto_update_begin(i)) {
         *i = 10;
-        if (corto_updateEnd(i)) {
+        if (corto_update_end(i)) {
             goto error;
         }
     } else {

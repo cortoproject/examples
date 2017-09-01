@@ -30,9 +30,9 @@ int objectsMain(int argc, char *argv[]) {
     corto_observer observer = corto_observe(CORTO_UPDATE, i).callback(onUpdate);
 
     /* Change the value of the object */
-    if (!corto_updateBegin(i)) {
+    if (!corto_update_begin(i)) {
         *i = 10;
-        if (corto_updateEnd(i)) {
+        if (corto_update_end(i)) {
             goto error;
         }
     } else {

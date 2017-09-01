@@ -31,9 +31,9 @@ int stateMain(int argc, char *argv[]) {
     printState(i);
 
     /* Change the value of the object */
-    if (!corto_updateBegin(i)) {
+    if (!corto_update_begin(i)) {
         *i = 10;
-        if (corto_updateEnd(i)) {
+        if (corto_update_end(i)) {
             goto error;
         }
     } else {
