@@ -22,7 +22,7 @@ void historyBatching_DemoMount_onHistoryBatchNotify(
             e->data.parent,
             e->data.type,
             corto_result_getText(&e->data));
-        //corto_dealloc(str);
+        corto_dealloc(str);
         count ++;
     }
     corto_info("%s: << batch end (%d samples)", corto_idof(this), count);
