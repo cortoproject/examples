@@ -7,24 +7,13 @@ int historyBatchingMain(int argc, char *argv[]) {
         goto error;
     }
 
-    /* Publish a new value every 1msec */
-    int i = 0;
     char value[20];
+    int i = 0;
 
-    corto_time start, stop;
-
-    corto_timeGet(&start);
-
-    while (i < 4000000) {
+    while (true) {
         sprintf(value, "%d", i ++);
         corto_publish(CORTO_UPDATE, "data/foo", "int32", "text/json", value);
     }
-
-    corto_timeGet(&stop);
-    stop = corto_timeSub(stop, start);
-    printf(" publish: %f\n", corto_timeToDouble(stop));
-
-    corto_sleep(2, 0);
 
     return 0;
 error:

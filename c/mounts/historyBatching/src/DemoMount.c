@@ -14,16 +14,15 @@ void historyBatching_DemoMount_onHistoryBatchNotify(
     corto_info("%s: >> batch start (%f)", corto_idof(this), t);
     while (corto_iter_hasNext(&events)) {
         corto_subscriberEvent *e = corto_iter_next(&events);
-        if (!count) printf("parent = %s, id = %s\n", e->data.parent, e->data.id);
-        /*char *str = corto_ptr_str(&event->event, corto_eventMask_o, 0);
+        char *str = corto_ptr_str(&e->event, corto_eventMask_o, 0);
         corto_info(
             "'%s' received for '%s' from '%s' with type '%s' and value %s",
             str,
-            event->data.id,
-            event->data.parent,
-            event->data.type,
-            corto_result_getText(&event->data));
-        //corto_dealloc(str);*/
+            e->data.id,
+            e->data.parent,
+            e->data.type,
+            corto_result_getText(&e->data));
+        //corto_dealloc(str);
         count ++;
     }
     corto_info("%s: << batch end (%d samples)", corto_idof(this), count);
