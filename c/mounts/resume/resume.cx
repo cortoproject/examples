@@ -1,0 +1,8 @@
+in application resume
+
+class DemoMount: mount:/
+    data: list{result}, private   // Demo data 
+    int16 construct()
+
+    // onResume is called whenever an app looks up an object
+    object onResume(string parent, string id, object object) override

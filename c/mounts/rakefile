@@ -2,6 +2,7 @@
 COMPONENTS = %w(
     read
     write
+    resume
     custom_iter
     ownership
     downsampling
