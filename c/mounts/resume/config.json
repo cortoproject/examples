@@ -1,0 +1,11 @@
+{
+    "id": "myMount",
+    "type": "resume/DemoMount",
+    "value": {
+        "contentType": "text/json",
+        "query": {
+            "from": "/data"
+        },
+        "policy.ownership": "LOCAL_OWNER"
+    }
+}
