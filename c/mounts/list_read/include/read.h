@@ -13,7 +13,7 @@
 #include <corto/c/c.h>
 
 /* $header() */
-/* Definitions that are required by package headers (native types) go here. */
+/* Enter additional code here. */
 /* $end */
 
 #include <include/_type.h>
@@ -22,7 +22,7 @@
 #include <include/_api.h>
 
 /* $body() */
-/* Definitions here that need your package headers go here. */
+/* Enter code that requires types here */
 /* $end */
 
 #endif

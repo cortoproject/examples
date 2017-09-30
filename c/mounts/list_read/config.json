@@ -1,0 +1,10 @@
+{
+    "id": "myMount",
+    "type": "list_read/DemoMount",
+    "value": {
+        "contentType": "text/json",
+        "query": {
+            "from": "/data"
+        }
+    }
+}

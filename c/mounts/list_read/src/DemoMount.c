@@ -1,9 +1,8 @@
 /* This is a managed file. Do not delete this comment. */
 
-#include <include/read.h>
-
-int16_t read_DemoMount_construct(
-    read_DemoMount this)
+#include <include/list_read.h>
+int16_t list_read_DemoMount_construct(
+    list_read_DemoMount this)
 {
 
     /* Populate the mount with some demo data */
@@ -30,19 +29,12 @@ int16_t read_DemoMount_construct(
     return corto_super_construct(this);
 }
 
-corto_resultIter read_DemoMount_onQuery(
-    read_DemoMount this,
+corto_resultIter list_read_DemoMount_onQuery(
+    list_read_DemoMount this,
     corto_query *query)
 {
-    corto_iter it = corto_ll_iter(this->data);
 
-    while (corto_iter_hasNext(&it)) {
-        corto_result *r = corto_iter_next(&it);
-        if (corto_query_match(query, r)) {
-            corto_mount_return(this, r);
-        }
-    }
-
-    return CORTO_ITER_EMPTY;
+    /* Return iterator to the data that outlives this function scope */
+    return corto_ll_iterAlloc(this->data);
 }
 

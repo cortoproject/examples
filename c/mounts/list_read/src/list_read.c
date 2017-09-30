@@ -1,6 +1,11 @@
-#include <include/read.h>
+/* This is a managed file. Do not delete this comment. */
 
-int readMain(int argc, char *argv[]) {
+#include <include/list_read.h>
+
+
+/* Simple demo of a mount that serves up a number of objects when queried. */
+
+int list_readMain(int argc, char *argv[]) {
 
     /* Load mount configuration, data is mounted under /data */
     if (corto_load("config.json", 0, NULL)) {
@@ -27,3 +32,4 @@ error:
     corto_error("%s", corto_lasterr());
     return -1;
 }
+
