@@ -25,7 +25,6 @@ curl -X POST http://localhost:9080/install?device=85
 ```
 Output:
 ```
-info: [oasys/api/install/example] Starting HTTP Router example
-info: [oasys/api/install/example] Successfully loaded config [$DIR/install-api.json]
-info: [oasys/api/install/example] HTTP.install.httprouter: Received Install Request for Device: [85]
+info: [router] Router Initialized.
+info: [router] HTTP.install.httprouter: Received Install Request for Device ID: [85]
 ```
