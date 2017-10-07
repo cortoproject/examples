@@ -4,8 +4,8 @@
  * Only modify inside the header-end and body-end sections.
  */
 
-#ifndef CORTO_EXAMPLES_C_HTTP_ROUTER_H
-#define CORTO_EXAMPLES_C_HTTP_ROUTER_H
+#ifndef ROUTER_H
+#define ROUTER_H
 
 #include <corto/corto.h>
 #include <corto/corto.h>

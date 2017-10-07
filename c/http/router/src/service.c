@@ -1,6 +1,6 @@
 /* This is a managed file. Do not delete this comment. */
 
-#include <corto/examples/c/http/router/router.h>
+#include <include/router.h>
 
 int16_t router_service_construct(
     router_service this)

@@ -1,5 +1,5 @@
 {
-    "id": "corto/examples/c/http/router",
+    "id": "router",
     "type": "application",
     "value": {
         "description": "HTTP POST Request API for handling install requests.",

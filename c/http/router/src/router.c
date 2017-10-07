@@ -1,17 +1,17 @@
-/* This is a managed file. Do not delete this comment. */
+#include <include/router.h>
 
-#include <router/router.h>
-
-const corto_string ROUTER_CONFIG = "install-api.json";
-
-int loadConfig(void);
+const corto_string ROUTER_CONFIG = "config.json";
 
 int routerMain(int argc, char *argv[]) {
 
-    if (loadConfig() != 0)
-    {
+    int ret = corto_load(ROUTER_CONFIG, 0, NULL);
+    if (ret != 0) {
+        corto_error("Failed to load [%s] Return Code [%d] Errror [%s]",
+            ROUTER_CONFIG, ret, corto_lasterr());
         return -1;
     }
+
+    corto_info("Router Initialized.");
 
     while (true)
     {
@@ -19,28 +19,4 @@ int routerMain(int argc, char *argv[]) {
     }
 
     return 0;
-}
-
-int loadConfig(void) {
-    corto_string path = corto_asprintf("%s/%s",
-                                       CORTO_EXAMPLES_C_HTTP_ROUTER_ETC,
-                                       ROUTER_CONFIG);
-    if (path != NULL) {
-        if (corto_load(path, 0, NULL)) {
-            goto error;
-        }
-        else {
-            corto_info("Successfully loaded config [%s]", path);
-        }
-        corto_dealloc(path);
-    }
-
-    return 0;
-
-error:
-    if (path != NULL) {
-        corto_error("Failed to load [%s] - Error [%s]", path, corto_lasterr());
-        corto_dealloc(path);
-    }
-    return -1;
 }

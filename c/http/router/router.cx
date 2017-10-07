@@ -1,4 +1,4 @@
-in package /corto/examples/c/http/router
+in application router
 use corto/httprouter
 
 httprouter/Router service :/
