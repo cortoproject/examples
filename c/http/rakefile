@@ -1,10 +1,6 @@
 
 COMPONENTS = %w(
-  benchmark
-  core
-  modeling
-  mounts
-  http
+  router
 )
 
 require "#{ENV['CORTO_BUILD']}/forward"
