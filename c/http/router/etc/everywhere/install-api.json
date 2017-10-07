@@ -1,0 +1,8 @@
+{
+    "id": "c",
+    "type": "corto/examples/c/http/router/service",
+    "value": {
+        "port": 9080,
+        "from": "/api"
+    }
+}

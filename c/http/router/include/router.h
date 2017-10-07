@@ -4,22 +4,25 @@
  * Only modify inside the header-end and body-end sections.
  */
 
-#ifndef ROUTER_H
-#define ROUTER_H
+#ifndef CORTO_EXAMPLES_C_HTTP_ROUTER_H
+#define CORTO_EXAMPLES_C_HTTP_ROUTER_H
 
 #include <corto/corto.h>
 #include <corto/corto.h>
-#include <router/_project.h>
+#include <include/_project.h>
 #include <corto/c/c.h>
+#include <corto/x/x.h>
+#include <corto/httpserver/httpserver.h>
+#include <corto/httprouter/httprouter.h>
 
 /* $header() */
 /* Definitions that are required by package headers (native types) go here. */
 /* $end */
 
-#include <router/_type.h>
-#include <router/_interface.h>
-#include <router/_load.h>
-#include <router/c/_api.h>
+#include <include/_type.h>
+#include <include/_interface.h>
+#include <include/_load.h>
+#include <include/_api.h>
 
 /* $body() */
 /* Definitions here that need your package headers go here. */
