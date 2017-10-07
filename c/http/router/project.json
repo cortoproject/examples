@@ -1,0 +1,15 @@
+{
+    "id": "router",
+    "type": "application",
+    "value": {
+        "description": "HTTP POST Request API for handling install requests.",
+        "author": "Alex Hendren",
+        "version": "1.0.0",
+        "language": "c",
+        "dependencies": [
+            "corto/httprouter",
+            "corto/httpserver",
+            "corto/x"
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "id": "config/service/install",
+    "type": "router/service",
+    "value": {
+        "port": 9080
+    }
+}

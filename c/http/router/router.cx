@@ -1,0 +1,7 @@
+in application router
+use corto/httprouter
+
+httprouter/Router service :/
+    int16 construct()
+    POST    install:    "/install"
+    member  from:       string
