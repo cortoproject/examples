@@ -1,0 +1,9 @@
+{
+    "id": "myMount",
+    "type": "binary_contentType/DemoMount",
+    "value": {
+        "query": {
+            "from": "/data"
+        }
+    }
+}

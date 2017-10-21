@@ -1,0 +1,11 @@
+in application binary_contentType
+
+struct Point:/
+    x, y: int32
+
+class DemoMount: mount:/
+    data: list{result}, private   // Demo data 
+    int16 construct()
+
+    // onQuery is called whenever an app requests data with corto_select
+    vstore/resultIter onQuery(vstore/query query) override
